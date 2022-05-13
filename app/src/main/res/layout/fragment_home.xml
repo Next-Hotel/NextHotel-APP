@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="12dp"
     android:orientation="vertical"
     tools:context=".ui.HomeFragment">
@@ -26,6 +26,7 @@
         style="@style/Widget.Design.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginVertical="10dp"
         android:hint="Search your favorite hotels...!"
         android:importantForAutofill="no" />
 
@@ -33,7 +34,6 @@
         style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         tools:text="Special Offers" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -55,10 +55,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:scrollbars="vertical"
-        android:layout_marginTop="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_vertical" />
 
 </LinearLayout>
