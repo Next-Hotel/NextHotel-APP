@@ -37,6 +37,7 @@
         tools:text="Special Offers" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemHorizontalRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="170dp"
         android:layout_marginTop="5dp"
@@ -53,6 +54,7 @@
         tools:text="Best For You" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemVerticalRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
