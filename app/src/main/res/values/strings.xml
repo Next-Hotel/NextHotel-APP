@@ -5,4 +5,5 @@
     <string name="image_description">null</string>
     <string name="search_hint">Search your favorite hotels...!</string>
     <string name="explore_hint">explore hotels right here...!</string>
+    <string name="logo">logo</string>
 </resources>

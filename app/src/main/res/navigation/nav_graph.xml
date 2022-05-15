@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -31,4 +31,9 @@
             android:id="@+id/action_exploreFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.nexthotel_app.splashScreen.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" />
 </navigation>
