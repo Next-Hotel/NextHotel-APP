@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="12dp"
+    tools:context=".ui.DetailFragment">
+
+    <ImageView
+        android:id="@+id/hotelImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/image_description" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        tools:text="Hotel Yamato" />
+
+    <TextView
+        android:id="@+id/rateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        tools:text="4.5 ⭐" />
+
+    <TextView
+        android:id="@+id/addressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        tools:text="Jogjakarta" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        tools:text="@tools:sample/lorem/random" />
+
+</LinearLayout>
