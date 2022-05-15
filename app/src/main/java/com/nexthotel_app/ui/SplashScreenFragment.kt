@@ -1,4 +1,4 @@
-package com.nexthotel_app.splashScreen
+package com.nexthotel_app.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.nexthotel_app.R
 
 @SuppressLint("CustomSplashScreen")
@@ -26,7 +27,7 @@ class SplashScreenFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.hide()
 
         Handler(Looper.getMainLooper()).postDelayed({
-
+            findNavController().navigate(R.id.homeFragment)
         }, 2000)
     }
 }

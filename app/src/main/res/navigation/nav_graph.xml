@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.nexthotel_app.splashScreen.SplashScreenFragment"
+        android:name="com.nexthotel_app.ui.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" />
 </navigation>
