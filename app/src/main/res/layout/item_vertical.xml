@@ -5,50 +5,50 @@
     android:id="@+id/itemVerticalCard"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:layout_marginBottom="15dp" >
+    android:layout_marginBottom="15dp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_item_image_vertical"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:contentDescription="@string/image_description"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:contentDescription="@string/image_description" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/tv_item_name_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintStart_toEndOf="@id/iv_item_image_vertical"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Hotel Merdeka" />
+        tools:text="@string/item_name" />
 
     <TextView
-        android:id="@+id/rateTextView"
+        android:id="@+id/tv_item_rate_vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
-        app:layout_constraintStart_toStartOf="@id/nameTextView"
-        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        app:layout_constraintBottom_toTopOf="@id/tv_item_city_vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/createdAtTextView"
-        tools:text="4.5 ⭐" />
+        app:layout_constraintStart_toStartOf="@id/tv_item_name_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_name_vertical"
+        tools:text="@string/item_rate" />
 
     <TextView
-        android:id="@+id/createdAtTextView"
+        android:id="@+id/tv_item_city_vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintStart_toStartOf="@id/rateTextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Jogjakarta" />
+        app:layout_constraintStart_toStartOf="@id/tv_item_rate_vertical"
+        tools:text="@string/item_city" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

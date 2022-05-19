@@ -9,6 +9,8 @@
     <string name="city">City :</string>
     <string name="price_range">Price range :</string>
 
+    <string name="something_wrong">Oops.. something went wrong.<br /> Check your connection</string>
+
     <string name="hotel_rating">4.5</string>
     <string name="hotel_image">Hotel Image</string>
     <string name="hotel_name">Hotel Name</string>
@@ -22,4 +24,14 @@
     <string name="search_hint">Search your favorite hotels...!</string>
     <string name="explore_hint">explore hotels right here...!</string>
     <string name="logo">logo</string>
+    <string name="best_for_you">Best For You</string>
+    <string name="special_offer">Special Offers</string>
+    <string name="hello_user">Hello User!</string>
+    <string name="hotel_recomendation_for_you">Hotel Recommendations Only For You!</string>
+
+    <string name="item_name">Item Name</string>
+    <string name="item_rate">Item Rate</string>
+    <string name="item_city">Item City</string>
+
+    <string name="retry">Retry</string>
 </resources>
