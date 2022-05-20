@@ -33,5 +33,6 @@
     <string name="item_rate">Item Rate</string>
     <string name="item_city">Item City</string>
 
-    <string name="retry">Retry</string>
+    <string name="error_network_fail">Looks like your are offline</string>
+    <string name="try_again">Try again</string>
 </resources>

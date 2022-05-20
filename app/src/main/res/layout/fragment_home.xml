@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="12dp"
     android:orientation="vertical"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.main.home.HomeFragment">
 
     <TextView
         android:id="@+id/userTextView"
@@ -131,17 +131,5 @@
     <!--        android:scrollbars="vertical"-->
     <!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
     <!--        tools:listitem="@layout/item_vertical" />-->
-
-    <include
-        android:id="@+id/view_error"
-        layout="@layout/error"
-        android:visibility="gone"
-        app:layout_anchor="@+id/fragment_container"
-        app:layout_anchorGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
 
 </LinearLayout>

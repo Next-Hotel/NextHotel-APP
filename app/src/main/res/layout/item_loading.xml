@@ -13,7 +13,6 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:textColor="?android:textColorPrimary"
-        android:textStyle="bold"
         tools:text="Timeout" />
 
     <ProgressBar
@@ -28,5 +27,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/retry" />
+        android:text="@string/try_again" />
 </LinearLayout>

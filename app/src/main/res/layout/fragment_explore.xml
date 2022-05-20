@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="12dp"
     android:orientation="vertical"
-    tools:context=".ui.explore.ExploreFragment">
+    tools:context=".ui.main.explore.ExploreFragment">
 
     <EditText
         style="@style/Widget.Design.TextInputLayout"
