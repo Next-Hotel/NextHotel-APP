@@ -1,37 +1,38 @@
 package com.nexthotel_app.ui.main.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import com.nexthotel_app.R
 import com.nexthotel_app.databinding.FragmentHomeBinding
+import com.nexthotel_app.ui.main.HotelPagingHorizontalAdapter
 import com.nexthotel_app.ui.main.HotelPagingVerticalAdapter
 import com.nexthotel_app.ui.main.LoadingStateAdapter
-import com.nexthotel_app.utils.viewBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
-    private val binding by viewBinding(FragmentHomeBinding::bind)
+class HomeFragment : Fragment() {
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: HomeViewModel by inject()
-    private val adapter = HotelPagingVerticalAdapter {
-        findNavController().navigate(
-            HomeFragmentDirections.actionHomeFragmentToDetailFragment(it)
-        )
-    }
+    val adapterVertical = HotelPagingVerticalAdapter()
+    val adapterHorizontal = HotelPagingHorizontalAdapter()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            ActivityCompat.finishAffinity(requireActivity())
-        }
-        callback.isEnabled = true
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,31 +40,89 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         (activity as AppCompatActivity).supportActionBar?.apply {
             hide()
         }
-//        setAdapterVertical()
-//        setAdapterHorizontal()
-        setAdapter()
+        initTextStatic()
 
-        binding.swipeRefreshVertical.setOnRefreshListener { viewModel.refresh() }
-//        binding.swipeRefreshHorizontal.setOnRefreshListener { viewModel.refresh() }
+        initSwipeToRefresh()
+
+        setAdapterVertical()
+        setAdapterHorizontal()
 
         viewModel.stateList.observe(viewLifecycleOwner, observerStateList)
     }
 
-    private fun setAdapter() {
-        binding.itemVerticalRecyclerView.adapter = adapter
-        binding.itemVerticalRecyclerView.adapter = adapter.withLoadStateFooter(
-            footer = LoadingStateAdapter {
-                adapter.retry()
-            }
-        )
+    private fun initSwipeToRefresh() {
+        binding.swipeRefreshVertical.setOnRefreshListener { viewModel.refresh() }
+        binding.swipeRefreshHorizontal.setOnRefreshListener { viewModel.refresh() }
     }
 
+    private fun initTextStatic() {
+        binding.tvWelcome.text = getString(R.string.tv_welcome, "Username")
+        binding.tvTitle.text = getString(R.string.tv_title)
+        binding.tvBestForYou.text = getString(R.string.tv_bestForYou)
+        binding.tvSpecialOffers.text = getString(R.string.tv_specialOffers)
+    }
+
+    private fun setAdapterVertical() {
+        binding.itemVerticalRecyclerView.adapter = adapterVertical
+        binding.itemVerticalRecyclerView.adapter = adapterVertical.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                adapterVertical.retry()
+            }
+        )
+
+        lifecycleScope.launchWhenCreated {
+            adapterVertical.loadStateFlow.collect {
+                binding.swipeRefreshVertical.isRefreshing =
+                    it.mediator?.refresh is LoadState.Loading
+            }
+        }
+        lifecycleScope.launch {
+            adapterVertical.loadStateFlow.collectLatest { loadStates ->
+                binding.viewError.root.isVisible = loadStates.refresh is LoadState.Error
+            }
+            if (adapterVertical.itemCount < 1) binding.viewError.root.visibility = View.VISIBLE
+            else binding.viewError.root.visibility = View.GONE
+        }
+    }
+
+    private fun setAdapterHorizontal() {
+        binding.itemHorizontalRecyclerView.adapter = adapterHorizontal
+        binding.itemHorizontalRecyclerView.adapter = adapterHorizontal.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                adapterHorizontal.retry()
+            }
+        )
+
+        lifecycleScope.launchWhenCreated {
+            adapterHorizontal.loadStateFlow.collect {
+                binding.swipeRefreshHorizontal.isRefreshing =
+                    it.mediator?.refresh is LoadState.Loading
+            }
+        }
+        lifecycleScope.launch {
+            adapterHorizontal.loadStateFlow.collectLatest { loadStates ->
+                binding.viewError.root.isVisible = loadStates.refresh is LoadState.Error
+            }
+            if (adapterHorizontal.itemCount < 1) binding.viewError.root.visibility = View.VISIBLE
+            else binding.viewError.root.visibility = View.GONE
+        }
+    }
 
     private val observerStateList = Observer<HomeState> { itState ->
         binding.swipeRefreshVertical.isRefreshing = (itState == HomeState.OnLoading)
         when (itState) {
             is HomeState.OnSuccess -> {
-                adapter.submitData(lifecycle, itState.pagingHotel)
+                adapterVertical.submitData(lifecycle, itState.pagingHotel)
+            }
+            is HomeState.OnError -> {
+                Toast.makeText(requireContext(), itState.message, Toast.LENGTH_LONG).show()
+            }
+            HomeState.OnLoading -> {}
+        }
+        binding.swipeRefreshHorizontal.isRefreshing = (itState == HomeState.OnLoading)
+        when (itState) {
+            is HomeState.OnSuccess -> {
+                adapterHorizontal.submitData(lifecycle, itState.pagingHotel)
             }
             is HomeState.OnError -> {
                 Toast.makeText(requireContext(), itState.message, Toast.LENGTH_LONG).show()
@@ -72,46 +131,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-//    private fun setAdapterVertical() {
-//        binding.itemVerticalRecyclerView.adapter = adapterVertical
-//        binding.itemVerticalRecyclerView.adapter = adapterVertical.withLoadStateFooter(
-//            footer = LoadingStateAdapter {
-//                adapterVertical.retry()
-//            }
-//        )
-//    }
-//
-//    private fun setAdapterHorizontal() {
-//        binding.itemHorizontalRecyclerView.adapter = adapterHorizontal
-//        binding.itemHorizontalRecyclerView.adapter = adapterHorizontal.withLoadStateFooter(
-//            footer = LoadingStateAdapter {
-//                adapterHorizontal.retry()
-//            }
-//        )
-//    }
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launchWhenCreated {
+            setAdapterVertical()
+            setAdapterHorizontal()
+        }
+    }
 
-//    private val observerStateList = Observer<HomeState> { itState ->
-//        binding.swipeRefreshVertical.isRefreshing = (itState == HomeState.OnLoading)
-//        when (itState) {
-//            is HomeState.OnSuccess -> {
-//                adapterVertical.submitData(lifecycle, itState.pagingHotel)
-//            }
-//            is HomeState.OnError -> {
-//                Toast.makeText(requireContext(), itState.message, Toast.LENGTH_LONG).show()
-//            }
-//            HomeState.OnLoading -> {}
-//        }
-//        binding.swipeRefreshHorizontal.isRefreshing = (itState == HomeState.OnLoading)
-//        when (itState) {
-//            is HomeState.OnSuccess -> {
-//                adapterHorizontal.submitData(lifecycle, itState.pagingHotel)
-//            }
-//            is HomeState.OnError -> {
-//                Toast.makeText(requireContext(), itState.message, Toast.LENGTH_LONG).show()
-//            }
-//            HomeState.OnLoading -> {}
-//        }
-//    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }
