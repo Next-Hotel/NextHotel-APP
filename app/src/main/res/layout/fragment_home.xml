@@ -9,18 +9,19 @@
     tools:context=".ui.main.home.HomeFragment">
 
     <TextView
-        android:id="@+id/userTextView"
+        android:id="@+id/tv_welcome"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/hello_user" />
+        tools:text="@string/tv_welcome" />
 
     <TextView
+        android:id="@+id/tv_title"
         style="@style/TextAppearance.MaterialComponents.Subtitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        tools:text="@string/hotel_recomendation_for_you" />
+        tools:text="@string/tv_title" />
 
 
     <androidx.appcompat.widget.SearchView
@@ -39,30 +40,12 @@
         app:queryHint="@string/search_hint"
         app:showDividers="end" />
 
-
-    <!--    <EditText-->
-    <!--        style="@style/Widget.Design.TextInputLayout"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginVertical="10dp"-->
-    <!--        android:hint="@string/search_hint"-->
-    <!--        android:importantForAutofill="no" />-->
-
     <TextView
+        android:id="@+id/tv_specialOffers"
         style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/special_offer" />
-
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/itemHorizontalRecyclerView"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="170dp"-->
-    <!--        android:layout_marginTop="5dp"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        android:scrollbars="horizontal"-->
-    <!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-    <!--        tools:listitem="@layout/item_horizontal" />-->
+        tools:text="@string/tv_specialOffers" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_horizontal"
@@ -84,11 +67,12 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
+        android:id="@+id/tv_bestForYou"
         style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        tools:text="@string/best_for_you" />
+        tools:text="@string/tv_bestForYou" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_vertical"
@@ -122,14 +106,16 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/itemVerticalRecyclerView"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="5dp"-->
-    <!--        android:orientation="vertical"-->
-    <!--        android:scrollbars="vertical"-->
-    <!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-    <!--        tools:listitem="@layout/item_vertical" />-->
+    <include
+        android:id="@+id/view_error"
+        layout="@layout/error"
+        android:visibility="gone"
+        app:layout_anchor="@+id/fragment_container"
+        app:layout_anchorGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </LinearLayout>

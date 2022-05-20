@@ -1,6 +1,5 @@
 package com.nexthotel_app.ui.main
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -31,7 +30,6 @@ class HotelPagingHorizontalAdapter :
     inner class ViewHolder(private val binding: ItemHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(hotel: HotelSchema) {
-            Log.d("MASUK HOTEL HORIZONTAL", hotel.toString())
             binding.apply {
                 tvItemNameHorizontal.text = hotel.name
                 tvItemRateHorizontal.text = hotel.rating
