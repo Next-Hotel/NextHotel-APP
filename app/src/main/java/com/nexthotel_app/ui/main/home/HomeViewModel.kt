@@ -8,7 +8,9 @@ import androidx.paging.rxjava2.cachedIn
 import com.nexthotel_app.base.BaseViewModel
 import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
 import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class HomeViewModel(
     private val useCase: HomeUseCase,
@@ -16,6 +18,11 @@ class HomeViewModel(
     private val _stateList = MutableLiveData<HomeState>()
 
     val stateList get() = _stateList
+
+    init {
+        getPagingHotel()
+
+    }
 
     fun refresh() {
         getPagingHotel()
