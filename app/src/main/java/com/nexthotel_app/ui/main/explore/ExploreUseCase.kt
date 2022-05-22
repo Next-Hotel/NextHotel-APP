@@ -7,5 +7,4 @@ interface ExploreUseCase {
 
     fun search(keyword: String): Observable<List<HotelSchema>>
 
-    fun list(): Observable<List<HotelSchema>>
 }

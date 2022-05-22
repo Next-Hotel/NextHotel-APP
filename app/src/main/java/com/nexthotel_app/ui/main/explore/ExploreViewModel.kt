@@ -17,7 +17,6 @@ class ExploreViewModel(private val useCase: ExploreUseCase) : BaseViewModel() {
     private val subscribeSearch: PublishSubject<String> = PublishSubject.create()
 
     init {
-        getListUser()
 
         subscribeSearch
             .debounce(800, TimeUnit.MILLISECONDS)
@@ -29,19 +28,14 @@ class ExploreViewModel(private val useCase: ExploreUseCase) : BaseViewModel() {
     }
 
     fun refresh() {
-        getListUser()
-    }
 
-    private fun getListUser() {
-        useCase.list()
+        subscribeSearch
+            .debounce(800, TimeUnit.MILLISECONDS)
+            .distinct()
+            .filter { text -> text.isNotBlank() }
             .subscribeOn(Schedulers.io())
-            .doOnSubscribe {
-                _stateList.postValue(ExploreState.OnLoading)
-            }.subscribe({
-                _stateList.postValue(ExploreState.OnSuccess(it))
-            }, {
-                _stateList.postValue(ExploreState.OnError(it?.message ?: "Terjadi Kesalahan"))
-            }).disposeOnCleared()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { getSearch(it) }.disposeOnCleared()
     }
 
     fun search(keyword: String) {

@@ -35,6 +35,4 @@ class HotelRepository(
 
     fun hotelsSearch(keyword: String) = service.hotelsSearch(keyword)
 
-    fun list() = service.hotelsExplore()
-
 }
