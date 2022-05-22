@@ -1,5 +1,6 @@
 package com.nexthotel_app.ui.main
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -25,7 +26,6 @@ class HotelPagingVerticalAdapter :
             }
         }
     }
-
 
     inner class ViewHolder(private val binding: ItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {
