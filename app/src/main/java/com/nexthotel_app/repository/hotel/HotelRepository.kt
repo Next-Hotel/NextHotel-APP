@@ -33,4 +33,6 @@ class HotelRepository(
         ).flowable
     }
 
+    fun hotelsSearch(keyword: String) = service.hotelsSearch(keyword)
+
 }

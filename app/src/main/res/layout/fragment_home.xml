@@ -23,22 +23,17 @@
         android:layout_marginTop="5dp"
         tools:text="@string/tv_title" />
 
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/search_bg"
-        android:textCursorDrawable="@null"
-        app:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryBackground="@null"
-        app:queryHint="@string/search_hint"
-        app:showDividers="end" />
+   <Button
+       android:id="@+id/searchBtn"
+       android:layout_width="match_parent"
+       android:layout_marginTop="8sp"
+       android:layout_marginBottom="8sp"
+       android:layout_height="wrap_content"
+       android:textColor="@color/gray"
+       android:drawableLeft="@drawable/ic_baseline_search_24"
+       android:background="@drawable/search_bg"
+       android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+       android:text="@string/search_hint"/>
 
     <TextView
         android:id="@+id/tv_specialOffers"
