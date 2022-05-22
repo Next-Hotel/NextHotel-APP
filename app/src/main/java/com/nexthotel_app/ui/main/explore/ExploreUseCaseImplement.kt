@@ -14,5 +14,4 @@ class ExploreUseCaseImplement(private val repository: HotelRepository) : Explore
             .flatMap { response -> response.mapToList() }
     }
 
-    override fun list(): Observable<List<HotelSchema>> = repository.list()
 }
