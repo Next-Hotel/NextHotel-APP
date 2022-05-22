@@ -1,5 +1,6 @@
 package com.nexthotel_app.data.remote.service
 
+import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
 import com.nexthotel_app.data.remote.response.HotelResponse
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -15,6 +16,11 @@ interface HotelServices {
         @Query("size") size: Int
     ): Single<HotelResponse>
 
+    @Headers("Content-Type: application/json;charset=UTF-8")
     @GET("hotel-data")
     fun hotelsSearch(@Query("name") keyword: String): Observable<HotelResponse>
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @GET("hotel-data")
+    fun hotelsExplore(): Observable<List<HotelSchema>>
 }
