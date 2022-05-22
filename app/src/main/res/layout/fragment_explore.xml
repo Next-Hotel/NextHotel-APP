@@ -8,16 +8,24 @@
     android:orientation="vertical"
     tools:context=".ui.main.explore.ExploreFragment">
 
-    <EditText
-        style="@style/Widget.Design.TextInputLayout"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginVertical="10dp"
-        android:hint="@string/explore_hint"
-        android:importantForAutofill="no" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/search_bg"
+        android:textCursorDrawable="@null"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryBackground="@null"
+        app:queryHint="@string/search_hint"
+        app:showDividers="end" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/itemVerticalRecyclerView"
+        android:id="@+id/itemVerticalExplore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

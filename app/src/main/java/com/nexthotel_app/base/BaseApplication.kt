@@ -12,7 +12,9 @@ import org.koin.core.logger.Level
 import org.koin.core.module.Module
 
 abstract class BaseApplication : Application() {
+
     abstract fun defineDependencies(): List<Module>
+
     override fun onCreate() {
         super.onCreate()
         dependenciesInjection()
@@ -26,7 +28,11 @@ abstract class BaseApplication : Application() {
             androidContext(this@BaseApplication)
 
             modules(
-                mutableListOf(remoteModule, localModule, errorHandleModule)
+                mutableListOf(
+                    remoteModule,
+                    localModule,
+                    errorHandleModule
+                )
                     .apply { addAll(defineDependencies()) }
             )
         }

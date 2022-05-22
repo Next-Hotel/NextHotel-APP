@@ -6,18 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
+import androidx.navigation.findNavController
 import com.nexthotel_app.R
 import com.nexthotel_app.databinding.FragmentHomeBinding
 import com.nexthotel_app.ui.main.HotelPagingHorizontalAdapter
 import com.nexthotel_app.ui.main.HotelPagingVerticalAdapter
 import com.nexthotel_app.ui.main.LoadingStateAdapter
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
@@ -43,11 +40,21 @@ class HomeFragment : Fragment() {
         initTextStatic()
 
         initSwipeToRefresh()
+        initAction()
 
         setAdapterVertical()
         setAdapterHorizontal()
 
         viewModel.stateList.observe(viewLifecycleOwner, observerStateList)
+    }
+
+    private fun initAction() {
+        binding.searchBtn.setOnClickListener {
+            val toExplore =
+                HomeFragmentDirections.actionHomeFragmentToExploreFragment()
+            it.findNavController().navigate(toExplore)
+        }
+
     }
 
     private fun initSwipeToRefresh() {
@@ -69,20 +76,6 @@ class HomeFragment : Fragment() {
                 adapterVertical.retry()
             }
         )
-
-        lifecycleScope.launchWhenCreated {
-            adapterVertical.loadStateFlow.collect {
-                binding.swipeRefreshVertical.isRefreshing =
-                    it.mediator?.refresh is LoadState.Loading
-            }
-        }
-        lifecycleScope.launch {
-            adapterVertical.loadStateFlow.collectLatest { loadStates ->
-                binding.viewError.root.isVisible = loadStates.refresh is LoadState.Error
-            }
-            if (adapterVertical.itemCount < 1) binding.viewError.root.visibility = View.VISIBLE
-            else binding.viewError.root.visibility = View.GONE
-        }
     }
 
     private fun setAdapterHorizontal() {
@@ -92,20 +85,6 @@ class HomeFragment : Fragment() {
                 adapterHorizontal.retry()
             }
         )
-
-        lifecycleScope.launchWhenCreated {
-            adapterHorizontal.loadStateFlow.collect {
-                binding.swipeRefreshHorizontal.isRefreshing =
-                    it.mediator?.refresh is LoadState.Loading
-            }
-        }
-        lifecycleScope.launch {
-            adapterHorizontal.loadStateFlow.collectLatest { loadStates ->
-                binding.viewError.root.isVisible = loadStates.refresh is LoadState.Error
-            }
-            if (adapterHorizontal.itemCount < 1) binding.viewError.root.visibility = View.VISIBLE
-            else binding.viewError.root.visibility = View.GONE
-        }
     }
 
     private val observerStateList = Observer<HomeState> { itState ->

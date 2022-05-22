@@ -5,6 +5,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 abstract class BaseViewModel : ViewModel() {
+
     private val disposables = CompositeDisposable()
     private var _token: String = ""
 
