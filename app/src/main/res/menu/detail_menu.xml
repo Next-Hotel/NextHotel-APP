@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/favorite_nonactive"
+        android:icon="@drawable/ic_favorite_border_24"
+        android:title="@string/favorite_mode"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/favorite_active"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="@string/dark_mode"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+</menu>

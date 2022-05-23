@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.nexthotel_app.data.local.hotel.HotelLocalConfig
+import com.nexthotel_app.data.local.hotel.hotel_entity.HotelLocalConfig
 
 @Dao
 interface RemoteKeysDao {
@@ -13,7 +13,7 @@ interface RemoteKeysDao {
     fun insertAll(remoteKeySchema: List<RemoteKeysSchema>)
 
     @Query("SELECT * FROM ${HotelLocalConfig.TABLE_REMOTE_KEYS} WHERE id = :id")
-    fun getRemoteKeysId(id: String): RemoteKeysSchema?
+    fun getRemoteKeysId(id: Int?): RemoteKeysSchema?
 
     @Query("DELETE FROM ${HotelLocalConfig.TABLE_REMOTE_KEYS}")
     fun deleteRemoteKeys()

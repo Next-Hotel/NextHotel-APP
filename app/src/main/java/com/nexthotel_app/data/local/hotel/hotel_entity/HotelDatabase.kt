@@ -1,4 +1,4 @@
-package com.nexthotel_app.data.local.hotel
+package com.nexthotel_app.data.local.hotel.hotel_entity
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
@@ -11,7 +11,7 @@ import com.nexthotel_app.data.local.hotel.remote_keys_entity.RemoteKeysSchema
     entities = [
         HotelSchema::class,
         RemoteKeysSchema::class
-    ], version = 1, exportSchema = false
+    ], version = 2, exportSchema = false
 )
 abstract class HotelDatabase : RoomDatabase() {
     abstract fun hotel(): HotelDao

@@ -2,6 +2,7 @@ package com.nexthotel_app.base
 
 import android.app.Application
 import com.nexthotel_app.BuildConfig
+import com.nexthotel_app.data.local.localFavModule
 import com.nexthotel_app.data.local.localModule
 import com.nexthotel_app.data.remote.errorHandleModule
 import com.nexthotel_app.data.remote.remoteModule
@@ -31,6 +32,7 @@ abstract class BaseApplication : Application() {
                 mutableListOf(
                     remoteModule,
                     localModule,
+                    localFavModule,
                     errorHandleModule
                 )
                     .apply { addAll(defineDependencies()) }

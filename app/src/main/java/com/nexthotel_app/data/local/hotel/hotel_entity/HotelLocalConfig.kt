@@ -1,4 +1,4 @@
-package com.nexthotel_app.data.local.hotel
+package com.nexthotel_app.data.local.hotel.hotel_entity
 
 object HotelLocalConfig {
     const val DATABASE_NAME = "hotel_app.db"

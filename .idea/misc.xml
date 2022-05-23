@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_baseline_bookmarks_24.xml" value="0.1" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_baseline_broken_image_24.xml" value="0.1" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/search_bg.xml" value="0.1" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
@@ -16,6 +19,8 @@
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_horizontal.xml" value="0.2015625" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_loading.xml" value="0.2" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_vertical.xml" value="0.2015625" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/menu/menu.xml" value="0.38697916666666665" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/menu/user_detail_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

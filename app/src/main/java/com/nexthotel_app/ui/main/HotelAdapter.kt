@@ -9,7 +9,7 @@ import com.nexthotel_app.R
 import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
 import com.nexthotel_app.databinding.ItemVerticalBinding
 
-class HotelExploreAdapter(private val itemClickListener: (HotelSchema) -> Unit) :
+class HotelAdapter(private val itemClickListener: (HotelSchema) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val list: MutableList<HotelSchema> = mutableListOf()
