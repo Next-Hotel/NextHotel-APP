@@ -1,121 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.main.detail.DetailFragment">
+    tools:context=".ui.detail.DetailFragment">
 
-
-    <ImageView
-        android:id="@+id/iv_hotel"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/hotel_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_place_holder_24" />
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv_backArrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/back_arrow_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_hotelName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/rubik_medium"
-        android:text="@string/hotel_name"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_hotel" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:contentDescription="@string/image_desc"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
-    <ImageView
-        android:id="@+id/iv_star"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/star_image"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_hotelName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_hotelName"
-        app:srcCompat="@drawable/ic_baseline_star_24" />
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_margin="13dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/image_desc"
+                android:src="@drawable/ic_arrow_back" />
 
-    <TextView
-        android:id="@+id/tv_hotelRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:fontFamily="@font/rubik"
-        android:text="@string/hotel_rating"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_star"
-        app:layout_constraintEnd_toStartOf="@+id/iv_star"
-        app:layout_constraintTop_toTopOf="@+id/iv_star" />
+            <ImageButton
+                android:id="@+id/moreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="13dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/image_desc"
+                android:src="@drawable/ic_more_vert" />
 
-    <TextView
-        android:id="@+id/tv_hotelCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/rubik_medium"
-        android:text="@string/city"
-        android:textColor="#044363"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_hotelName"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hotelName" />
+            <ImageButton
+                android:id="@+id/bookmarkButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="42dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/image_desc"
+                android:src="@drawable/ic_bookmark_border" />
 
-    <TextView
-        android:id="@+id/tv_hotelPriceRange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/rubik_medium"
-        android:text="@string/price_range"
-        android:textColor="#044363"
-        app:layout_constraintStart_toStartOf="@+id/tv_hotelCity"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hotelCity" />
+        </FrameLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="13dp"
+            android:orientation="vertical">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/add_favorite"
-        android:foregroundGravity="bottom"
-        app:fabSize="normal"
-        app:layout_anchorGravity="bottom|end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_favorite_border_24" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_hotelDesc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/hotel_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_hotelPriceRange"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hotelPriceRange" />
+                <TextView
+                    android:id="@+id/nameTextView"
+                    style="@style/TextView.Detail.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    tools:text="Jogja Hotel's" />
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageButton
+                    android:id="@+id/shareButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/image_desc"
+                    android:src="@drawable/ic_share" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/cityTextView"
+                style="@style/TextView.Detail.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="6dp"
+                tools:text="Sleman, Jogjakarta" />
+
+            <TextView
+                android:id="@+id/rateTextView"
+                style="@style/TextView.Detail.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                tools:text="4.5 ⭐" />
+
+            <TextView
+                android:id="@+id/priceTextView"
+                style="@style/TextView.Detail.Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                tools:text="Rp. 100.000" />
+
+            <TextView
+                android:id="@+id/descTextView"
+                style="@style/TextView.Detail.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
