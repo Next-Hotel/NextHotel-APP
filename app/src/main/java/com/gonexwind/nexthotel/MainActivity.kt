@@ -3,6 +3,7 @@ package com.gonexwind.nexthotel
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.util.Log.i
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,9 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.detailFragment -> {
                     navView.visibility = View.GONE
+                    binding.topBar.visibility = View.GONE
+                }
+                R.id.navigation_bookmarks -> {
                     binding.topBar.visibility = View.GONE
                 }
                 else -> {
