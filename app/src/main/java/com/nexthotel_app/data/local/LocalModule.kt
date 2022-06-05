@@ -9,6 +9,7 @@ import org.koin.dsl.module
 val daoModule = module {
     factory { get<HotelDatabase>().hotel() }
     factory { get<HotelDatabase>().remoteKeysDao() }
+    factory { get<HotelDatabase>().hotelFavorite() }
 }
 
 @Volatile

@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.rxjava2.flowable
 import com.nexthotel_app.data.local.hotel.HotelDatabase
 import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
+import com.nexthotel_app.data.local.hotel.hotel_entity.toHotelFavorite
 import com.nexthotel_app.data.remote.service.HotelServices
 import io.reactivex.Flowable
 
@@ -34,5 +35,11 @@ class HotelRepository(
     }
 
     fun hotelsSearch(keyword: String) = service.hotelsSearch(keyword)
+
+    fun favorite(hotel: HotelSchema) = dao.hotelFavorite().save(hotel.toHotelFavorite())
+    fun favorite(id: String) = dao.hotelFavorite().find(id)
+    fun deleteFromFavorite(id: String) = dao.hotelFavorite().delete(id)
+    fun truncateFavorite() = dao.hotelFavorite().truncate()
+    fun favorites() = dao.hotelFavorite().findAll()
 
 }

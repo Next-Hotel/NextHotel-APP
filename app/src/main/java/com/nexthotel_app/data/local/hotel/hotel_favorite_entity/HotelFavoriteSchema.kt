@@ -4,12 +4,11 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import io.reactivex.Flowable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "hotel")
-data class HotelSchema(
+@Entity(tableName = "hotel_favorite")
+data class HotelFavoriteSchema(
     @PrimaryKey
     @field:SerializedName("id")
     val id: String,
@@ -38,16 +37,3 @@ data class HotelSchema(
     @field:SerializedName("imageUrl")
     val imageUrl: String? = null,
 ) : Parcelable
-
-fun HotelSchema.toHotelFavorite() = HotelFavoriteSchema(
-    id = this.id,
-    name = this.name,
-    imageUrl = this.imageUrl,
-    priceRange = this.priceRange,
-)
-
-fun List<HotelFavoriteSchema>.toListHotel(): Flowable<List<HotelSchema>> {
-    return Flowable.just(this.map { item ->
-        HotelSchema(id = item.id, name = item.name, imageUrl = item.imageUrl, rating = item.priceRange)
-    })
-}
