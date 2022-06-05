@@ -1,39 +1,14 @@
 <resources>
-    <string name="app_name">NextHotel-APP</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Next Hotel</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_explore">Explore</string>
+    <string name="title_bookmarks">Bookmarks</string>
+
+    <string name="image_desc">image_desc</string>
+    <string name="bookmark_desc">bookmark_desc</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="back_arrow_image">Back Arrow Image</string>
-    <string name="star_image">Star Image</string>
-
-    <string name="city">City :</string>
-    <string name="price_range">Price range :</string>
-
-    <string name="something_wrong">Oops.. something went wrong.<br /> Check your connection</string>
-
-    <string name="hotel_rating">4.5</string>
-    <string name="hotel_image">Hotel Image</string>
-    <string name="hotel_name">Hotel Name</string>
-    <string name="hotel_city">Jakarta</string>
-    <string name="hotel_priceRange">$3,00 - $8,00</string>
-    <string name="description">Description :</string>
-    <string name="hotel_description">Mughal Gardens which have truly changed the face of the Mughal Empire is one of the most popular and the most visited tourist attractions of Srinagar.</string>
-    <string name="add_favorite">add favorite</string>
-
-    <string name="image_description">null</string>
-    <string name="search_hint">Search your favorite hotels...!</string>
-    <string name="explore_hint">explore hotels right here...!</string>
-    <string name="logo">logo</string>
-
-    <string name="tv_bestForYou">Best For You</string>
-    <string name="tv_specialOffers">Special Offers</string>
-    <string name="tv_welcome">Hallo, %1$s</string>
-    <string name="tv_title">Hotel Recommendations Only For You!</string>
-
-    <string name="item_name">Item Name</string>
-    <string name="item_rate">Item Rate</string>
-    <string name="item_city">Item City</string>
-
-    <string name="error_network_fail">Looks like your are offline</string>
-    <string name="try_again">Try again</string>
+    <string name="explore_your_hotels">Explore Your Hotels</string>
+    <string name="hotels_for_you">Hotels For You</string>
+    <string name="best_pick">Best Pick</string>
 </resources>
