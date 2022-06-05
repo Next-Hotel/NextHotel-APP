@@ -1,4 +1,4 @@
-package com.nexthotel_app.data.local.hotel
+package com.nexthotel_app.data.local.hotel.hotel_entity
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

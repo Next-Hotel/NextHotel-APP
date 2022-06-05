@@ -55,6 +55,11 @@ class HomeFragment : Fragment() {
             it.findNavController().navigate(toExplore)
         }
 
+        binding.favBtn.setOnClickListener {
+            val toFavorite =
+                HomeFragmentDirections.actionHomeFragmentToFavoriteFragment()
+            it.findNavController().navigate(toFavorite)
+        }
     }
 
     private fun initSwipeToRefresh() {

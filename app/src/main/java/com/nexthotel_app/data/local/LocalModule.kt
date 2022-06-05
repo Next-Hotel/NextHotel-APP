@@ -1,8 +1,8 @@
 package com.nexthotel_app.data.local
 
 import androidx.room.Room
-import com.nexthotel_app.data.local.hotel.HotelDatabase
-import com.nexthotel_app.data.local.hotel.HotelLocalConfig
+import com.nexthotel_app.data.local.hotel.hotel_entity.HotelDatabase
+import com.nexthotel_app.data.local.hotel.hotel_entity.HotelLocalConfig
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 

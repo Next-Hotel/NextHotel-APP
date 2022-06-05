@@ -1,5 +1,6 @@
 package com.nexthotel_app
 
+import com.nexthotel_app.data.local.daoFavModule
 import com.nexthotel_app.data.local.daoModule
 import com.nexthotel_app.data.remote.serviceModule
 import com.nexthotel_app.repository.repositoryModule
@@ -10,6 +11,7 @@ class MyApp : com.nexthotel_app.base.BaseApplication() {
     override fun defineDependencies(): List<Module> {
         return listOf(
             daoModule,
+            daoFavModule,
             serviceModule,
             repositoryModule,
             viewModelModule

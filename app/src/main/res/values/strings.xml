@@ -36,4 +36,7 @@
 
     <string name="error_network_fail">Looks like your are offline</string>
     <string name="try_again">Try again</string>
+    <string name="delete_favorite">hapus favorite</string>
+    <string name="favorite_mode">Favorite Mode</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>

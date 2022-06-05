@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_exploreFragment"
             app:destination="@id/exploreFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -37,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.nexthotel_app.ui.main.explore.ExploreFragment"
+        android:name="com.nexthotel_app.ui.main.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite">
         <action

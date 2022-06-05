@@ -11,14 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.nexthotel_app.R
 import com.nexthotel_app.databinding.FragmentExploreBinding
-import com.nexthotel_app.ui.main.HotelExploreAdapter
+import com.nexthotel_app.ui.main.HotelAdapter
 import com.nexthotel_app.utils.viewBinding
 import org.koin.android.ext.android.inject
 
 class ExploreFragment : Fragment(R.layout.fragment_explore) {
     private val binding by viewBinding(FragmentExploreBinding::bind)
     private val viewModel: ExploreViewModel by inject()
-    private val adapter = HotelExploreAdapter {
+    private val adapter = HotelAdapter {
         findNavController().navigate(
             ExploreFragmentDirections.actionExploreFragmentToDetailFragment(
                 it
