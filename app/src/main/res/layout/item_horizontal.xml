@@ -1,85 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="135dp"
-    android:layout_height="250dp"
-    android:elevation="10dp"
-    android:layout_marginEnd="10dp"
-    app:cardCornerRadius="10dp">
+    android:id="@+id/itemHorizontalCard"
+    android:layout_width="200dp"
+    android:layout_height="170dp"
+    android:layout_marginEnd="15dp">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/iv_item_image_horizontal"
         android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:contentDescription="@string/image_description"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/tv_item_name_horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_item_image_horizontal"
+        tools:text="@string/item_name" />
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_item_rate_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/tv_item_name_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_name_horizontal"
+        tools:text="@string/item_rate" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="135dp"
-                android:layout_height="135dp"
-                android:contentDescription="@string/image_desc"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/backgrounds/scenic" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="85dp"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/main_color"
-                style="@style/MyCardView">
-
-                <TextView
-                    android:id="@+id/cityTextView"
-                    style="@style/TextView.Card.Top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    tools:text="Jogja" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <ImageButton
-                android:id="@+id/bookmarkButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="6dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/bookmark_desc"
-                android:src="@drawable/ic_bookmark_border" />
-
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/nameTextView"
-                style="@style/TextView.Card.Title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Jogja Hotel's" />
-
-            <TextView
-                android:id="@+id/rateTextView"
-                style="@style/TextView.Card.Subtitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="4.5 ⭐" />
-
-            <TextView
-                android:id="@+id/priceTextView"
-                style="@style/TextView.Card.Price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Rp. 100.000" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
