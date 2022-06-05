@@ -6,8 +6,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.rxjava2.flowable
 import com.nexthotel_app.data.local.hotel.hotel_entity.HotelDatabase
-import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
-import com.nexthotel_app.data.local.hotel.hotel_entity.toHotelFavorite
+import com.nexthotel_app.data.local.hotel.HotelSchema
+import com.nexthotel_app.data.local.hotel.toHotelFavorite
 import com.nexthotel_app.data.remote.service.HotelServices
 import io.reactivex.Flowable
 

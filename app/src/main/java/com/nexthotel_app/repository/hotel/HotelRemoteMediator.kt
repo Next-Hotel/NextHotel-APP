@@ -5,7 +5,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.rxjava2.RxRemoteMediator
 import com.nexthotel_app.data.local.hotel.hotel_entity.HotelDatabase
-import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
+import com.nexthotel_app.data.local.hotel.HotelSchema
 import com.nexthotel_app.data.local.hotel.remote_keys_entity.RemoteKeysSchema
 import com.nexthotel_app.data.remote.response.HotelResponse
 import com.nexthotel_app.data.remote.service.HotelServices

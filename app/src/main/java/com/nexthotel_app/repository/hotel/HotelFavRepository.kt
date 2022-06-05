@@ -1,7 +1,7 @@
 package com.nexthotel_app.repository.hotel
 
-import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
-import com.nexthotel_app.data.local.hotel.hotel_entity.toHotelFavorite
+import com.nexthotel_app.data.local.hotel.HotelSchema
+import com.nexthotel_app.data.local.hotel.toHotelFavorite
 import com.nexthotel_app.data.local.hotel.hotel_fav_entity.HotelFavDao
 import com.nexthotel_app.data.remote.service.HotelServices
 

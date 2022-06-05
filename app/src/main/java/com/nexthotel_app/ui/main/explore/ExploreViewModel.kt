@@ -2,7 +2,7 @@ package com.nexthotel_app.ui.main.explore
 
 import androidx.lifecycle.MutableLiveData
 import com.nexthotel_app.base.BaseViewModel
-import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
+import com.nexthotel_app.data.local.hotel.HotelSchema
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject

@@ -1,7 +1,7 @@
 package com.nexthotel_app.data.remote.response
 
 import com.google.gson.annotations.SerializedName
-import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
+import com.nexthotel_app.data.local.hotel.HotelSchema
 import io.reactivex.Observable
 
 data class HotelResponse(

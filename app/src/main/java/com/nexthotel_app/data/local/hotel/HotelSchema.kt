@@ -1,9 +1,10 @@
-package com.nexthotel_app.data.local.hotel.hotel_entity
+package com.nexthotel_app.data.local.hotel
 
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.nexthotel_app.data.local.hotel.hotel_entity.HotelFavoriteSchema
 import io.reactivex.Flowable
 import kotlinx.parcelize.Parcelize
 

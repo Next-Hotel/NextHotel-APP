@@ -1,6 +1,6 @@
 package com.nexthotel_app.ui.main.explore
 
-import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
+import com.nexthotel_app.data.local.hotel.HotelSchema
 import com.nexthotel_app.data.remote.response.mapToList
 import com.nexthotel_app.repository.hotel.HotelRepository
 import io.reactivex.Observable

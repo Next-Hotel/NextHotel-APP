@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nexthotel_app.R
-import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
+import com.nexthotel_app.data.local.hotel.HotelSchema
 import com.nexthotel_app.databinding.ItemVerticalBinding
 
 class HotelAdapter(private val itemClickListener: (HotelSchema) -> Unit) :

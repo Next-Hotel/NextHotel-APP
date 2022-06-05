@@ -1,6 +1,5 @@
 package com.nexthotel_app.ui.main
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -9,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nexthotel_app.R
-import com.nexthotel_app.data.local.hotel.hotel_entity.HotelSchema
+import com.nexthotel_app.data.local.hotel.HotelSchema
 import com.nexthotel_app.databinding.ItemVerticalBinding
 import com.nexthotel_app.ui.main.home.HomeFragmentDirections
 
