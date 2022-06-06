@@ -1,4 +1,4 @@
-package com.gonexwind.nexthotel.ui.home
+package com.nexthotel.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.gonexwind.nexthotel.adapter.HotelHorizontalAdapter
-import com.gonexwind.nexthotel.adapter.HotelVerticalAdapter
-import com.gonexwind.nexthotel.databinding.FragmentHomeBinding
-import com.gonexwind.nexthotel.model.Hotel
+import com.nexthotel.adapter.HotelHorizontalAdapter
+import com.nexthotel.adapter.HotelVerticalAdapter
+import com.nexthotel.databinding.FragmentHomeBinding
+import com.nexthotel.model.Hotel
 
 class HomeFragment : Fragment() {
 

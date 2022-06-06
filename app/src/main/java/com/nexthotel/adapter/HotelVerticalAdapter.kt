@@ -1,11 +1,11 @@
-package com.gonexwind.nexthotel.adapter
+package com.nexthotel.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.gonexwind.nexthotel.databinding.ItemVerticalBinding
-import com.gonexwind.nexthotel.model.Hotel
+import com.nexthotel.databinding.ItemVerticalBinding
+import com.nexthotel.model.Hotel
 
 class HotelVerticalAdapter(private val listHotel: List<Hotel>) :
     RecyclerView.Adapter<HotelVerticalAdapter.ViewHolder>() {

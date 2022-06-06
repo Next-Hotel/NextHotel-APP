@@ -1,4 +1,4 @@
-package com.gonexwind.nexthotel
+package com.nexthotel
 
 import org.junit.Test
 

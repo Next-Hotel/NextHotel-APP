@@ -1,4 +1,4 @@
-package com.gonexwind.nexthotel
+package com.nexthotel
 
 import android.app.SearchManager
 import android.content.Context
@@ -14,6 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+<<<<<<< HEAD:app/src/main/java/com/nexthotel/MainActivity.kt
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nexthotel.databinding.ActivityMainBinding
+=======
 import com.gonexwind.nexthotel.adapter.HotelVerticalAdapter
 import com.gonexwind.nexthotel.databinding.ActivityMainBinding
 import com.gonexwind.nexthotel.model.Hotel
@@ -24,6 +28,7 @@ import com.gonexwind.nexthotel.viewmodel.MainViewModel
 import com.gonexwind.nexthotel.viewmodel.MainViewModelProviderFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.*
+>>>>>>> master:app/src/main/java/com/gonexwind/nexthotel/MainActivity.kt
 
 class MainActivity : AppCompatActivity() {
 

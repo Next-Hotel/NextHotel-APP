@@ -4,12 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.12478977463841238" />
+<<<<<<< HEAD
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_bookmarks.xml" value="0.2015625" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_detail.xml" value="0.2015625" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_explore.xml" value="0.2015625" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_home.xml" value="0.2015625" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_horizontal.xml" value="0.2015625" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_vertical.xml" value="0.2015625" />
+=======
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/activity_main.xml" value="0.19827586206896552" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_bookmarks.xml" value="0.2" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_explore.xml" value="0.21510416666666668" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_home.xml" value="0.21510416666666668" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_search.xml" value="0.21510416666666668" />
+>>>>>>> master
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2105" />
         <entry key="app/src/main/res/drawable/bg_white_rounded.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bookmark_border.xml" value="0.118" />
@@ -28,7 +38,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

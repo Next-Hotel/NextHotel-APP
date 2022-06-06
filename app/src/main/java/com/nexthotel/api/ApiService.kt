@@ -1,6 +1,6 @@
-package com.gonexwind.nexthotel.api
+package com.nexthotel.api
 
-import com.gonexwind.nexthotel.model.HotelsResponse
+import com.nexthotel.model.HotelsResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
