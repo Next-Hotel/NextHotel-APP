@@ -14,21 +14,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-<<<<<<< HEAD:app/src/main/java/com/nexthotel/MainActivity.kt
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nexthotel.adapter.HotelVerticalAdapter
 import com.nexthotel.databinding.ActivityMainBinding
-=======
-import com.gonexwind.nexthotel.adapter.HotelVerticalAdapter
-import com.gonexwind.nexthotel.databinding.ActivityMainBinding
-import com.gonexwind.nexthotel.model.Hotel
-import com.gonexwind.nexthotel.repository.SearchRepository
-import com.gonexwind.nexthotel.ui.explore.ExploreFragmentDirections
-import com.gonexwind.nexthotel.ui.home.HomeFragmentDirections
-import com.gonexwind.nexthotel.viewmodel.MainViewModel
-import com.gonexwind.nexthotel.viewmodel.MainViewModelProviderFactory
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nexthotel.model.Hotel
+import com.nexthotel.repository.SearchRepository
+import com.nexthotel.ui.explore.ExploreFragmentDirections
+import com.nexthotel.ui.home.HomeFragmentDirections
+import com.nexthotel.viewmodel.MainViewModel
+import com.nexthotel.viewmodel.MainViewModelProviderFactory
 import kotlinx.coroutines.*
->>>>>>> master:app/src/main/java/com/gonexwind/nexthotel/MainActivity.kt
 
 class MainActivity : AppCompatActivity() {
 
@@ -126,7 +121,10 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
 
-            /** delay the search with 400 milliseconds when the last character is typed */
+            /**
+             * delay the search with 400 milliseconds when the last
+             * character is typed
+             */
             @RequiresApi(Build.VERSION_CODES.M)
             override fun onQueryTextChange(newText: String): Boolean {
                 searchJob?.cancel()
@@ -145,7 +143,10 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    /**  when the viewState changes, also we change what we show into the view, loading, result or init screen */
+    /**
+     * when the viewState changes, also we change what we show into the
+     * view, loading, result or init screen
+     */
     private fun observeViewState() {
         viewModel.viewState.observe(this@MainActivity) { searchViewState ->
             when (searchViewState) {

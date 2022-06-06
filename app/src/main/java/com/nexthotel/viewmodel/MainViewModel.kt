@@ -1,12 +1,12 @@
-package com.gonexwind.nexthotel.viewmodel
+package com.nexthotel.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.gonexwind.nexthotel.model.Hotel
-import com.gonexwind.nexthotel.model.HotelsResponse
-import com.gonexwind.nexthotel.repository.SearchRepository
+import com.nexthotel.model.Hotel
+import com.nexthotel.model.HotelsResponse
+import com.nexthotel.repository.SearchRepository
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
