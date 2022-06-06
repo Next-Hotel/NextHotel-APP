@@ -1,4 +1,4 @@
-package com.gonexwind.nexthotel.ui.detail
+package com.nexthotel.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import coil.load
-import com.gonexwind.nexthotel.databinding.FragmentDetailBinding
+import com.nexthotel.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
 

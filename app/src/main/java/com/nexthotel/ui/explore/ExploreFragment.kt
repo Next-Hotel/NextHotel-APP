@@ -1,4 +1,4 @@
-package com.gonexwind.nexthotel.ui.explore
+package com.nexthotel.ui.explore
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.gonexwind.nexthotel.adapter.ExploreAdapter
-import com.gonexwind.nexthotel.databinding.FragmentExploreBinding
-import com.gonexwind.nexthotel.model.Hotel
+import com.nexthotel.adapter.ExploreAdapter
+import com.nexthotel.databinding.FragmentExploreBinding
+import com.nexthotel.model.Hotel
 
 class ExploreFragment : Fragment() {
 

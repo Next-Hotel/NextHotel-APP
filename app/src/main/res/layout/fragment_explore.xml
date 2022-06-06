@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="13dp"
-    tools:context=".ui.explore.ExploreFragment">
+    tools:context="com.nexthotel.ui.explore.ExploreFragment">
 
     <ProgressBar
         android:id="@+id/progressBar"

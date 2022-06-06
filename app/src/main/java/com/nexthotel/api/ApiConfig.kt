@@ -1,7 +1,6 @@
-package com.gonexwind.nexthotel.api
+package com.nexthotel.api
 
-import android.os.Build
-import com.gonexwind.nexthotel.BuildConfig
+import androidx.viewbinding.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

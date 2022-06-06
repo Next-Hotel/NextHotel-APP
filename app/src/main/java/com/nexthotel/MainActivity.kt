@@ -1,17 +1,16 @@
-package com.gonexwind.nexthotel
+package com.nexthotel
 
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log.i
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.gonexwind.nexthotel.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nexthotel.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.gonexwind.nexthotel.model
+package com.nexthotel.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -19,4 +19,4 @@ data class Hotel(
     @SerializedName("rating") val rate: String,
     @SerializedName("description") val description: String,
     @SerializedName("priceRange") val priceRange: String,
-): Parcelable
+) : Parcelable
