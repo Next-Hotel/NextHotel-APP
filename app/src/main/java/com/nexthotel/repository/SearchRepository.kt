@@ -1,6 +1,6 @@
-package com.gonexwind.nexthotel.repository
+package com.nexthotel.repository
 
-import com.gonexwind.nexthotel.api.ApiConfig
+import com.nexthotel.api.ApiConfig
 
 class SearchRepository() {
 

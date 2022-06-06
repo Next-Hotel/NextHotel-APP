@@ -1,11 +1,11 @@
-package com.gonexwind.nexthotel.viewmodel
+package com.nexthotel.viewmodel
 
 import android.app.Application
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.gonexwind.nexthotel.repository.SearchRepository
+import com.nexthotel.repository.SearchRepository
 
 class MainViewModelProviderFactory(
     private val app: Application,
