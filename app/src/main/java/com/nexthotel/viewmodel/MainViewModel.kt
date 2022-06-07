@@ -21,10 +21,8 @@ class MainViewModel(
     //contains the value of the searchView
     private var searchView = MutableLiveData<String>()
 
-
     // contains the state of the whole view, ex: loading, show result, etc
     var viewState = MutableLiveData<Int>()
-
 
     init {
         //showing the initial screen

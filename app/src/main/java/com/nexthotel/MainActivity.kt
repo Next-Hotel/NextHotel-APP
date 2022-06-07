@@ -2,7 +2,6 @@ package com.nexthotel
 
 import android.app.SearchManager
 import android.content.Context
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -105,14 +104,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     /** binding the search view */
     private fun bindSearchView() {
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = binding.searchView
-        searchView.setBackgroundColor(Color.WHITE)
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
 
         binding.searchView.setOnQueryTextListener(object :
@@ -126,13 +123,13 @@ class MainActivity : AppCompatActivity() {
              * character is typed
              */
             @RequiresApi(Build.VERSION_CODES.M)
-            override fun onQueryTextChange(newText: String): Boolean {
+            override fun onQueryTextChange(query: String): Boolean {
                 searchJob?.cancel()
                 searchJob = coroutineScope.launch {
-                    newText.let {
+                    query.let {
                         delay(400)
                         if (it.isNotEmpty()) {
-                            viewModel.searchForTasks(newText)
+                            viewModel.searchForTasks(query)
                         } else {
                             viewModel.clearSearchResult()
                         }
@@ -148,24 +145,21 @@ class MainActivity : AppCompatActivity() {
      * view, loading, result or init screen
      */
     private fun observeViewState() {
+
         viewModel.viewState.observe(this@MainActivity) { searchViewState ->
             when (searchViewState) {
                 MainViewModel.SearchViewState.LOADING.ordinal -> {
                     showSearchingLoading()
                 }
-
                 MainViewModel.SearchViewState.SEARCH_RESULT.ordinal -> {
                     showSearchResult()
                 }
-
                 MainViewModel.SearchViewState.INITIAL_SCREEN.ordinal -> {
                     showInitialScreen()
                 }
-
                 MainViewModel.SearchViewState.ERROR.ordinal -> {
                     showAnErrorHappened()
                 }
-
                 MainViewModel.SearchViewState.RESULT_NOT_FOUND.ordinal -> {
                     showNoResultFound()
                 }
