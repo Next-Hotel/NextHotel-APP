@@ -11,6 +11,7 @@ class MainViewModelProviderFactory(
     private val app: Application,
     private val searchRepository: SearchRepository
 ) : ViewModelProvider.Factory {
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return MainViewModel(app, searchRepository) as T
