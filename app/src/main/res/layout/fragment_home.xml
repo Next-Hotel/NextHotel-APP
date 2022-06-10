@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="13dp"
-    tools:context="com.nexthotel.ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/horizontalRecyclerView"
+        android:id="@+id/hotelForYouRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -46,11 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/best_pick"
-        app:layout_constraintStart_toStartOf="@id/horizontalRecyclerView"
-        app:layout_constraintTop_toBottomOf="@id/horizontalRecyclerView" />
+        app:layout_constraintStart_toStartOf="@id/hotelForYouRecyclerView"
+        app:layout_constraintTop_toBottomOf="@id/hotelForYouRecyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/verticalRecyclerView"
+        android:id="@+id/bestPickRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"

@@ -1,4 +1,4 @@
-package com.nexthotel.ui.explore
+package com.nexthotel.ui.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,8 +6,8 @@ import com.nexthotel.core.data.HotelRepository
 import com.nexthotel.core.data.local.entity.HotelEntity
 import kotlinx.coroutines.launch
 
-class ExploreViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
-    fun getExplore() = hotelRepository.getExplore()
+class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
+    fun searchHotel(query: String) = hotelRepository.searchHotel(query)
 
     fun saveHotel(hotel: HotelEntity) {
         viewModelScope.launch {

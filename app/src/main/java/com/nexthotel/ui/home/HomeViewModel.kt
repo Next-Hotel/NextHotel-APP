@@ -1,52 +1,25 @@
 package com.nexthotel.ui.home
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.nexthotel.api.ApiConfig
-import com.nexthotel.model.Hotel
-import com.nexthotel.model.HotelsResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.lifecycle.viewModelScope
+import com.nexthotel.core.data.HotelRepository
+import com.nexthotel.core.data.local.entity.HotelEntity
+import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
+    fun getBestPick() = hotelRepository.getBestPick()
 
-    private val _listHotel = MutableLiveData<List<Hotel>>()
-    val listHotel: LiveData<List<Hotel>> = _listHotel
+    fun getHotelForYou() = hotelRepository.getHotelForYou()
 
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
-
-    init {
-        getHotels()
+    fun saveHotel(hotel: HotelEntity) {
+        viewModelScope.launch {
+            hotelRepository.setBookmarkedHotel(hotel, true)
+        }
     }
 
-    private fun getHotels() {
-        _isLoading.value = true
-        val client = ApiConfig.getApiService().getListHotel()
-        client.enqueue(object : Callback<HotelsResponse> {
-            override fun onResponse(
-                call: Call<HotelsResponse>,
-                response: Response<HotelsResponse>
-            ) {
-                _isLoading.value = false
-                if (response.isSuccessful) {
-                    _listHotel.value = response.body()?.data
-                } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<HotelsResponse>, t: Throwable) {
-                _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message}")
-            }
-        })
-    }
-
-    companion object {
-        private const val TAG = "HomeViewModel"
+    fun deleteHotel(hotel: HotelEntity) {
+        viewModelScope.launch {
+            hotelRepository.setBookmarkedHotel(hotel, false)
+        }
     }
 }

@@ -1,6 +1,7 @@
-package com.nexthotel.api
+package com.nexthotel.core.data.remote.network
 
-import androidx.viewbinding.BuildConfig
+
+import com.nexthotel.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
