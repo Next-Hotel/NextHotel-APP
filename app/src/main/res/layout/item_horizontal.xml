@@ -2,16 +2,16 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="130dp"
-    android:layout_marginBottom="10dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="10dp">
+    android:layout_width="135dp"
+    android:layout_height="250dp"
+    android:layout_marginEnd="10dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -19,17 +19,16 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="155dp"
+                android:layout_width="135dp"
                 android:layout_height="135dp"
                 android:contentDescription="@string/image_desc"
                 android:scaleType="centerCrop"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 style="@style/MyCardView"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start|top"
                 app:cardBackgroundColor="@color/main_color">
 
                 <TextView
@@ -39,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
                     tools:text="Jogja" />
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <ImageButton
                 android:id="@+id/bookmarkButton"
@@ -54,9 +53,9 @@
         </FrameLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="13dp"
+            android:layout_margin="6dp"
             android:orientation="vertical">
 
             <TextView
@@ -64,8 +63,6 @@
                 style="@style/TextView.Card.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
                 tools:text="Jogja Hotel's" />
 
             <TextView
@@ -74,15 +71,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="4.5 ⭐" />
-
-            <TextView
-                android:id="@+id/descTextView"
-                style="@style/TextView.Card.Subtitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="2"
-                tools:text="@tools:sample/lorem/random" />
 
             <TextView
                 android:id="@+id/priceTextView"
