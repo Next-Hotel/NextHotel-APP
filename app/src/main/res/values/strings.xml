@@ -12,4 +12,6 @@
     <string name="hotels_for_you">Hotels For You</string>
     <string name="best_pick">Best Pick</string>
     <string name="your_bookmarks">Your Bookmarks</string>
+    <string name="unbookmark_toast">Unbookmarked The Hotel</string>
+    <string name="bookmrak_toast">Bookmarked The Hotel</string>
 </resources>
