@@ -1,4 +1,4 @@
-package com.nexthotel.ui.explore
+package com.nexthotel.ui.bookmarks
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,8 +6,9 @@ import com.nexthotel.core.data.HotelRepository
 import com.nexthotel.core.data.local.entity.HotelEntity
 import kotlinx.coroutines.launch
 
-class ExploreViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
-    fun getExplore() = hotelRepository.getExplore()
+class BookmarkViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
+
+    fun getBookmarkedHotel() = hotelRepository.getBookmarkedHotel()
 
     fun saveHotel(hotel: HotelEntity) {
         viewModelScope.launch {

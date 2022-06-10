@@ -42,6 +42,6 @@
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="hotel"
-            app:argType="com.nexthotel.model.Hotel" />
+            app:argType="com.nexthotel.core.data.local.entity.HotelEntity" />
     </fragment>
 </navigation>
