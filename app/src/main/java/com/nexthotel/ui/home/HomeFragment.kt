@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.nexthotel.R
 import com.nexthotel.core.data.Result
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.databinding.FragmentHomeBinding
@@ -37,11 +38,41 @@ class HomeFragment : Fragment() {
         val viewModel: HomeViewModel by viewModels { factory }
 
         val bestPickAdapter = BestPickAdapter {
-            if (it.isBookmarked) viewModel.deleteHotel(it) else viewModel.saveHotel(it)
+            if (it.isBookmarked) {
+                viewModel.deleteHotel(it)
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.unbookmark_toast),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            } else {
+                viewModel.saveHotel(it)
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.bookmrak_toast),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         val hotelForYouAdapter = HotelForYouAdapter {
-            if (it.isBookmarked) viewModel.deleteHotel(it) else viewModel.saveHotel(it)
+            if (it.isBookmarked) {
+                viewModel.deleteHotel(it)
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.unbookmark_toast),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            } else {
+                viewModel.saveHotel(it)
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.bookmrak_toast),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         viewModel.getBestPick().observe(viewLifecycleOwner) {

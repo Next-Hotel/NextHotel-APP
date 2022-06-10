@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.nexthotel.core.data.HotelRepository
 import com.nexthotel.core.di.Injection
 import com.nexthotel.ui.bookmarks.BookmarkViewModel
+import com.nexthotel.ui.detail.DetailViewModel
 import com.nexthotel.ui.explore.ExploreViewModel
 import com.nexthotel.ui.home.HomeViewModel
 import com.nexthotel.ui.search.SearchViewModel
@@ -21,6 +22,9 @@ class ViewModelFactory private constructor(private val hotelRepository: HotelRep
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(hotelRepository) as T
+            }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(hotelRepository) as T
             }
             modelClass.isAssignableFrom(ExploreViewModel::class.java) -> {
                 ExploreViewModel(hotelRepository) as T
