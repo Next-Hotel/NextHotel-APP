@@ -1,5 +1,6 @@
 package com.nexthotel.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,7 +53,15 @@ class DetailFragment : Fragment() {
                 activity?.onBackPressed()
             }
             shareButton.setOnClickListener {
-                Toast.makeText(requireActivity(), "Share Button", Toast.LENGTH_SHORT).show()
+                val shareIntent = Intent().apply {
+                    this.action = Intent.ACTION_SEND
+                    this.putExtra(
+                        Intent.EXTRA_TEXT,
+                        "You share data from NextHotel $name that is in $city with a price range of $rate ⭐,$description"
+                    )
+                    this.type = "text/plain"
+                }
+                startActivity(shareIntent)
             }
             moreButton.setOnClickListener {
                 Toast.makeText(requireActivity(), "More Button", Toast.LENGTH_SHORT).show()
