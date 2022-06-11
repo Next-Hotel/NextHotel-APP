@@ -66,4 +66,9 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">10dp</item>
     </style>
+
+    <style name="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
