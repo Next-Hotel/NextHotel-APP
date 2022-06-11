@@ -38,13 +38,13 @@ class DetailFragment : Fragment() {
         val viewModel: DetailViewModel by viewModels { factory }
 
         val hotel = DetailFragmentArgs.fromBundle(arguments as Bundle).hotel
-        val (_, name, city, imageUrl, rating, description, priceRange) = hotel
+        val (_, name, city, imageUrl, rate, description, priceRange) = hotel
 
         binding.apply {
             imageView.load(imageUrl)
             nameTextView.text = name
             cityTextView.text = city
-            rateTextView.text = rating
+            rateTextView.text = StringBuilder(rate).append(" ⭐")
             descTextView.text = description
             priceTextView.text = priceRange
 
@@ -60,11 +60,17 @@ class DetailFragment : Fragment() {
 
             if (hotel.isBookmarked) {
                 bookmarkButton.setImageDrawable(
-                    ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark)
+                    ContextCompat.getDrawable(
+                        bookmarkButton.context,
+                        R.drawable.ic_bookmark_white
+                    )
                 )
             } else {
                 bookmarkButton.setImageDrawable(
-                    ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_border)
+                    ContextCompat.getDrawable(
+                        bookmarkButton.context,
+                        R.drawable.ic_bookmark_border_white
+                    )
                 )
             }
             bookmarkButton.setOnClickListener {
@@ -73,7 +79,10 @@ class DetailFragment : Fragment() {
                 )
                 if (hotel.isBookmarked) {
                     bookmarkButton.setImageDrawable(
-                        ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark)
+                        ContextCompat.getDrawable(
+                            bookmarkButton.context,
+                            R.drawable.ic_bookmark_white
+                        )
                     )
                     Toast.makeText(
                         requireActivity(),
@@ -84,7 +93,7 @@ class DetailFragment : Fragment() {
                     bookmarkButton.setImageDrawable(
                         ContextCompat.getDrawable(
                             bookmarkButton.context,
-                            R.drawable.ic_bookmark_border
+                            R.drawable.ic_bookmark_border_white
                         )
                     )
                     Toast.makeText(
