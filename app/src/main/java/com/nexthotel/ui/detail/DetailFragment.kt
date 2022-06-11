@@ -1,7 +1,10 @@
 package com.nexthotel.ui.detail
 
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,15 +56,37 @@ class DetailFragment : Fragment() {
                 activity?.onBackPressed()
             }
             shareButton.setOnClickListener {
+                val resolver = requireActivity().contentResolver
+                val bitmapDrawable = imageView.drawable as BitmapDrawable
+                val bitmap = bitmapDrawable.bitmap
+                val bitmapPath =
+                    MediaStore.Images.Media.insertImage(
+                        resolver,
+                        bitmap,
+                        "some title",
+                        "some description"
+                    )
+                val bitmapUri = Uri.parse(bitmapPath)
                 val shareIntent = Intent().apply {
                     this.action = Intent.ACTION_SEND
                     this.putExtra(
-                        Intent.EXTRA_TEXT,
-                        "You share data from NextHotel $name that is in $city with a price range of $rate ⭐,$description"
+                        Intent.EXTRA_SUBJECT,
+                        "SHARE FROM NEXT HOTEL APP"
                     )
-                    this.type = "text/plain"
+                    this.putExtra(
+                        Intent.EXTRA_TEXT,
+                        """$name that is in $city with a price range of $priceRange and this hotel have $rate ⭐
+                            |Description :
+                            |$description""".trimMargin()
+                    )
+                    this.type = "image/*"
+                    this.putExtra(
+                        Intent.EXTRA_STREAM,
+                        bitmapUri
+                    )
+//                    this.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                 }
-                startActivity(shareIntent)
+                startActivity(Intent.createChooser(shareIntent, "Share Via"))
             }
             moreButton.setOnClickListener {
                 Toast.makeText(requireActivity(), "More Button", Toast.LENGTH_SHORT).show()
