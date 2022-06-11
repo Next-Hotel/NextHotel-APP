@@ -96,7 +96,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-  private fun showSearchLoading(isLoading: Boolean) {
+
+    private fun showSearchLoading(isLoading: Boolean) {
         when {
             isLoading -> {
                 binding.searchProgressBar.visibility = View.VISIBLE
