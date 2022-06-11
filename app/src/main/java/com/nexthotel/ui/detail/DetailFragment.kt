@@ -84,7 +84,6 @@ class DetailFragment : Fragment() {
                         Intent.EXTRA_STREAM,
                         bitmapUri
                     )
-//                    this.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                 }
                 startActivity(Intent.createChooser(shareIntent, "Share Via"))
             }
