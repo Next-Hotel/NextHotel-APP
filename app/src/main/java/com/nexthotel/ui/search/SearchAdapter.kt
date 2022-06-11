@@ -30,11 +30,14 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         val bookmarkButton = holder.binding.bookmarkButton
         if (hotel.isBookmarked) {
             bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark)
+                ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_blue)
             )
         } else {
             bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_border)
+                ContextCompat.getDrawable(
+                    bookmarkButton.context,
+                    R.drawable.ic_bookmark_border_blue
+                )
             )
         }
         bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
@@ -49,7 +52,7 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
                 imageView.load(imageUrl)
                 nameTextView.text = name
                 cityTextView.text = city
-                rateTextView.text = rate
+                rateTextView.text = StringBuilder(rate).append(" ⭐")
                 descTextView.text = description
                 priceTextView.text = priceRange
 

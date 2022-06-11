@@ -50,7 +50,7 @@
             android:layout_marginHorizontal="20dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/bookmark_desc"
-            android:src="@drawable/ic_bookmark_border" />
+            android:src="@drawable/ic_bookmark_border_white" />
 
     </FrameLayout>
 
