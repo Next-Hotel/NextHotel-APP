@@ -7,6 +7,8 @@ import androidx.lifecycle.map
 import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.core.data.local.room.HotelDao
 import com.nexthotel.core.data.remote.network.ApiService
+import com.nexthotel.core.data.remote.response.Hotel
+import com.nexthotel.core.data.remote.response.HotelsResponse
 
 class HotelRepository private constructor(
     private val apiService: ApiService,
@@ -103,35 +105,23 @@ class HotelRepository private constructor(
         emitSource(localData)
     }
 
-    fun searchHotel(query: String): LiveData<Result<List<HotelEntity>>> = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiService.searchHotel(query)
-            if (response.status == "success") {
-                val hotels = response.data
-                if (hotels.isNotEmpty()) {
-                    val hotelList = hotels.map {
-                        val isBookmarked = hotelDao.isHotelBookmarked(it.id)
-                        HotelEntity(
-                            it.id,
-                            it.name,
-                            it.city,
-                            it.imageUrl,
-                            it.rate,
-                            it.description,
-                            it.priceRange,
-                            isBookmarked
-                        )
-                    }
-                    emit(Result.Success(hotelList))
-                } else {
-                    emit(Result.NotFound)
-                }
-            }
-        } catch (e: Exception) {
-            Log.d("HotelRepository", "searchHotel: ${e.message.toString()}")
-            emit(Result.Error(e.message.toString()))
+    suspend fun search(query: String) = apiService.searchHotel(query)
+
+    suspend fun searchResult(hotels: List<Hotel>): List<HotelEntity> {
+        val hotelList = hotels.map {
+            val isBookmarked = hotelDao.isHotelBookmarked(it.id)
+            HotelEntity(
+                it.id,
+                it.name,
+                it.city,
+                it.imageUrl,
+                it.rate,
+                it.description,
+                it.priceRange,
+                isBookmarked
+            )
         }
+        return hotelList
     }
 
     fun getBookmarkedHotel(): LiveData<List<HotelEntity>> = hotelDao.getBookmarkedHotel()
