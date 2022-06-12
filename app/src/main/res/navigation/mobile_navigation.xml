@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
 
     <fragment
@@ -44,4 +47,12 @@
             android:name="hotel"
             app:argType="com.nexthotel.core.data.local.entity.HotelEntity" />
     </fragment>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.nexthotel.ui.setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting">
+    </fragment>
+    
 </navigation>

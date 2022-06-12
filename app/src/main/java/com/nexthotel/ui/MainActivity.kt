@@ -21,6 +21,7 @@ import com.nexthotel.ui.search.SearchAdapter
 import com.nexthotel.ui.search.SearchViewModel
 import kotlinx.coroutines.*
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -50,6 +51,11 @@ class MainActivity : AppCompatActivity() {
     private fun setUpAction() {
         binding.backToHomeButton.setOnClickListener {
             showInitialScreen()
+        }
+        binding.settingButton.setOnClickListener {
+            val toSetting =
+                HomeFragmentDirections.actionNavigationHomeToSettingFragment()
+            navController.navigate(toSetting)
         }
     }
 
@@ -101,6 +107,7 @@ class MainActivity : AppCompatActivity() {
                     binding.topBar.visibility = View.GONE
                 }
                 R.id.navigation_bookmarks -> binding.topBar.visibility = View.GONE
+                R.id.settingFragment -> binding.topBar.visibility = View.GONE
                 else -> {
                     navView.visibility = View.VISIBLE
                     binding.topBar.visibility = View.VISIBLE

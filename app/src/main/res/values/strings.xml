@@ -17,4 +17,11 @@
     <string name="back_to_home">Back to Home</string>
     <string name="result">Result</string>
     <string name="bookmark_doesnt_exist">You don\'t have a bookmark yet</string>
+    <string name="general">General</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="change_language">Change Language</string>
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="about_us">About Us</string>
+    <string name="setting">Setting</string>
 </resources>
