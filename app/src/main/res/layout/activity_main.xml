@@ -43,14 +43,14 @@
             android:textColor="@color/black" />
 
         <ImageButton
-            android:id="@+id/bookmarkButton"
+            android:id="@+id/settingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
             android:layout_marginHorizontal="20dp"
             android:background="@android:color/transparent"
-            android:contentDescription="@string/bookmark_desc"
-            android:src="@drawable/ic_bookmark_border_white" />
+            android:contentDescription="@string/setting"
+            android:src="@drawable/ic_settings" />
 
     </FrameLayout>
 
@@ -83,8 +83,8 @@
             style="@style/TextView.Header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/result"
             android:layout_margin="13dp"
+            android:text="@string/result"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -138,9 +138,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:text="@string/back_to_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/back_to_home"
             app:layout_constraintTop_toBottomOf="@+id/image_other_result" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
