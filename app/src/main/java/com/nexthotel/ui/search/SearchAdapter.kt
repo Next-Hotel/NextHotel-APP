@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,10 +11,19 @@ import coil.load
 import com.nexthotel.R
 import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.databinding.ItemVerticalBinding
-import com.nexthotel.ui.home.HomeFragmentDirections
 
 class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
     ListAdapter<HotelEntity, SearchAdapter.MyViewHolder>(DIFF_CALLBACK) {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: HotelEntity)
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding =
@@ -43,7 +51,7 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
     }
 
-    class MyViewHolder(val binding: ItemVerticalBinding) :
+    inner class MyViewHolder(val binding: ItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hotel: HotelEntity) {
@@ -55,11 +63,8 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
                 rateTextView.text = StringBuilder(rate).append(" ⭐")
                 descTextView.text = description
                 priceTextView.text = priceRange
-
                 itemView.setOnClickListener {
-                    val toDetail =
-                        HomeFragmentDirections.actionNavigationHomeToDetailFragment(hotel)
-                    it.findNavController().navigate(toDetail)
+                    onItemClickCallback.onItemClicked(hotel)
                 }
             }
         }

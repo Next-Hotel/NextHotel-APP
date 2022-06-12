@@ -7,13 +7,16 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nexthotel.R
+import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.databinding.ActivityMainBinding
-import com.nexthotel.ui.home.BestPickAdapter
+import com.nexthotel.ui.explore.ExploreFragmentDirections
+import com.nexthotel.ui.home.HomeFragmentDirections
 import com.nexthotel.ui.search.SearchAdapter
 import com.nexthotel.ui.search.SearchViewModel
 import kotlinx.coroutines.*
@@ -22,10 +25,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavHostFragment
-    private lateinit var adapter: BestPickAdapter
+    private lateinit var adapter: SearchAdapter
     lateinit var viewModel: SearchViewModel
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
     private var searchJob: Job? = null
+    private lateinit var navController: NavController
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +48,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpAction() {
-        binding.backToHomeButton.setOnClickListener{
+        binding.backToHomeButton.setOnClickListener {
             showInitialScreen()
         }
     }
 
     private fun searchView() {
-        adapter = BestPickAdapter {
+        adapter = SearchAdapter {
             if (it.isBookmarked) viewModel.deleteHotel(it) else viewModel.saveHotel(it)
         }
 
@@ -87,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        val navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
         navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -138,6 +142,26 @@ class MainActivity : AppCompatActivity() {
                 val hotelData = it
                 adapter.submitList(hotelData)
                 binding.searchRecyclerView.adapter = adapter
+                adapter.setOnItemClickCallback(object :
+                    SearchAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: HotelEntity) {
+                        when (navController.currentDestination?.id) {
+                            R.id.navigation_explore -> {
+                                val toDetail =
+                                    ExploreFragmentDirections.actionNavigationExploreToDetailFragment(
+                                        data
+                                    )
+                                navController.navigate(toDetail)
+                            }
+                            R.id.navigation_home -> {
+                                val toDetail =
+                                    HomeFragmentDirections.actionNavigationHomeToDetailFragment(data)
+                                navController.navigate(toDetail)
+                            }
+                        }
+                        showInitialScreen()
+                    }
+                })
                 showSearchResult()
             }
         }
