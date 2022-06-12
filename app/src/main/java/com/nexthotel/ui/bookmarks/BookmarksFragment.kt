@@ -39,6 +39,11 @@ class BookmarksFragment : Fragment() {
 
         viewModel.getBookmarkedHotel().observe(viewLifecycleOwner) {
             binding.progressBar.visibility = View.GONE
+            if (it.isEmpty()) {
+                binding.otherResult.visibility = View.VISIBLE
+            } else {
+                binding.otherResult.visibility = View.GONE
+            }
             hotelAdapter.submitList(it)
         }
 

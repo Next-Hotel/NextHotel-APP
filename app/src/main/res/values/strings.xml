@@ -16,4 +16,5 @@
     <string name="bookmrak_toast">Bookmarked The Hotel</string>
     <string name="back_to_home">Back to Home</string>
     <string name="result">Result</string>
+    <string name="bookmark_doesnt_exist">You don\'t have a bookmark yet</string>
 </resources>
