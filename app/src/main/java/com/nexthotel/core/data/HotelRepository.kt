@@ -18,7 +18,7 @@ class HotelRepository private constructor(
     fun getBestPick(): LiveData<Result<List<HotelEntity>>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getListHotel()
+            val response = apiService.getBestPicksHotels()
             val hotels = response.data
             val hotelList = hotels.map {
                 val isBookmarked = hotelDao.isHotelBookmarked(it.id)
@@ -48,7 +48,7 @@ class HotelRepository private constructor(
     fun getHotelForYou(): LiveData<Result<List<HotelEntity>>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getListHotel()
+            val response = apiService.getRecommendationHotels()
             val hotels = response.data
             val hotelList = hotels.map {
                 val isBookmarked = hotelDao.isHotelBookmarked(it.id)
@@ -78,7 +78,7 @@ class HotelRepository private constructor(
     fun getExplore(): LiveData<Result<List<HotelEntity>>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getListHotel()
+            val response = apiService.getExploreHotel()
             val hotels = response.data
             val hotelList = hotels.map {
                 val isBookmarked = hotelDao.isHotelBookmarked(it.id)
