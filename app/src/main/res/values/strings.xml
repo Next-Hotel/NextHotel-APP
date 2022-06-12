@@ -15,4 +15,5 @@
     <string name="unbookmark_toast">Unbookmarked The Hotel</string>
     <string name="bookmrak_toast">Bookmarked The Hotel</string>
     <string name="back_to_home">Back to Home</string>
+    <string name="result">Result</string>
 </resources>

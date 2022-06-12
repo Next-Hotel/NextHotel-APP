@@ -11,10 +11,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nexthotel.R
-import com.nexthotel.core.data.Result
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.databinding.ActivityMainBinding
 import com.nexthotel.ui.home.BestPickAdapter
+import com.nexthotel.ui.search.SearchAdapter
 import com.nexthotel.ui.search.SearchViewModel
 import kotlinx.coroutines.*
 
@@ -30,15 +30,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
         val viewModel: SearchViewModel by viewModels { factory }
         this.viewModel = viewModel
 
+        setUpRecyclerView()
+        observeViewState()
         bottomNavigation()
         searchView()
+        setUpAction()
+    }
+
+    private fun setUpAction() {
+        binding.backToHomeButton.setOnClickListener{
+            showInitialScreen()
+        }
     }
 
     private fun searchView() {
@@ -53,9 +61,9 @@ class MainActivity : AppCompatActivity() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(q: String?): Boolean {
-                observeViewState(q ?: "")
+                viewModel.searchForTasks(q ?: "")
                 searchView.clearFocus()
-                return true
+                return false
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
@@ -63,10 +71,14 @@ class MainActivity : AppCompatActivity() {
                 searchJob = coroutineScope.launch {
                     p0.let {
                         delay(400)
-                        observeViewState(it ?: "")
+                        if (it?.isNotEmpty() == true) {
+                            viewModel.searchForTasks(p0 ?: "")
+                        } else {
+                            viewModel.clearSearchResult()
+                        }
                     }
                 }
-                return true
+                return false
             }
         })
     }
@@ -93,22 +105,49 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun observeViewState(q: String) {
-        viewModel.searchHotel(q).observe(this@MainActivity) {
-            if (it != null) {
-                when (it) {
-                    is Result.Loading -> showSearchingLoading()
-                    is Result.Success -> {
-                        val hotelData = it.data
-                        adapter.submitList(hotelData)
-                        binding.searchRecyclerView.adapter = adapter
-                        showSearchResult()
-                    }
-                    is Result.NotFound -> showNoResultFound()
-                    is Result.Error -> showAnErrorHappened()
+    private fun observeViewState() {
+        viewModel.viewState.observe(this@MainActivity) { searchViewState ->
+            when (searchViewState) {
+                SearchViewModel.SearchViewState.LOADING.ordinal -> {
+                    showSearchingLoading()
+                }
+
+                SearchViewModel.SearchViewState.SEARCH_RESULT.ordinal -> {
+                    showSearchResult()
+                }
+
+                SearchViewModel.SearchViewState.INITIAL_SCREEN.ordinal -> {
+                    showInitialScreen()
+                }
+
+                SearchViewModel.SearchViewState.ERROR.ordinal -> {
+                    showAnErrorHappened()
+                }
+
+                SearchViewModel.SearchViewState.RESULT_NOT_FOUND.ordinal -> {
+                    showNoResultFound()
                 }
             }
         }
+    }
+
+
+    private fun setUpRecyclerView() {
+        viewModel.searchResult.observe(this) {
+            it?.let {
+                val hotelData = it
+                adapter.submitList(hotelData)
+                binding.searchRecyclerView.adapter = adapter
+                showSearchResult()
+            }
+        }
+    }
+
+    private fun showInitialScreen() {
+        binding.searchResult.visibility = View.INVISIBLE
+        binding.searchProgressBar.visibility = View.INVISIBLE
+        binding.searchRecyclerView.visibility = View.INVISIBLE
+        binding.otherResult.visibility = View.INVISIBLE
     }
 
     private fun showSearchingLoading() {
