@@ -107,22 +107,27 @@ class HotelRepository private constructor(
         emit(Result.Loading)
         try {
             val response = apiService.searchHotel(query)
-            val hotels = response.data
-            val hotelList = hotels.map {
-                val isBookmarked = hotelDao.isHotelBookmarked(it.id)
-                HotelEntity(
-                    it.id,
-                    it.name,
-                    it.city,
-                    it.imageUrl,
-                    it.rate,
-                    it.description,
-                    it.priceRange,
-                    isBookmarked
-                )
+            if (response.status == "success") {
+                val hotels = response.data
+                if (hotels.isNotEmpty()) {
+                    val hotelList = hotels.map {
+                        val isBookmarked = hotelDao.isHotelBookmarked(it.id)
+                        HotelEntity(
+                            it.id,
+                            it.name,
+                            it.city,
+                            it.imageUrl,
+                            it.rate,
+                            it.description,
+                            it.priceRange,
+                            isBookmarked
+                        )
+                    }
+                    emit(Result.Success(hotelList))
+                } else {
+                    emit(Result.NotFound)
+                }
             }
-            hotelDao.deleteAll()
-            hotelDao.insertHotel(hotelList)
         } catch (e: Exception) {
             Log.d("HotelRepository", "searchHotel: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))
