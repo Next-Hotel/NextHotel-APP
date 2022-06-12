@@ -66,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:navGraph="@navigation/mobile_navigation" />
 
+
     <FrameLayout
         android:id="@+id/searchResult"
         android:layout_width="match_parent"
@@ -101,4 +102,35 @@
             android:visibility="gone" />
     </FrameLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/other_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?android:attr/colorBackground"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBar">
+
+        <ImageView
+            android:id="@+id/image_other_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_searching_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/backToHomeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/back_to_home"
+            app:layout_constraintTop_toBottomOf="@+id/image_other_result" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

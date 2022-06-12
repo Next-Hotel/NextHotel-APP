@@ -9,6 +9,9 @@ import kotlinx.coroutines.launch
 class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
     fun searchHotel(query: String) = hotelRepository.searchHotel(query)
 
+    fun clearSearchResult(){
+    }
+
     fun saveHotel(hotel: HotelEntity) {
         viewModelScope.launch {
             hotelRepository.setBookmarkedHotel(hotel, true)

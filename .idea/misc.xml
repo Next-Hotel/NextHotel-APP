@@ -15,25 +15,17 @@
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_more_vert.xml" value="0.107" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.107" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_search.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_searching_error.xml" value="0.1" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_searching_not_found.xml" value="0.1" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_share.xml" value="0.107" />
-        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/activity_main.xml" value="0.19827586206896552" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/activity_main.xml" value="0.12376237623762376" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_bookmarks.xml" value="0.2" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_explore.xml" value="0.21510416666666668" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_home.xml" value="0.21510416666666668" />
         <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_search.xml" value="0.21510416666666668" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_bookmark.xml" value="0.1" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_bookmark_border.xml" value="0.1" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_bookmarks.xml" value="0.1" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/activity_main.xml" value="0.1765625" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/activity_splash.xml" value="0.38697916666666665" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_bookmarks.xml" value="0.3129528985507246" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_detail.xml" value="0.2015625" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_explore.xml" value="0.1765625" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_home.xml" value="0.1765625" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_splash.xml" value="0.3729166666666667" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_horizontal.xml" value="0.33" />
-        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_vertical.xml" value="0.33" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/item_vertical.xml" value="0.23697916666666666" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/searching_error.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2105" />
         <entry key="app/src/main/res/drawable/bg_white_rounded.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bookmark_border.xml" value="0.118" />
