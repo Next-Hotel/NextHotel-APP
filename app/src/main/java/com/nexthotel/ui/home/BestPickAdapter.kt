@@ -27,18 +27,31 @@ class BestPickAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         holder.bind(hotel)
 
         val bookmarkButton = holder.binding.bookmarkButton
-        bookmarkButton.apply {
-            if (hotel.isBookmarked) {
-                setImageDrawable(
-                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_blue)
+//        bookmarkButton.apply {
+//            if (hotel.isBookmarked) {
+//                setImageDrawable(
+//                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_blue)
+//                )
+//            } else {
+//                setImageDrawable(
+//                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_blue)
+//                )
+//            }
+//            setOnClickListener { onBookmarkClick(hotel) }
+//        }
+        if (hotel.isBookmarked) {
+            bookmarkButton.setImageDrawable(
+                ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_blue)
+            )
+        } else {
+            bookmarkButton.setImageDrawable(
+                ContextCompat.getDrawable(
+                    bookmarkButton.context,
+                    R.drawable.ic_bookmark_border_blue
                 )
-            } else {
-                setImageDrawable(
-                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_blue)
-                )
-            }
-            setOnClickListener { onBookmarkClick(hotel) }
+            )
         }
+        bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
     }
 
     class MyViewHolder(val binding: ItemVerticalBinding) :
