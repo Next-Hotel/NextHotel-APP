@@ -1,29 +1,23 @@
 <resources>
-    <string name="app_name">Next Hotel</string>
-
+    <string name="app_name" translatable="false">Next Hotel</string>
     <string name="title_home">Home</string>
     <string name="title_explore">Explore</string>
     <string name="title_bookmarks">Bookmarks</string>
-
-    <string name="image_desc">image_desc</string>
-    <string name="bookmark_desc">bookmark_desc</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image_desc" translatable="false">image_desc</string>
+    <string name="bookmark_desc" translatable="false">bookmark_desc</string>
     <string name="explore_your_hotels">Explore Your Hotels</string>
     <string name="hotels_for_you">Hotels For You</string>
     <string name="best_pick">Best Pick</string>
     <string name="your_bookmarks">Your Bookmarks</string>
-    <string name="unbookmark_toast">Unbookmarked The Hotel</string>
-    <string name="bookmrak_toast">Bookmarked The Hotel</string>
+    <string name="unbookmarked_toast">Unbookmarked The Hotel</string>
+    <string name="bookmark_toast">Bookmarked The Hotel</string>
     <string name="back_to_home">Back to Home</string>
     <string name="result">Result</string>
     <string name="bookmark_doesnt_exist">You don\'t have a bookmark yet</string>
     <string name="general">General</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="change_language">Change Language</string>
     <string name="about">About</string>
     <string name="version">Version</string>
     <string name="about_us">About Us</string>
-    <string name="setting">Setting</string>
     <string name="settings">Settings</string>
     <string name="theme">Theme</string>
     <string name="languages">Languages</string>

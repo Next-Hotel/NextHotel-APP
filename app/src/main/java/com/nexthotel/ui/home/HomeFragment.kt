@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
                 viewModel.deleteHotel(it)
                 Toast.makeText(
                     requireActivity(),
-                    getString(R.string.unbookmark_toast),
+                    getString(R.string.unbookmarked_toast),
                     Toast.LENGTH_SHORT
                 )
                     .show()
@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
                 viewModel.saveHotel(it)
                 Toast.makeText(
                     requireActivity(),
-                    getString(R.string.bookmrak_toast),
+                    getString(R.string.bookmark_toast),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
                 viewModel.deleteHotel(it)
                 Toast.makeText(
                     requireActivity(),
-                    getString(R.string.unbookmark_toast),
+                    getString(R.string.unbookmarked_toast),
                     Toast.LENGTH_SHORT
                 )
                     .show()
@@ -69,7 +69,7 @@ class HomeFragment : Fragment() {
                 viewModel.saveHotel(it)
                 Toast.makeText(
                     requireActivity(),
-                    getString(R.string.bookmrak_toast),
+                    getString(R.string.bookmark_toast),
                     Toast.LENGTH_SHORT
                 ).show()
             }

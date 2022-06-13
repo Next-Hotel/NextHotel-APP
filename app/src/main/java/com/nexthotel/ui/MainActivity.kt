@@ -41,22 +41,12 @@ class MainActivity : AppCompatActivity() {
         val viewModel: SearchViewModel by viewModels { factory }
         this.viewModel = viewModel
 
+        binding.backToHomeButton.setOnClickListener { showInitialScreen() }
+
         setUpRecyclerView()
         observeViewState()
         bottomNavigation()
         searchView()
-        setUpAction()
-    }
-
-    private fun setUpAction() {
-        binding.backToHomeButton.setOnClickListener {
-            showInitialScreen()
-        }
-        binding.settingButton.setOnClickListener {
-            val destination =
-                HomeFragmentDirections.actionNavigationHomeToNavigationSetting()
-            navController.navigate(destination)
-        }
     }
 
     private fun searchView() {
@@ -101,18 +91,28 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.detailFragment -> {
-                    navView.visibility = View.GONE
-                    binding.topBar.visibility = View.GONE
-                }
-                R.id.navigation_bookmarks -> binding.topBar.visibility = View.GONE
-                R.id.navigation_setting -> {
-                    binding.topBar.visibility = View.GONE
-                    navView.visibility = View.GONE
-                }
-                else -> {
+                R.id.navigation_home -> {
+                    binding.settingButton.setOnClickListener {
+                        val toSetting = HomeFragmentDirections
+                            .actionNavigationHomeToNavigationSetting()
+                        navController.navigate(toSetting)
+                    }
                     navView.visibility = View.VISIBLE
                     binding.topBar.visibility = View.VISIBLE
+                }
+                R.id.navigation_explore -> {
+                    binding.settingButton.setOnClickListener {
+                        val toSetting = ExploreFragmentDirections
+                            .actionNavigationExploreToNavigationSetting()
+                        navController.navigate(toSetting)
+                    }
+                    navView.visibility = View.VISIBLE
+                    binding.topBar.visibility = View.VISIBLE
+                }
+                R.id.navigation_bookmarks -> binding.topBar.visibility = View.GONE
+                else -> {
+                    navView.visibility = View.GONE
+                    binding.topBar.visibility = View.GONE
                 }
             }
         }
