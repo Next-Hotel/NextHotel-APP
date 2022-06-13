@@ -13,7 +13,7 @@
     <string name="bookmark_toast">Bookmarked The Hotel</string>
     <string name="back_to_home">Back to Home</string>
     <string name="result">Result</string>
-    <string name="bookmark_doesnt_exist">You don\'t have a bookmark yet</string>
+    <string name="bookmark_not_exist">Oopss...!\nYou don\'t have a bookmark yet</string>
     <string name="general">General</string>
     <string name="about">About</string>
     <string name="version">Version</string>

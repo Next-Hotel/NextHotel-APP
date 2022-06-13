@@ -11,7 +11,7 @@
     <string name="bookmark_toast">Ditambahkan ke favorit</string>
     <string name="back_to_home">Kembali ke Beranda</string>
     <string name="result">Hasil</string>
-    <string name="bookmark_doesnt_exist">Kamu tidak memiliki hotel favorit.</string>
+    <string name="bookmark_not_exist">Aduuuh...!\nKamu tidak memiliki hotel favorit.</string>
     <string name="general">Umum</string>
     <string name="about">Tentang</string>
     <string name="version">Versi</string>
