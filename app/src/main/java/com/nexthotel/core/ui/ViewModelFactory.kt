@@ -10,6 +10,7 @@ import com.nexthotel.ui.detail.DetailViewModel
 import com.nexthotel.ui.explore.ExploreViewModel
 import com.nexthotel.ui.home.HomeViewModel
 import com.nexthotel.ui.search.SearchViewModel
+import com.nexthotel.ui.survey.SurveyViewModel
 
 class ViewModelFactory private constructor(private val hotelRepository: HotelRepository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -31,6 +32,9 @@ class ViewModelFactory private constructor(private val hotelRepository: HotelRep
             }
             modelClass.isAssignableFrom(BookmarkViewModel::class.java) -> {
                 BookmarkViewModel(hotelRepository) as T
+            }
+            modelClass.isAssignableFrom(SurveyViewModel::class.java) -> {
+                SurveyViewModel(hotelRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
