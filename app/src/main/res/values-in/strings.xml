@@ -4,14 +4,14 @@
     <string name="title_explore">Jelajah</string>
     <string name="title_bookmarks">Favorit</string>
     <string name="explore_your_hotels">Jelajahi Hotel</string>
-    <string name="hotels_for_you">Hotel Untuk Mu</string>
+    <string name="hotels_for_you">Hotel Untukmu</string>
     <string name="best_pick">Pilihan Terbaik</string>
     <string name="your_bookmarks">Favorit Kamu</string>
     <string name="unbookmarked_toast">Favorit terhapus</string>
     <string name="bookmark_toast">Ditambahkan ke favorit</string>
     <string name="back_to_home">Kembali ke Beranda</string>
     <string name="result">Hasil</string>
-    <string name="bookmark_not_exist">Aduuuh...!\nKamu tidak memiliki hotel favorit.</string>
+    <string name="bookmark_not_exist">Aduuch…!\nKamu tidak memiliki hotel favorit.</string>
     <string name="general">Umum</string>
     <string name="about">Tentang</string>
     <string name="version">Versi</string>
@@ -19,4 +19,5 @@
     <string name="settings">Pengaturan</string>
     <string name="theme">Tema</string>
     <string name="languages">Bahasa</string>
+    <string name="not_found_text">Aduuch…!\nHotel Tidak Ditemukan</string>
 </resources>

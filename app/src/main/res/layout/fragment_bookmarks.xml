@@ -56,8 +56,8 @@
 
         <ImageView
             android:id="@+id/image_other_result"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:contentDescription="@string/image_desc"
             android:src="@drawable/ic_undraw_empty" />

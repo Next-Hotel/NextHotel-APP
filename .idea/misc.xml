@@ -45,6 +45,8 @@
         <entry key="app/src/main/res/drawable/ic_explore.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.335" />
+        <entry key="app/src/main/res/drawable/ic_searching_error.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/ic_searching_not_found.xml" value="0.164" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19" />
         <entry key="app/src/main/res/layout/fragment_bookmarks.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.33" />

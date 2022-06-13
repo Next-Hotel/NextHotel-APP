@@ -184,7 +184,7 @@ class MainActivity : AppCompatActivity() {
         binding.searchProgressBar.visibility = View.INVISIBLE
         binding.searchRecyclerView.visibility = View.INVISIBLE
         binding.otherResult.visibility = View.VISIBLE
-        binding.imageOtherResult.setImageResource(R.drawable.ic_searching_not_found)
+        binding.imageOtherResult.setImageResource(R.drawable.ic_undraw_not_found)
     }
 
     private fun showAnErrorHappened() {
@@ -192,6 +192,6 @@ class MainActivity : AppCompatActivity() {
         binding.searchProgressBar.visibility = View.INVISIBLE
         binding.searchRecyclerView.visibility = View.INVISIBLE
         binding.otherResult.visibility = View.VISIBLE
-        binding.imageOtherResult.setImageResource(R.drawable.ic_searching_error)
+        binding.imageOtherResult.setImageResource(R.drawable.ic_undraw_back_home)
     }
 }
