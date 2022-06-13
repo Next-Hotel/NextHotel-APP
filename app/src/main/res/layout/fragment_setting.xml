@@ -4,133 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="13dp"
     tools:context=".ui.setting.SettingFragment">
 
-    <TextView
-        android:id="@+id/tvGeneral"
-        style="@style/TextView.Detail.Title"
+    <ImageButton
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/general"
-        android:textColor="@color/main_color"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/image_desc"
+        android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:tint="?attr/colorPrimary" />
+
+    <TextView
+        android:id="@+id/header"
+        style="@style/TextView.Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/settings"
+        app:layout_constraintStart_toEndOf="@id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvDarkMode"
-        style="@style/TextView.Detail.Title"
+        android:id="@+id/general"
+        style="@style/TextView.SubHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/dark_theme"
+        android:layout_marginTop="24dp"
+        android:text="@string/general"
+        app:layout_constraintStart_toStartOf="@id/backButton"
+        app:layout_constraintTop_toBottomOf="@id/backButton" />
+
+    <Button
+        android:id="@+id/themeButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/theme"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGeneral" />
+        app:layout_constraintTop_toBottomOf="@id/general" />
 
-    <Switch
-        android:id="@+id/switch2"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/languageButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGeneral"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <View
-        android:id="@+id/view1"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/switch2"
-        app:layout_constraintStart_toStartOf="@+id/tvDarkMode"
-        app:layout_constraintTop_toBottomOf="@+id/tvDarkMode" />
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvChangeLanguage"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/view1"
-        app:layout_constraintStart_toStartOf="@+id/view1"
-        app:layout_constraintTop_toBottomOf="@+id/view1">
-
-        <TextView
-            android:id="@+id/tvChangeLanguage"
-            style="@style/TextView.Detail.Title"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/change_language"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view1" />
-    </androidx.cardview.widget.CardView>
+        android:text="@string/languages"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/themeButton" />
 
     <TextView
-        android:id="@+id/tvAbout"
-        style="@style/TextView.Detail.Title"
+        android:id="@+id/about"
+        style="@style/TextView.SubHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/about"
-        android:textColor="@color/main_color"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvChangeLanguage" />
+        app:layout_constraintTop_toBottomOf="@id/languageButton" />
 
     <TextView
-        android:id="@+id/tvVersion"
-        style="@style/TextView.Detail.Title"
+        android:id="@+id/version"
+        style="@style/TextView.Card"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/version"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAbout" />
+        app:layout_constraintTop_toBottomOf="@id/about" />
 
     <TextView
-        android:id="@+id/tvAppVersion"
-        style="@style/TextView.Detail"
+        android:id="@+id/versionNumber"
+        style="@style/TextView.Card"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="1.0.0"
+        tools:text="1.0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvVersion" />
+        app:layout_constraintTop_toBottomOf="@id/version" />
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/cvChangeLanguage"
-        app:layout_constraintStart_toStartOf="@+id/cvChangeLanguage"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppVersion" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvAboutUs"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/view1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view1"
-        app:layout_constraintTop_toBottomOf="@+id/view3">
-
-        <TextView
-            android:id="@+id/tvAboutUs"
-            style="@style/TextView.Detail.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/about_us"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view1" />
-    </androidx.cardview.widget.CardView>
-
+    <Button
+        android:id="@+id/aboutUsButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_us"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/versionNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

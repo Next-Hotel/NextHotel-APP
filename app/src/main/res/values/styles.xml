@@ -10,6 +10,11 @@
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 
+    <style name="TextView.SubHeader">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
     <style name="TextView.Card">
         <item name="android:textSize">12sp</item>
     </style>
