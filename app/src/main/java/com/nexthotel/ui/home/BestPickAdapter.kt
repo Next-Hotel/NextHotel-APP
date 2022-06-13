@@ -27,6 +27,7 @@ class BestPickAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         holder.bind(hotel)
 
         val bookmarkButton = holder.binding.bookmarkButton
+        bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
         if (hotel.isBookmarked) {
             bookmarkButton.setImageDrawable(
                 ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_blue)
@@ -39,7 +40,6 @@ class BestPickAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
                 )
             )
         }
-        bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
     }
 
     class MyViewHolder(val binding: ItemVerticalBinding) :

@@ -42,10 +42,9 @@
 
             <ImageButton
                 android:id="@+id/bookmarkButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="end"
-                android:layout_marginEnd="6dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/bookmark_desc"
                 android:src="@drawable/ic_bookmark_border_blue" />
