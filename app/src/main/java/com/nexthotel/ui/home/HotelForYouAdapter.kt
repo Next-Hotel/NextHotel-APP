@@ -39,7 +39,24 @@ class HotelForYouAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
                 )
             )
         }
-        bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
+        bookmarkButton.setOnClickListener {
+            onBookmarkClick(hotel)
+            if (hotel.isBookmarked) {
+                bookmarkButton.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        bookmarkButton.context,
+                        R.drawable.ic_bookmark_blue
+                    )
+                )
+            } else {
+                bookmarkButton.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        bookmarkButton.context,
+                        R.drawable.ic_bookmark_border_blue
+                    )
+                )
+            }
+        }
     }
 
     class MyViewHolder(val binding: ItemHorizontalBinding) :
