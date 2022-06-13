@@ -55,43 +55,90 @@ class DetailFragment : Fragment() {
             backButton.setOnClickListener { activity?.onBackPressed() }
             shareButton.setOnClickListener { share(name, city, priceRange, rate, description) }
 
-            bookmarkButton.apply {
-                if (hotel.isBookmarked) {
-                    setImageDrawable(
-                        ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+//            bookmarkButton.apply {
+//                if (hotel.isBookmarked) {
+//                    setImageDrawable(
+//                        ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+//                    )
+//                } else {
+//                    setImageDrawable(
+//                        ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
+//                    )
+//                }
+//
+//                setOnClickListener {
+//                    if (hotel.isBookmarked) {
+//                        viewModel.deleteHotel(hotel)
+//                        setImageDrawable(
+//                            ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+//                        )
+//                        Toast.makeText(
+//                            requireActivity(),
+//                            getString(R.string.bookmark_toast),
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//
+//                    } else {
+//                        viewModel.saveHotel(hotel)
+//                        setImageDrawable(
+//                            ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
+//                        )
+//                        Toast.makeText(
+//                            requireActivity(),
+//                            getString(R.string.unbookmarked_toast),
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//
+//                    }
+//                }
+//            }
+            if (hotel.isBookmarked) {
+                bookmarkButton.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        bookmarkButton.context,
+                        R.drawable.ic_bookmark_white
                     )
-                } else {
-                    setImageDrawable(
-                        ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
+                )
+            } else {
+                bookmarkButton.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        bookmarkButton.context,
+                        R.drawable.ic_bookmark_border_white
                     )
-                }
-
-                setOnClickListener {
-                    if (hotel.isBookmarked) {
-                        viewModel.deleteHotel(hotel)
-                        setImageDrawable(
-                            ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
-                        )
-                        Toast.makeText(
-                            requireActivity(),
-                            getString(R.string.bookmark_toast),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                    } else {
-                        viewModel.saveHotel(hotel)
-                        setImageDrawable(
-                            ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
-                        )
-                        Toast.makeText(
-                            requireActivity(),
-                            getString(R.string.unbookmarked_toast),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                    }
-                }
+                )
             }
+            bookmarkButton.setOnClickListener {
+                if (hotel.isBookmarked) viewModel.deleteHotel(hotel) else viewModel.saveHotel(
+                    hotel
+                )
+                if (hotel.isBookmarked) {
+                    bookmarkButton.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            bookmarkButton.context,
+                            R.drawable.ic_bookmark_white
+                        )
+                    )
+                    Toast.makeText(
+                        requireActivity(),
+                        getString(R.string.bookmark_toast),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    bookmarkButton.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            bookmarkButton.context,
+                            R.drawable.ic_bookmark_border_white
+                        )
+                    )
+                    Toast.makeText(
+                        requireActivity(),
+                        getString(R.string.unbookmarked_toast),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            }
+
         }
     }
 
