@@ -109,7 +109,10 @@ class MainActivity : AppCompatActivity() {
                     navView.visibility = View.VISIBLE
                     binding.topBar.visibility = View.VISIBLE
                 }
-                R.id.navigation_bookmarks -> binding.topBar.visibility = View.GONE
+                R.id.navigation_bookmarks -> {
+                    binding.topBar.visibility = View.GONE
+                    navView.visibility = View.VISIBLE
+                }
                 else -> {
                     navView.visibility = View.GONE
                     binding.topBar.visibility = View.GONE
