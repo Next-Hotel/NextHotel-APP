@@ -17,8 +17,8 @@ class HotelForYouAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
     ListAdapter<HotelEntity, HotelForYouAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding =
-            ItemHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemHorizontalBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
@@ -27,37 +27,35 @@ class HotelForYouAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         holder.bind(hotel)
 
         val bookmarkButton = holder.binding.bookmarkButton
-        if (hotel.isBookmarked) {
-            bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_blue)
-            )
-        } else {
-            bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(
-                    bookmarkButton.context,
-                    R.drawable.ic_bookmark_border_blue
+        bookmarkButton.apply {
+            if (hotel.isBookmarked) {
+                setImageDrawable(
+                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
                 )
-            )
+            } else {
+                setImageDrawable(
+                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
+                )
+            }
+            setOnClickListener { onBookmarkClick(hotel) }
         }
-        bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
     }
 
     class MyViewHolder(val binding: ItemHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hotel: HotelEntity) {
-            val (_, name, city, imageUrl, rate, _, priceRange) = hotel
             binding.apply {
-                imageView.load(imageUrl)
-                nameTextView.text = name
-                cityTextView.text = city
-                rateTextView.text = rate
-                priceTextView.text = priceRange
+                imageView.load(hotel.imageUrl)
+                nameTextView.text = hotel.name
+                cityTextView.text = hotel.city
+                rateTextView.text = hotel.rate
+                priceTextView.text = hotel.priceRange
 
                 itemView.setOnClickListener {
-                    val toDetail =
-                        HomeFragmentDirections.actionNavigationHomeToDetailFragment(hotel)
-                    it.findNavController().navigate(toDetail)
+                    val destination = HomeFragmentDirections
+                        .actionNavigationHomeToDetailFragment(hotel)
+                    it.findNavController().navigate(destination)
                 }
             }
         }
@@ -66,16 +64,13 @@ class HotelForYouAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
     companion object {
         val DIFF_CALLBACK: DiffUtil.ItemCallback<HotelEntity> =
             object : DiffUtil.ItemCallback<HotelEntity>() {
-                override fun areItemsTheSame(oldUser: HotelEntity, newUser: HotelEntity): Boolean {
-                    return oldUser.id == newUser.id
+                override fun areItemsTheSame(old: HotelEntity, new: HotelEntity): Boolean {
+                    return old.id == new.id
                 }
 
                 @SuppressLint("DiffUtilEquals")
-                override fun areContentsTheSame(
-                    oldUser: HotelEntity,
-                    newUser: HotelEntity
-                ): Boolean {
-                    return oldUser == newUser
+                override fun areContentsTheSame(old: HotelEntity, new: HotelEntity): Boolean {
+                    return old == new
                 }
             }
     }
