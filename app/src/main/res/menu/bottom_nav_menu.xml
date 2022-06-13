@@ -16,9 +16,4 @@
         android:icon="@drawable/ic_bookmarks"
         android:title="@string/title_bookmarks" />
 
-    <item
-        android:id="@+id/navigation_setting"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/setting" />
-
 </menu>

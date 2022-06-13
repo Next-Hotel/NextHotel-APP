@@ -21,22 +21,22 @@ import com.nexthotel.ui.search.SearchAdapter
 import com.nexthotel.ui.search.SearchViewModel
 import kotlinx.coroutines.*
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavHostFragment
+    private lateinit var navController: NavController
     private lateinit var adapter: SearchAdapter
     lateinit var viewModel: SearchViewModel
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
     private var searchJob: Job? = null
-    private lateinit var navController: NavController
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
         val viewModel: SearchViewModel by viewModels { factory }
         this.viewModel = viewModel
@@ -53,9 +53,9 @@ class MainActivity : AppCompatActivity() {
             showInitialScreen()
         }
         binding.settingButton.setOnClickListener {
-            val toSetting =
-                HomeFragmentDirections.actionNavigationHomeToSettingFragment()
-            navController.navigate(toSetting)
+            val destination =
+                HomeFragmentDirections.actionNavigationHomeToNavigationSetting()
+            navController.navigate(destination)
         }
     }
 
@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
         val searchView = binding.searchView
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(q: String?): Boolean {
                 viewModel.searchForTasks(q ?: "")
@@ -76,13 +75,13 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
 
-            override fun onQueryTextChange(p0: String?): Boolean {
+            override fun onQueryTextChange(q: String?): Boolean {
                 searchJob?.cancel()
                 searchJob = coroutineScope.launch {
-                    p0.let {
+                    q.let {
                         delay(400)
                         if (it?.isNotEmpty() == true) {
-                            viewModel.searchForTasks(p0 ?: "")
+                            viewModel.searchForTasks(q ?: "")
                         } else {
                             viewModel.clearSearchResult()
                         }
@@ -117,31 +116,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewState() {
-        viewModel.viewState.observe(this@MainActivity) { searchViewState ->
-            when (searchViewState) {
-                SearchViewModel.SearchViewState.LOADING.ordinal -> {
-                    showSearchingLoading()
-                }
-
-                SearchViewModel.SearchViewState.SEARCH_RESULT.ordinal -> {
-                    showSearchResult()
-                }
-
-                SearchViewModel.SearchViewState.INITIAL_SCREEN.ordinal -> {
-                    showInitialScreen()
-                }
-
-                SearchViewModel.SearchViewState.ERROR.ordinal -> {
-                    showAnErrorHappened()
-                }
-
-                SearchViewModel.SearchViewState.RESULT_NOT_FOUND.ordinal -> {
-                    showNoResultFound()
-                }
+        viewModel.viewState.observe(this@MainActivity) {
+            when (it) {
+                SearchViewModel.State.LOADING.ordinal -> showSearchingLoading()
+                SearchViewModel.State.SEARCH_RESULT.ordinal -> showSearchResult()
+                SearchViewModel.State.INITIAL_SCREEN.ordinal -> showInitialScreen()
+                SearchViewModel.State.ERROR.ordinal -> showAnErrorHappened()
+                SearchViewModel.State.RESULT_NOT_FOUND.ordinal -> showNoResultFound()
             }
         }
     }
-
 
     private fun setUpRecyclerView() {
         viewModel.searchResult.observe(this) {
@@ -149,20 +133,17 @@ class MainActivity : AppCompatActivity() {
                 val hotelData = it
                 adapter.submitList(hotelData)
                 binding.searchRecyclerView.adapter = adapter
-                adapter.setOnItemClickCallback(object :
-                    SearchAdapter.OnItemClickCallback {
+                adapter.setOnItemClickCallback(object : SearchAdapter.OnItemClickCallback {
                     override fun onItemClicked(data: HotelEntity) {
                         when (navController.currentDestination?.id) {
                             R.id.navigation_explore -> {
-                                val toDetail =
-                                    ExploreFragmentDirections.actionNavigationExploreToDetailFragment(
-                                        data
-                                    )
+                                val toDetail = ExploreFragmentDirections
+                                    .actionNavigationExploreToDetailFragment(data)
                                 navController.navigate(toDetail)
                             }
                             R.id.navigation_home -> {
-                                val toDetail =
-                                    HomeFragmentDirections.actionNavigationHomeToDetailFragment(data)
+                                val toDetail = HomeFragmentDirections
+                                    .actionNavigationHomeToDetailFragment(data)
                                 navController.navigate(toDetail)
                             }
                         }

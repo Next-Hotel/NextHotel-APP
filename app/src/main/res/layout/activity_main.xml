@@ -54,7 +54,7 @@
 
     </FrameLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment_activity_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
@@ -112,7 +112,7 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:id="@+id/other_result"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -127,20 +127,17 @@
             android:id="@+id/image_other_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_searching_error"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center"
+            android:contentDescription="@string/image_desc"
+            android:src="@drawable/ic_searching_error" />
 
         <Button
             android:id="@+id/backToHomeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/back_to_home"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_other_result" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="24dp"
+            style="@style/TextView"
+            android:text="@string/back_to_home" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

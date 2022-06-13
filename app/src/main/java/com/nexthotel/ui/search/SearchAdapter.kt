@@ -26,8 +26,8 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding =
-            ItemVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemVerticalBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 

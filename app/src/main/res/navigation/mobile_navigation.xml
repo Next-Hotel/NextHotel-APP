@@ -14,7 +14,7 @@
             android:id="@+id/action_navigation_home_to_detailFragment"
             app:destination="@id/detailFragment" />
         <action
-            android:id="@+id/action_navigation_home_to_settingFragment"
+            android:id="@+id/action_navigation_home_to_navigation_setting"
             app:destination="@id/navigation_setting" />
     </fragment>
 

@@ -10,21 +10,12 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
-    // contains the result of search, online and offline
     var searchResult = MutableLiveData<List<HotelEntity>>()
-
-    //contains the value of the searchView
     private var searchView = MutableLiveData<String>()
-
-
-    // contains the state of the whole view, ex: loading, show result, etc
     var viewState = MutableLiveData<Int>()
 
     init {
-        //showing the initial screen
-        viewState.value = SearchViewState.INITIAL_SCREEN.ordinal
-
-        // searchView is empty in the begin
+        viewState.value = State.INITIAL_SCREEN.ordinal
         searchView.value = String()
     }
 
@@ -32,7 +23,7 @@ class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel(
         viewModelScope.launch {
             if (searchViewValue.isNotEmpty())
                 searchView.value = searchViewValue
-            viewState.value = SearchViewState.LOADING.ordinal
+            viewState.value = State.LOADING.ordinal
             searchCall(searchViewValue)
         }
     }
@@ -45,10 +36,10 @@ class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel(
     fun clearSearchResult() {
         searchResult.value = emptyList()
         searchView.value = String()
-        viewState.value = SearchViewState.INITIAL_SCREEN.ordinal
+        viewState.value = State.INITIAL_SCREEN.ordinal
     }
 
-    private suspend fun manageViewState(response: Response<HotelsResponse>) {
+    private suspend fun manageViewState(response: Response<HotelsResponse>) =
         if (response.isSuccessful) {
             val hotels = response.body()?.data
             if (hotels != null) {
@@ -56,28 +47,23 @@ class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel(
             }
 
             if (searchResult.value?.isEmpty() == true) {
-                viewState.value = SearchViewState.RESULT_NOT_FOUND.ordinal
+                viewState.value = State.RESULT_NOT_FOUND.ordinal
             } else {
-                viewState.value = SearchViewState.SEARCH_RESULT.ordinal
+                viewState.value = State.SEARCH_RESULT.ordinal
             }
         } else {
-            viewState.value = SearchViewState.ERROR.ordinal
+            viewState.value = State.ERROR.ordinal
         }
-    }
 
     fun saveHotel(hotel: HotelEntity) {
-        viewModelScope.launch {
-            hotelRepository.setBookmarkedHotel(hotel, true)
-        }
+        viewModelScope.launch { hotelRepository.setBookmarkedHotel(hotel, true) }
     }
 
     fun deleteHotel(hotel: HotelEntity) {
-        viewModelScope.launch {
-            hotelRepository.setBookmarkedHotel(hotel, false)
-        }
+        viewModelScope.launch { hotelRepository.setBookmarkedHotel(hotel, false) }
     }
 
-    enum class SearchViewState {
+    enum class State {
         INITIAL_SCREEN, LOADING, SEARCH_RESULT, ERROR, RESULT_NOT_FOUND
     }
 }
