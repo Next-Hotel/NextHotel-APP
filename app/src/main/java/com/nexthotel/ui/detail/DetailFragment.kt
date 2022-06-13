@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import com.nexthotel.R
+import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.databinding.FragmentDetailBinding
 
@@ -53,7 +54,7 @@ class DetailFragment : Fragment() {
             priceTextView.text = priceRange
 
             backButton.setOnClickListener { activity?.onBackPressed() }
-            shareButton.setOnClickListener { share(name, city, priceRange, rate, description) }
+            shareButton.setOnClickListener { share(hotel) }
 
             if (hotel.isBookmarked) {
                 bookmarkButton.setImageDrawable(
@@ -105,7 +106,9 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun share(name: String, city: String, price: String, rate: String, desc: String) {
+    private fun share(hotel: HotelEntity) {
+        val (_, name, city, _, rate, desc, price) = hotel
+
         val resolver = requireActivity().contentResolver
         val bitmapDrawable = binding.imageView.drawable as BitmapDrawable
         val bitmap = bitmapDrawable.bitmap
