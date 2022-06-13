@@ -30,11 +30,11 @@ class BestPickAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         bookmarkButton.apply {
             if (hotel.isBookmarked) {
                 setImageDrawable(
-                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_blue)
                 )
             } else {
                 setImageDrawable(
-                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
+                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_blue)
                 )
             }
             setOnClickListener { onBookmarkClick(hotel) }
