@@ -48,97 +48,84 @@ class DetailFragment : Fragment() {
             imageView.load(imageUrl)
             nameTextView.text = name
             cityTextView.text = city
-            rateTextView.text = StringBuilder(rate).append(" ⭐")
+            rateTextView.text = rate
             descTextView.text = description
             priceTextView.text = priceRange
 
-            backButton.setOnClickListener {
-                activity?.onBackPressed()
-            }
-            shareButton.setOnClickListener {
-                val resolver = requireActivity().contentResolver
-                val bitmapDrawable = imageView.drawable as BitmapDrawable
-                val bitmap = bitmapDrawable.bitmap
-                val bitmapPath =
-                    MediaStore.Images.Media.insertImage(
-                        resolver,
-                        bitmap,
-                        "some title",
-                        "some description"
-                    )
-                val bitmapUri = Uri.parse(bitmapPath)
-                val shareIntent = Intent().apply {
-                    this.action = Intent.ACTION_SEND
-                    this.putExtra(
-                        Intent.EXTRA_SUBJECT,
-                        "SHARE FROM NEXT HOTEL APP"
-                    )
-                    this.putExtra(
-                        Intent.EXTRA_TEXT,
-                        """$name that is in $city with a price range of $priceRange and this hotel have $rate ⭐
-                            |Description :
-                            |$description""".trimMargin()
-                    )
-                    this.type = "image/*"
-                    this.putExtra(
-                        Intent.EXTRA_STREAM,
-                        bitmapUri
-                    )
-                }
-                startActivity(Intent.createChooser(shareIntent, "Share Via"))
-            }
-            moreButton.setOnClickListener {
-                Toast.makeText(requireActivity(), "More Button", Toast.LENGTH_SHORT).show()
-            }
+            backButton.setOnClickListener { activity?.onBackPressed() }
+            shareButton.setOnClickListener { share(name, city, priceRange, rate, description) }
 
-            if (hotel.isBookmarked) {
-                bookmarkButton.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        bookmarkButton.context,
-                        R.drawable.ic_bookmark_white
-                    )
-                )
-            } else {
-                bookmarkButton.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        bookmarkButton.context,
-                        R.drawable.ic_bookmark_border_white
-                    )
-                )
-            }
-            bookmarkButton.setOnClickListener {
-                if (hotel.isBookmarked) viewModel.deleteHotel(hotel) else viewModel.saveHotel(
-                    hotel
-                )
+            bookmarkButton.apply {
                 if (hotel.isBookmarked) {
-                    bookmarkButton.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            bookmarkButton.context,
-                            R.drawable.ic_bookmark_white
-                        )
+                    setImageDrawable(
+                        ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
                     )
-                    Toast.makeText(
-                        requireActivity(),
-                        getString(R.string.bookmark_toast),
-                        Toast.LENGTH_SHORT
-                    ).show()
                 } else {
-                    bookmarkButton.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            bookmarkButton.context,
-                            R.drawable.ic_bookmark_border_white
-                        )
+                    setImageDrawable(
+                        ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
                     )
-                    Toast.makeText(
-                        requireActivity(),
-                        getString(R.string.unbookmarked_toast),
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
 
-            }
+                setOnClickListener {
+                    if (hotel.isBookmarked) {
+                        viewModel.deleteHotel(hotel)
+                        setImageDrawable(
+                            ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+                        )
+                        Toast.makeText(
+                            requireActivity(),
+                            getString(R.string.bookmark_toast),
+                            Toast.LENGTH_SHORT
+                        ).show()
 
+                    } else {
+                        viewModel.saveHotel(hotel)
+                        setImageDrawable(
+                            ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
+                        )
+                        Toast.makeText(
+                            requireActivity(),
+                            getString(R.string.unbookmarked_toast),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    }
+                }
+            }
         }
+    }
+
+    private fun share(name: String, city: String, price: String, rate: String, desc: String) {
+        val resolver = requireActivity().contentResolver
+        val bitmapDrawable = binding.imageView.drawable as BitmapDrawable
+        val bitmap = bitmapDrawable.bitmap
+        val bitmapPath =
+            MediaStore.Images.Media.insertImage(
+                resolver,
+                bitmap,
+                "some title",
+                "some desc"
+            )
+        val bitmapUri = Uri.parse(bitmapPath)
+        val shareIntent = Intent().apply {
+            this.action = Intent.ACTION_SEND
+            this.putExtra(
+                Intent.EXTRA_SUBJECT,
+                "SHARE FROM NEXT HOTEL APP"
+            )
+            this.putExtra(
+                Intent.EXTRA_TEXT,
+                """$name that is in $city with a price range of $price and this hotel have $rate ⭐
+                            |Description :
+                            |$desc""".trimMargin()
+            )
+            this.type = "image/*"
+            this.putExtra(
+                Intent.EXTRA_STREAM,
+                bitmapUri
+            )
+        }
+        startActivity(Intent.createChooser(shareIntent, "Share Via"))
     }
 
 }

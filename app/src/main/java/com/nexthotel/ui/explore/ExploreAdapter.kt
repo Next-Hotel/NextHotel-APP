@@ -51,7 +51,7 @@ class ExploreAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
                 imageView.load(imageUrl)
                 nameTextView.text = name
                 cityTextView.text = city
-                rateTextView.text = StringBuilder(rate).append(" ⭐")
+                rateTextView.text = rate
                 descTextView.text = description
                 priceTextView.text = priceRange
 

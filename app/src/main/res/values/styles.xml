@@ -44,7 +44,7 @@
     </style>
 
     <style name="TextView.Detail.Title">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 

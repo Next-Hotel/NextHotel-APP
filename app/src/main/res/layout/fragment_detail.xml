@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,35 +25,25 @@
 
             <ImageButton
                 android:id="@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="start"
                 android:layout_margin="13dp"
-                android:background="@android:color/transparent"
+                android:background="@drawable/bg_black_rounded"
                 android:contentDescription="@string/image_desc"
-                android:src="@drawable/ic_arrow_back" />
-
-            <ImageButton
-                android:id="@+id/moreButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_margin="13dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/image_desc"
-                android:src="@drawable/ic_more_vert" />
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/white"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <ImageButton
                 android:id="@+id/bookmarkButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="end"
-                android:layout_marginTop="13dp"
-                android:layout_marginEnd="42dp"
-                android:background="@android:color/transparent"
+                android:layout_margin="13dp"
+                android:background="@drawable/bg_black_rounded"
                 android:contentDescription="@string/image_desc"
-                android:src="@drawable/ic_bookmark_border_blue" />
-
+                android:src="@drawable/ic_bookmark_border_white" />
         </FrameLayout>
 
         <LinearLayout
@@ -81,8 +72,8 @@
 
                 <ImageButton
                     android:id="@+id/shareButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="end"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/image_desc"
@@ -101,10 +92,12 @@
             <TextView
                 android:id="@+id/rateTextView"
                 style="@style/TextView.Detail.Subtitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                tools:text="4.5 ⭐" />
+                android:drawablePadding="5dp"
+                app:drawableEndCompat="@drawable/ic_star"
+                tools:text="4.5" />
 
             <TextView
                 android:id="@+id/priceTextView"

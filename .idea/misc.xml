@@ -39,6 +39,7 @@
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_horizontal.xml" value="0.33" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_vertical.xml" value="0.33" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2105" />
+        <entry key="app/src/main/res/drawable/bg_black_rounded.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/bg_white_rounded.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bookmark_border.xml" value="0.118" />
         <entry key="app/src/main/res/drawable/ic_bookmarks.xml" value="0.177" />
@@ -47,9 +48,10 @@
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.335" />
         <entry key="app/src/main/res/drawable/ic_searching_error.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/ic_searching_not_found.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/ic_star.xml" value="0.164" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19" />
         <entry key="app/src/main/res/layout/fragment_bookmarks.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.3640625" />
