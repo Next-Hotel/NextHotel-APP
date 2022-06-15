@@ -8,7 +8,6 @@ import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.core.data.local.room.HotelDao
 import com.nexthotel.core.data.remote.network.ApiService
 import com.nexthotel.core.data.remote.response.Hotel
-import com.nexthotel.core.data.remote.response.HotelsResponse
 
 class HotelRepository private constructor(
     private val apiService: ApiService,
@@ -29,7 +28,7 @@ class HotelRepository private constructor(
                     it.imageUrl,
                     it.rate,
                     it.description,
-                    it.priceRange,
+                    it.price,
                     isBookmarked
                 )
             }
@@ -59,7 +58,7 @@ class HotelRepository private constructor(
                     it.imageUrl,
                     it.rate,
                     it.description,
-                    it.priceRange,
+                    it.price,
                     isBookmarked
                 )
             }
@@ -89,7 +88,7 @@ class HotelRepository private constructor(
                     it.imageUrl,
                     it.rate,
                     it.description,
-                    it.priceRange,
+                    it.price,
                     isBookmarked
                 )
             }
@@ -117,7 +116,7 @@ class HotelRepository private constructor(
                 it.imageUrl,
                 it.rate,
                 it.description,
-                it.priceRange,
+                it.price,
                 isBookmarked
             )
         }

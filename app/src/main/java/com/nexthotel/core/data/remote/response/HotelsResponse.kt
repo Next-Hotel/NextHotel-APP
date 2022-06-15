@@ -10,10 +10,11 @@ data class HotelsResponse(
 
 data class Hotel(
     @SerializedName("id") val id: Int,
-    @SerializedName("namaHotel") val name: String,
+    @SerializedName("hotel") val name: String,
     @SerializedName("kota") val city: String,
     @SerializedName("imageUrl") val imageUrl: String,
     @SerializedName("rating") val rate: String,
     @SerializedName("description") val description: String,
-    @SerializedName("priceRange") val priceRange: String,
+    @SerializedName("harga") val price: String,
+    @SerializedName("star") val star: String,
 )

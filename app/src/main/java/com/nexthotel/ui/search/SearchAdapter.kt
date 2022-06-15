@@ -57,12 +57,13 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         fun bind(hotel: HotelEntity) {
             val (_, name, city, imageUrl, rate, description, priceRange) = hotel
             binding.apply {
+                val price = "IDR " + hotel.priceRange
                 imageView.load(imageUrl)
                 nameTextView.text = name
                 cityTextView.text = city
                 rateTextView.text = StringBuilder(rate).append(" ⭐")
                 descTextView.text = description
-                priceTextView.text = priceRange
+                priceTextView.text = price
                 itemView.setOnClickListener {
                     onItemClickCallback.onItemClicked(hotel)
                 }

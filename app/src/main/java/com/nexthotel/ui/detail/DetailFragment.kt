@@ -47,12 +47,15 @@ class DetailFragment : Fragment() {
         val (_, name, city, imageUrl, rate, description, priceRange) = hotel
 
         binding.apply {
-            imageView.load(imageUrl)
+            val price = "IDR " + hotel.priceRange
+            imageView.load(hotel.imageUrl){
+                error(R.drawable.ic_error_hotel)
+            }
             nameTextView.text = name
             cityTextView.text = city
             rateTextView.text = rate
             descTextView.text = description
-            priceTextView.text = priceRange
+            priceTextView.text = price
 
             backButton.setOnClickListener { activity?.onBackPressed() }
             shareButton.setOnClickListener { share(hotel) }
