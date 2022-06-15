@@ -1,5 +1,6 @@
 package com.nexthotel.ui.detail
 
+import ExpandableListData.data
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
@@ -104,6 +105,17 @@ class DetailFragment : Fragment() {
             }
 
         }
+
+        setExpandable()
+    }
+
+    private fun setExpandable() {
+        val expandableListView = binding.expendableList
+        val listData = data
+        val titleList = ArrayList(listData.keys)
+        val adapter =
+            ExpandableListAdapter(requireContext(), titleList as ArrayList<String>, listData)
+        expandableListView.setAdapter(adapter)
     }
 
     private fun share(hotel: HotelEntity) {

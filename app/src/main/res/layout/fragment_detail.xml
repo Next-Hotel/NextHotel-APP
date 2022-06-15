@@ -118,6 +118,18 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+            <ExpandableListView
+                android:id="@+id/expendableList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@android:color/background_light"
+                android:dividerHeight="0.5dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>
