@@ -55,15 +55,16 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hotel: HotelEntity) {
-            val (_, name, city, imageUrl, rate, description, priceRange) = hotel
+            val (_, name, city, imageUrl, rate, description, price, stars) = hotel
             binding.apply {
-                val price = "IDR " + hotel.priceRange
+                val idrPrice = "IDR " + price
                 imageView.load(imageUrl)
                 nameTextView.text = name
                 cityTextView.text = city
                 rateTextView.text = StringBuilder(rate).append(" ⭐")
+                ratingBar1.rating = stars.toFloat()
                 descTextView.text = description
-                priceTextView.text = price
+                priceTextView.text = idrPrice
                 itemView.setOnClickListener {
                     onItemClickCallback.onItemClicked(hotel)
                 }

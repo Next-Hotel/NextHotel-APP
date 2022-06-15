@@ -15,5 +15,6 @@ data class HotelEntity(
     val rate: String,
     val description: String,
     val priceRange: String,
+    val stars: String,
     var isBookmarked: Boolean,
 ) : Parcelable

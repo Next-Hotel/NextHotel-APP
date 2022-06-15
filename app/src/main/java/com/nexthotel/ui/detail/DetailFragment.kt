@@ -44,18 +44,19 @@ class DetailFragment : Fragment() {
         val viewModel: DetailViewModel by viewModels { factory }
 
         val hotel = DetailFragmentArgs.fromBundle(arguments as Bundle).hotel
-        val (_, name, city, imageUrl, rate, description, priceRange) = hotel
+        val (_, name, city, imageUrl, rate, description, price, stars) = hotel
 
         binding.apply {
-            val price = "IDR " + hotel.priceRange
-            imageView.load(hotel.imageUrl){
+            val idrPrice = "IDR $price"
+            imageView.load(imageUrl){
                 error(R.drawable.ic_error_hotel)
             }
             nameTextView.text = name
             cityTextView.text = city
             rateTextView.text = rate
+            ratingBar1.rating = stars.toFloat()
             descTextView.text = description
-            priceTextView.text = price
+            priceTextView.text = idrPrice
 
             backButton.setOnClickListener { activity?.onBackPressed() }
             shareButton.setOnClickListener { share(hotel) }

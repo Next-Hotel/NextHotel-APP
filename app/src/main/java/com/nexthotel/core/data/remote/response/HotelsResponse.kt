@@ -16,5 +16,25 @@ data class Hotel(
     @SerializedName("rating") val rate: String,
     @SerializedName("description") val description: String,
     @SerializedName("harga") val price: String,
-    @SerializedName("star") val star: String,
+    @SerializedName("stars") val stars: String,
+
+    // opsional data
+    @SerializedName("facil_+_akomod") val facilAkomod: String,
+    @SerializedName("accessibilty_list") val accessibiltyList: String,
+    @SerializedName("places_nearby") val placesNearby: String,
+    @SerializedName("sports_and_recreations_list") val sportsAndRecreationsList: String,
+    @SerializedName("transportation_list") val transportationList: String,
+    @SerializedName("reviews") val reviews: String,
+    @SerializedName("business_facilities_list") val businessFacilitiesList: String,
+    @SerializedName("public_facilities_list") val publicFacilitiesList: String,
+    @SerializedName("kids_and_pets_list") val kidsAndPetsList: String,
+    @SerializedName("food_and_drinks_list") val foodAndDrinksList: String,
+    @SerializedName("shuttle_service_list") val shuttleServiceList: String,
+    @SerializedName("nearby_facilities_list") val nearbyFacilitiesList: String,
+    @SerializedName("general_list") val generalList: String,
+    @SerializedName("index") val index: Int,
+    @SerializedName("connectivity_list") val connectivityList: String,
+    @SerializedName("in-room_facilities_list") val inRoomFacilitiesList: String,
+    @SerializedName("hotel_services_list") val hotelServicesList: String,
+    @SerializedName("things_to_do_list") val thingsToDoList: String
 )

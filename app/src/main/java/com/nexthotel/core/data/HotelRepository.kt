@@ -29,6 +29,7 @@ class HotelRepository private constructor(
                     it.rate,
                     it.description,
                     it.price,
+                    it.stars,
                     isBookmarked
                 )
             }
@@ -59,6 +60,7 @@ class HotelRepository private constructor(
                     it.rate,
                     it.description,
                     it.price,
+                    it.stars,
                     isBookmarked
                 )
             }
@@ -89,6 +91,7 @@ class HotelRepository private constructor(
                     it.rate,
                     it.description,
                     it.price,
+                    it.stars,
                     isBookmarked
                 )
             }
@@ -117,6 +120,7 @@ class HotelRepository private constructor(
                 it.rate,
                 it.description,
                 it.price,
+                it.stars,
                 isBookmarked
             )
         }
