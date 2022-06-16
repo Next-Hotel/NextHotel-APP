@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -51,9 +52,18 @@ class BookmarkAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
                 priceTextView.text = hotel.priceRange
 
                 itemView.setOnClickListener {
+                    val extras = FragmentNavigatorExtras(
+                        imageView to "image_detail",
+                        cityTextView to "city_detail",
+                        nameTextView to "name_detail",
+                        rateTextView to "rate_detail",
+                        priceTextView to "price_detail",
+                        descTextView to "desc_detail"
+                    )
+
                     val destination = BookmarksFragmentDirections
                         .actionNavigationBookmarksToDetailFragment(hotel)
-                    it.findNavController().navigate(destination)
+                    it.findNavController().navigate(destination, extras)
                 }
             }
         }

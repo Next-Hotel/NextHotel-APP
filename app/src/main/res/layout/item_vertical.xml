@@ -19,6 +19,7 @@
 
             <ImageView
                 android:id="@+id/imageView"
+                android:transitionName="image_item"
                 android:layout_width="155dp"
                 android:layout_height="135dp"
                 android:contentDescription="@string/image_desc"
@@ -34,6 +35,7 @@
 
                 <TextView
                     android:id="@+id/cityTextView"
+                    android:transitionName="city_item"
                     style="@style/TextView.Card.Top"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,6 +62,7 @@
 
             <TextView
                 android:id="@+id/nameTextView"
+                android:transitionName="name_item"
                 style="@style/TextView.Card.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,6 +72,7 @@
 
             <TextView
                 android:id="@+id/rateTextView"
+                android:transitionName="rate_item"
                 style="@style/TextView.Card.Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,6 +82,7 @@
 
             <TextView
                 android:id="@+id/descTextView"
+                android:transitionName="desc_item"
                 style="@style/TextView.Card.Subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,6 +92,7 @@
 
             <TextView
                 android:id="@+id/priceTextView"
+                android:transitionName="price_item"
                 style="@style/TextView.Card.Price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
