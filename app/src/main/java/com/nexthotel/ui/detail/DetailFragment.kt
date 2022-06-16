@@ -5,6 +5,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore.Images.Media.insertImage
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,11 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val animation = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.slide_right)
+
+        sharedElementEnterTransition = animation
+        sharedElementReturnTransition = animation
 
         val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
         val viewModel: DetailViewModel by viewModels { factory }
