@@ -6,6 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
+    @GET("hotel-bestpicks")
+    suspend fun getExploreHotel(): HotelsResponse
 
     @GET("hotel-bestpicks")
     suspend fun getHotelForYou(): HotelsResponse
@@ -13,10 +15,7 @@ interface ApiService {
     @GET("hotel-bestpicks")
     suspend fun getBestPick(): HotelsResponse
 
-    @GET("hotel-bestpicks")
-    suspend fun getExploreHotel(): HotelsResponse
-
-    @GET("hotel-bestpicks")
+    @GET("list-hotels")
     suspend fun searchHotel(
         @Query("name") name: String
     ): Response<HotelsResponse>

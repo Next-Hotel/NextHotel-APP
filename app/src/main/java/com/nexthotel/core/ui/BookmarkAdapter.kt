@@ -43,12 +43,16 @@ class BookmarkAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
 
         fun bind(hotel: HotelEntity) {
             binding.apply {
-                imageView.load(hotel.imageUrl)
+                val idrPrice = "IDR " + hotel.priceRange
+                imageView.load(hotel.imageUrl){
+                    error(R.drawable.ic_error_hotel)
+                }
                 nameTextView.text = hotel.name
                 cityTextView.text = hotel.city
                 rateTextView.text = hotel.rate
+                ratingBar1.rating = hotel.stars.toFloat()
                 descTextView.text = hotel.description
-                priceTextView.text = hotel.priceRange
+                priceTextView.text = idrPrice
 
                 itemView.setOnClickListener {
                     val destination = BookmarksFragmentDirections
