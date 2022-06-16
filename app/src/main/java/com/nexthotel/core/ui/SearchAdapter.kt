@@ -1,4 +1,4 @@
-package com.nexthotel.ui.search
+package com.nexthotel.core.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -36,36 +36,28 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         holder.bind(hotel)
 
         val bookmarkButton = holder.binding.bookmarkButton
-        if (hotel.isBookmarked) {
-            bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_blue)
+        bookmarkButton.apply {
+            if (hotel.isBookmarked) setImageDrawable(
+                ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+            ) else setImageDrawable(
+                ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
             )
-        } else {
-            bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(
-                    bookmarkButton.context,
-                    R.drawable.ic_bookmark_border_blue
-                )
-            )
+            setOnClickListener { onBookmarkClick(hotel) }
         }
-        bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
     }
 
     inner class MyViewHolder(val binding: ItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hotel: HotelEntity) {
-            val (_, name, city, imageUrl, rate, description, priceRange) = hotel
             binding.apply {
-                imageView.load(imageUrl)
-                nameTextView.text = name
-                cityTextView.text = city
-                rateTextView.text = StringBuilder(rate).append(" ⭐")
-                descTextView.text = description
-                priceTextView.text = priceRange
-                itemView.setOnClickListener {
-                    onItemClickCallback.onItemClicked(hotel)
-                }
+                imageView.load(hotel.imageUrl)
+                nameTextView.text = hotel.name
+                cityTextView.text = hotel.city
+                rateTextView.text = hotel.rate
+                descTextView.text = hotel.description
+                priceTextView.text = hotel.priceRange
+                itemView.setOnClickListener { onItemClickCallback.onItemClicked(hotel) }
             }
         }
     }
@@ -73,16 +65,13 @@ class SearchAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
     companion object {
         val DIFF_CALLBACK: DiffUtil.ItemCallback<HotelEntity> =
             object : DiffUtil.ItemCallback<HotelEntity>() {
-                override fun areItemsTheSame(oldUser: HotelEntity, newUser: HotelEntity): Boolean {
-                    return oldUser.id == newUser.id
+                override fun areItemsTheSame(old: HotelEntity, new: HotelEntity): Boolean {
+                    return old.id == new.id
                 }
 
                 @SuppressLint("DiffUtilEquals")
-                override fun areContentsTheSame(
-                    oldUser: HotelEntity,
-                    newUser: HotelEntity
-                ): Boolean {
-                    return oldUser == newUser
+                override fun areContentsTheSame(old: HotelEntity, new: HotelEntity): Boolean {
+                    return old == new
                 }
             }
     }

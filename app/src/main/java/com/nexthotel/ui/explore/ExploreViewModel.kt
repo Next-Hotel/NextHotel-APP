@@ -7,17 +7,14 @@ import com.nexthotel.core.data.local.entity.HotelEntity
 import kotlinx.coroutines.launch
 
 class ExploreViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
+
     fun getExplore() = hotelRepository.getExplore()
 
     fun saveHotel(hotel: HotelEntity) {
-        viewModelScope.launch {
-            hotelRepository.setBookmarkedHotel(hotel, true)
-        }
+        viewModelScope.launch { hotelRepository.setBookmarkedHotel(hotel, true) }
     }
 
     fun deleteHotel(hotel: HotelEntity) {
-        viewModelScope.launch {
-            hotelRepository.setBookmarkedHotel(hotel, false)
-        }
+        viewModelScope.launch { hotelRepository.setBookmarkedHotel(hotel, false) }
     }
 }

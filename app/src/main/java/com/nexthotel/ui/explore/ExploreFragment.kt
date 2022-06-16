@@ -5,12 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.nexthotel.R
 import com.nexthotel.core.data.Result
+import com.nexthotel.core.ui.ExploreAdapter
 import com.nexthotel.core.ui.ViewModelFactory
+import com.nexthotel.core.utils.Utils.toast
 import com.nexthotel.databinding.FragmentExploreBinding
 
 class ExploreFragment : Fragment() {
@@ -41,19 +42,10 @@ class ExploreFragment : Fragment() {
         val exploreAdapter = ExploreAdapter {
             if (it.isBookmarked) {
                 viewModel.deleteHotel(it)
-                Toast.makeText(
-                    requireActivity(),
-                    getString(R.string.unbookmarked_toast),
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                toast(requireActivity(), getString(R.string.unbookmarked_toast))
             } else {
                 viewModel.saveHotel(it)
-                Toast.makeText(
-                    requireActivity(),
-                    getString(R.string.bookmark_toast),
-                    Toast.LENGTH_SHORT
-                ).show()
+                toast(requireActivity(), getString(R.string.bookmark_toast))
             }
         }
 
@@ -68,12 +60,8 @@ class ExploreFragment : Fragment() {
                     }
                     is Result.Error -> {
                         showLoading(true)
-                        Toast.makeText(
-                            context,
-                            "Please Check Your Internet",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        Log.d("ERROR:", it.error)
+                        toast(requireActivity(), getString(R.string.check_internet))
+                        Log.d("ALHAMDULILLAH", it.error)
                     }
                 }
             }
