@@ -1,4 +1,4 @@
-package com.nexthotel.ui.home
+package com.nexthotel.core.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.nexthotel.R
 import com.nexthotel.core.data.local.entity.HotelEntity
-import com.nexthotel.databinding.ItemVerticalBinding
+import com.nexthotel.databinding.ItemHorizontalBinding
+import com.nexthotel.ui.home.HomeFragmentDirections
 
-class BestPickAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
-    ListAdapter<HotelEntity, BestPickAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class HotelForYouAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
+    ListAdapter<HotelEntity, HotelForYouAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = ItemVerticalBinding
+        val binding = ItemHorizontalBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
@@ -27,39 +28,24 @@ class BestPickAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         holder.bind(hotel)
 
         val bookmarkButton = holder.binding.bookmarkButton
-        if (hotel.isBookmarked) {
-            bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_blue)
+        bookmarkButton.apply {
+            if (hotel.isBookmarked) setImageDrawable(
+                ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+            ) else setImageDrawable(
+                ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
             )
-        } else {
-            bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(
-                    bookmarkButton.context,
-                    R.drawable.ic_bookmark_border_blue
-                )
-            )
-        }
-        bookmarkButton.setOnClickListener {
-            onBookmarkClick(hotel)
-            if (hotel.isBookmarked) {
-                bookmarkButton.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        bookmarkButton.context,
-                        R.drawable.ic_bookmark_blue
-                    )
-                )
-            } else {
-                bookmarkButton.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        bookmarkButton.context,
-                        R.drawable.ic_bookmark_border_blue
-                    )
+            setOnClickListener {
+                onBookmarkClick(hotel)
+                if (hotel.isBookmarked) setImageDrawable(
+                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+                ) else setImageDrawable(
+                    ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
                 )
             }
         }
     }
 
-    class MyViewHolder(val binding: ItemVerticalBinding) :
+    class MyViewHolder(val binding: ItemHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hotel: HotelEntity) {
@@ -72,9 +58,7 @@ class BestPickAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
                 cityTextView.text = hotel.city
                 rateTextView.text = hotel.rate
                 ratingBar1.rating = hotel.stars.toFloat()
-                descTextView.text = hotel.description
                 priceTextView.text = idrPrice
-
 
                 itemView.setOnClickListener {
                     val destination = HomeFragmentDirections

@@ -1,4 +1,4 @@
-package com.nexthotel.ui.bookmarks
+package com.nexthotel.core.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import coil.load
 import com.nexthotel.R
 import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.databinding.ItemVerticalBinding
+import com.nexthotel.ui.bookmarks.BookmarksFragmentDirections
 
 class BookmarkAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
     ListAdapter<HotelEntity, BookmarkAdapter.MyViewHolder>(DIFF_CALLBACK) {
@@ -27,19 +28,14 @@ class BookmarkAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
         holder.bind(hotel)
 
         val bookmarkButton = holder.binding.bookmarkButton
-        if (hotel.isBookmarked) {
-            bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(bookmarkButton.context, R.drawable.ic_bookmark_blue)
+        bookmarkButton.apply {
+            if (hotel.isBookmarked) setImageDrawable(
+                ContextCompat.getDrawable(context, R.drawable.ic_bookmark_white)
+            ) else setImageDrawable(
+                ContextCompat.getDrawable(context, R.drawable.ic_bookmark_border_white)
             )
-        } else {
-            bookmarkButton.setImageDrawable(
-                ContextCompat.getDrawable(
-                    bookmarkButton.context,
-                    R.drawable.ic_bookmark_border_blue
-                )
-            )
+            setOnClickListener { onBookmarkClick(hotel) }
         }
-        bookmarkButton.setOnClickListener { onBookmarkClick(hotel) }
     }
 
     class MyViewHolder(val binding: ItemVerticalBinding) :
@@ -59,9 +55,9 @@ class BookmarkAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
                 priceTextView.text = idrPrice
 
                 itemView.setOnClickListener {
-                    val detail = BookmarksFragmentDirections
+                    val destination = BookmarksFragmentDirections
                         .actionNavigationBookmarksToDetailFragment(hotel)
-                    it.findNavController().navigate(detail)
+                    it.findNavController().navigate(destination)
                 }
             }
         }
