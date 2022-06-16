@@ -4,9 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nexthotel.core.data.HotelRepository
 import com.nexthotel.core.data.local.entity.HotelEntity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
+
     fun getBestPick() = hotelRepository.getBestPick()
 
     fun getHotelForYou() = hotelRepository.getHotelForYou()
@@ -15,7 +17,6 @@ class HomeViewModel(private val hotelRepository: HotelRepository) : ViewModel() 
         viewModelScope.launch {
             hotelRepository.setBookmarkedHotel(hotel, true)
         }
-
     }
 
     fun deleteHotel(hotel: HotelEntity) {
