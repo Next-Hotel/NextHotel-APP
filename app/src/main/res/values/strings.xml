@@ -13,7 +13,7 @@
     <string name="bookmark_toast">Bookmarked The Hotel</string>
     <string name="back_to_home">Back to Home</string>
     <string name="result">Result</string>
-    <string name="bookmark_not_exist">Oopss…!\nYou don\'t have a bookmark yet</string>
+    <string name="bookmark_not_exist">Oopss...!\nYou don\'t have a bookmark yet</string>
     <string name="general">General</string>
     <string name="about">About</string>
     <string name="version">Version</string>
@@ -21,26 +21,5 @@
     <string name="settings">Settings</string>
     <string name="theme">Theme</string>
     <string name="languages">Languages</string>
-    <string name="not_found_text">Oopps…!\nHotels Not Found</string>
-    <string name="check_internet">Please Check Your Internet Connection</string>
-    <string name="see_all_facilities">See All Facilities</string>
-    <string name="rateDetail">%s rate</string>
-    <string name="reviewsDetail">from %s reviews</string>
-    <string name="hotels" translatable="false">Hotels</string>
-    <string name="all_facilities">All Facilities</string>
-    <string name="places_nearby">Places Nearby</string>
-    <string name="food_and_drinks">Food and Drinks</string>
-    <string name="hotel_services">Hotel Services</string>
-    <string name="transportation">Transportation</string>
-    <string name="accessibility">Accessibility</string>
-    <string name="business_facilities">Business Facilities</string>
-    <string name="nearby_facilities">Nearby Facilities</string>
-    <string name="sports_and_recreations">Sports and Recreations</string>
-    <string name="kids_and_pets">Kids and Pets</string>
-    <string name="things_to_do">Things To Do</string>
-    <string name="connectivity">Connectivity</string>
-    <string name="public_facilities">Public Facilities</string>
-    <string name="shuttle_service">Shuttle Service</string>
-    <string name="in_room_facilities">In-room Facilities</string>
-    <string name="search_hint">Find your hotels…</string>
+    <string name="not_found_text">Oopps...!\nHotels Not Found</string>
 </resources>

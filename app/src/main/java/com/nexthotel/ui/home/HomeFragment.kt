@@ -1,18 +1,15 @@
 package com.nexthotel.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.nexthotel.R
 import com.nexthotel.core.data.Result
-import com.nexthotel.core.ui.BestPickAdapter
-import com.nexthotel.core.ui.HotelForYouAdapter
 import com.nexthotel.core.ui.ViewModelFactory
-import com.nexthotel.core.utils.Utils.toast
 import com.nexthotel.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -43,20 +40,38 @@ class HomeFragment : Fragment() {
         val bestPickAdapter = BestPickAdapter {
             if (it.isBookmarked) {
                 viewModel.deleteHotel(it)
-                toast(requireActivity(), getString(R.string.unbookmarked_toast))
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.unbookmarked_toast),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
             } else {
                 viewModel.saveHotel(it)
-                toast(requireActivity(), getString(R.string.bookmark_toast))
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.bookmark_toast),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
         val hotelForYouAdapter = HotelForYouAdapter {
             if (it.isBookmarked) {
                 viewModel.deleteHotel(it)
-                toast(requireActivity(), getString(R.string.unbookmarked_toast))
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.unbookmarked_toast),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
             } else {
                 viewModel.saveHotel(it)
-                toast(requireActivity(), getString(R.string.bookmark_toast))
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.bookmark_toast),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -66,12 +81,16 @@ class HomeFragment : Fragment() {
                     is Result.Loading -> showLoading(true)
                     is Result.Success -> {
                         showLoading(false)
-                        bestPickAdapter.submitList(it.data)
+                        val hotelData = it.data
+                        bestPickAdapter.submitList(hotelData)
                     }
                     is Result.Error -> {
                         showLoading(true)
-                        toast(requireActivity(), getString(R.string.check_internet))
-                        Log.d("ALHAMDULILLAH", it.error)
+                        Toast.makeText(
+                            context,
+                            "Please Check Your Internet",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -83,11 +102,16 @@ class HomeFragment : Fragment() {
                     is Result.Loading -> showLoading(true)
                     is Result.Success -> {
                         showLoading(false)
-                        hotelForYouAdapter.submitList(it.data)
+                        val hotelData = it.data
+                        hotelForYouAdapter.submitList(hotelData)
                     }
                     is Result.Error -> {
                         showLoading(true)
-                        toast(requireActivity(), getString(R.string.check_internet))
+                        Toast.makeText(
+                            context,
+                            "Please Check Your Internet",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }

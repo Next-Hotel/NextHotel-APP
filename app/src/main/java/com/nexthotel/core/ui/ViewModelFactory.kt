@@ -17,11 +17,21 @@ class ViewModelFactory private constructor(private val hotelRepository: HotelRep
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(SearchViewModel::class.java) -> SearchViewModel(hotelRepository) as T
-            modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(hotelRepository) as T
-            modelClass.isAssignableFrom(DetailViewModel::class.java) -> DetailViewModel(hotelRepository) as T
-            modelClass.isAssignableFrom(ExploreViewModel::class.java) -> ExploreViewModel(hotelRepository) as T
-            modelClass.isAssignableFrom(BookmarkViewModel::class.java) -> BookmarkViewModel(hotelRepository) as T
+            modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
+                SearchViewModel(hotelRepository) as T
+            }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(hotelRepository) as T
+            }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(hotelRepository) as T
+            }
+            modelClass.isAssignableFrom(ExploreViewModel::class.java) -> {
+                ExploreViewModel(hotelRepository) as T
+            }
+            modelClass.isAssignableFrom(BookmarkViewModel::class.java) -> {
+                BookmarkViewModel(hotelRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

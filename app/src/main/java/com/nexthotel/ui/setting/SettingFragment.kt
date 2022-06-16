@@ -9,9 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.nexthotel.BuildConfig
-import com.nexthotel.R
-import com.nexthotel.core.utils.Utils
-import com.nexthotel.core.utils.Utils.toast
 import com.nexthotel.databinding.FragmentSettingBinding
 
 class SettingFragment : Fragment() {
@@ -45,7 +42,7 @@ class SettingFragment : Fragment() {
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
             }
             aboutUsButton.setOnClickListener {
-                toast(requireActivity(), getString(R.string.about_us))
+                Toast.makeText(requireActivity(), "About Us", Toast.LENGTH_SHORT).show()
             }
         }
     }
