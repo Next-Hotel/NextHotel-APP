@@ -49,13 +49,25 @@
         <argument
             android:name="hotel"
             app:argType="com.nexthotel.core.data.local.entity.HotelEntity" />
+        <action
+            android:id="@+id/action_detailFragment_to_facilityFragment"
+            app:destination="@id/facilityFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.nexthotel.ui.setting.SettingFragment"
         android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting">
+        tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/facilityFragment"
+        android:name="com.nexthotel.ui.detail.FacilityFragment"
+        android:label="fragment_facility"
+        tools:layout="@layout/fragment_facility">
+        <argument
+            android:name="hotel"
+            app:argType="com.nexthotel.core.data.local.entity.HotelEntity" />
     </fragment>
 
 </navigation>

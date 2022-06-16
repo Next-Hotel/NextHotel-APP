@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.nexthotel.core.ui.BookmarkAdapter
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.databinding.FragmentBookmarksBinding
 

@@ -13,11 +13,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nexthotel.R
 import com.nexthotel.core.data.local.entity.HotelEntity
+import com.nexthotel.core.ui.SearchAdapter
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.databinding.ActivityMainBinding
 import com.nexthotel.ui.explore.ExploreFragmentDirections
 import com.nexthotel.ui.home.HomeFragmentDirections
-import com.nexthotel.ui.search.SearchAdapter
 import com.nexthotel.ui.search.SearchViewModel
 import kotlinx.coroutines.*
 
