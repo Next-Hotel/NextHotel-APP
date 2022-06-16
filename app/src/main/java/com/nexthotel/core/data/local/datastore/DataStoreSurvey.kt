@@ -1,10 +1,7 @@
 package com.nexthotel.core.data.local.datastore
 
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.emptyPreferences
+import androidx.datastore.preferences.core.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -15,6 +12,7 @@ class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
 
     private object Keys {
         val survey = booleanPreferencesKey("is_survey")
+        val recommendation = stringSetPreferencesKey("recommendation")
     }
 
     suspend fun setIsSurvey(isSurvey: IsSurvey) {
@@ -24,6 +22,23 @@ class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
                 IsSurvey.FALSE -> false
             }
         }
+    }
+
+    suspend fun setRecommendation(recommendation: Set<String>) {
+        dataStore.edit { preferences ->
+            preferences[Keys.recommendation] = recommendation
+        }
+    }
+
+    val recommendationFlow: Flow<Set<String>> = dataStore.data.catch {
+        if (it is IOException) {
+            it.printStackTrace()
+            emit(emptyPreferences())
+        } else {
+            throw it
+        }
+    }.map { preferences ->
+        preferences[Keys.recommendation] ?: setOf()
     }
 
     val modeUIFlow: Flow<IsSurvey> = dataStore.data
@@ -41,6 +56,7 @@ class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
                 false -> IsSurvey.FALSE
             }
         }
+
     companion object {
         @Volatile
         private var INSTANCE: DataStoreSurvey? = null

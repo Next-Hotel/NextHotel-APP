@@ -30,27 +30,29 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
-            android:layout_width="270dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|start"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="90dp"
             android:background="@drawable/bg_white_rounded"
-            android:iconifiedByDefault="false"
             android:imeOptions="actionDone"
-            android:queryBackground="@android:color/transparent"
-            android:queryHint="Find your hotels..."
             android:searchIcon="@drawable/ic_search"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="@string/search_hint" />
 
         <ImageButton
             android:id="@+id/settingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="end|center"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="13dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/image_desc"
-            android:src="@drawable/ic_settings" />
+            android:src="@drawable/ic_settings"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
     </FrameLayout>
 
@@ -65,7 +67,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:navGraph="@navigation/mobile_navigation" />
-
 
     <FrameLayout
         android:id="@+id/searchResult"
@@ -125,19 +126,27 @@
 
         <ImageView
             android:id="@+id/image_other_result"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:contentDescription="@string/image_desc"
-            android:src="@drawable/ic_searching_error" />
+            android:contentDescription="@string/image_desc" />
+
+        <TextView
+            style="@style/TextView.Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="140dp"
+            android:text="@string/not_found_text"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/backToHomeButton"
+            style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="24dp"
-            style="@style/TextView"
+            android:layout_marginBottom="90dp"
             android:text="@string/back_to_home" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

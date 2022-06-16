@@ -21,8 +21,9 @@ class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel(
 
     fun searchForTasks(searchViewValue: String) {
         viewModelScope.launch {
-            if (searchViewValue.isNotEmpty())
+            if (searchViewValue.isNotEmpty()) {
                 searchView.value = searchViewValue
+            }
             viewState.value = State.LOADING.ordinal
             searchCall(searchViewValue)
         }
@@ -56,11 +57,15 @@ class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel(
         }
 
     fun saveHotel(hotel: HotelEntity) {
-        viewModelScope.launch { hotelRepository.setBookmarkedHotel(hotel, true) }
+        viewModelScope.launch {
+            hotelRepository.setBookmarkedHotel(hotel, true)
+        }
     }
 
     fun deleteHotel(hotel: HotelEntity) {
-        viewModelScope.launch { hotelRepository.setBookmarkedHotel(hotel, false) }
+        viewModelScope.launch {
+            hotelRepository.setBookmarkedHotel(hotel, false)
+        }
     }
 
     enum class State {

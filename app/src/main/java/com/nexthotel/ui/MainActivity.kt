@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -19,11 +20,11 @@ import com.nexthotel.R
 import com.nexthotel.core.data.local.datastore.DataStoreSurvey
 import com.nexthotel.core.data.local.datastore.IsSurvey
 import com.nexthotel.core.data.local.entity.HotelEntity
+import com.nexthotel.core.ui.SearchAdapter
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.databinding.ActivityMainBinding
 import com.nexthotel.ui.explore.ExploreFragmentDirections
 import com.nexthotel.ui.home.HomeFragmentDirections
-import com.nexthotel.ui.search.SearchAdapter
 import com.nexthotel.ui.search.SearchViewModel
 import com.nexthotel.ui.survey.SurveyFragmentDirections
 import kotlinx.coroutines.*
@@ -64,7 +65,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setSurveyView() {
-        //
         pref.modeUIFlow.asLiveData().observe(this) {
             if (it == IsSurvey.TRUE) {
                 // show survey view
@@ -72,10 +72,17 @@ class MainActivity : AppCompatActivity() {
                 val toHome = SurveyFragmentDirections
                     .actionSurveyFragmentToNavigationHome()
                 navController.navigate(toHome)
+                clearFragment()
             }
         }
+    }
 
-
+    private fun clearFragment(){
+        val fragment = supportFragmentManager.fragments
+        for (frag in fragment){
+            supportFragmentManager.beginTransaction().remove(frag).commit()
+        }
+        supportFragmentManager.popBackStack(null , FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
     private fun searchView() {
@@ -138,7 +145,10 @@ class MainActivity : AppCompatActivity() {
                     navView.visibility = View.VISIBLE
                     binding.topBar.visibility = View.VISIBLE
                 }
-                R.id.navigation_bookmarks -> binding.topBar.visibility = View.GONE
+                R.id.navigation_bookmarks -> {
+                    binding.topBar.visibility = View.GONE
+                    navView.visibility = View.VISIBLE
+                }
                 else -> {
                     navView.visibility = View.GONE
                     binding.topBar.visibility = View.GONE
@@ -213,7 +223,7 @@ class MainActivity : AppCompatActivity() {
         binding.searchProgressBar.visibility = View.INVISIBLE
         binding.searchRecyclerView.visibility = View.INVISIBLE
         binding.otherResult.visibility = View.VISIBLE
-        binding.imageOtherResult.setImageResource(R.drawable.ic_searching_not_found)
+        binding.imageOtherResult.setImageResource(R.drawable.ic_undraw_not_found)
     }
 
     private fun showAnErrorHappened() {
@@ -221,6 +231,6 @@ class MainActivity : AppCompatActivity() {
         binding.searchProgressBar.visibility = View.INVISIBLE
         binding.searchRecyclerView.visibility = View.INVISIBLE
         binding.otherResult.visibility = View.VISIBLE
-        binding.imageOtherResult.setImageResource(R.drawable.ic_searching_error)
+        binding.imageOtherResult.setImageResource(R.drawable.ic_undraw_back_home)
     }
 }

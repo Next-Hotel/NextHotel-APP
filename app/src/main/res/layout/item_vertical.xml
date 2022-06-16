@@ -46,9 +46,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="end"
-                android:background="@android:color/transparent"
+                android:background="@drawable/bg_black_rounded"
                 android:contentDescription="@string/bookmark_desc"
-                android:src="@drawable/ic_bookmark_border_blue" />
+                android:src="@drawable/ic_bookmark_border_white" />
 
         </FrameLayout>
 
@@ -70,9 +70,11 @@
             <TextView
                 android:id="@+id/rateTextView"
                 style="@style/TextView.Card.Subtitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="4.5 ⭐" />
+                app:drawableEndCompat="@drawable/ic_star"
+                android:drawablePadding="5dp"
+                tools:text="4.5" />
 
             <TextView
                 android:id="@+id/descTextView"

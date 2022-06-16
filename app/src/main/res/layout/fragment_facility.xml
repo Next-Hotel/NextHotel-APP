@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="13dp"
+    android:orientation="vertical"
+    tools:context=".ui.detail.FacilityFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_black_rounded"
+            android:contentDescription="@string/image_desc"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/header"
+            style="@style/TextView.Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="13dp"
+            android:text="@string/all_facilities" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="@string/places_nearby" />
+
+            <TextView
+                android:id="@+id/placesNearbyTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/food_and_drinks" />
+
+            <TextView
+                android:id="@+id/foodDrinkTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hotel_services" />
+
+            <TextView
+                android:id="@+id/hotelServicesTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transportation" />
+
+            <TextView
+                android:id="@+id/transportationTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/general" />
+
+            <TextView
+                android:id="@+id/generalTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/accessibility" />
+
+            <TextView
+                android:id="@+id/accessibilityTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/business_facilities" />
+
+            <TextView
+                android:id="@+id/businessTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nearby_facilities" />
+
+            <TextView
+                android:id="@+id/nearbyTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sports_and_recreations" />
+
+            <TextView
+                android:id="@+id/sportsTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kids_and_pets" />
+
+            <TextView
+                android:id="@+id/kidsTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/things_to_do" />
+
+            <TextView
+                android:id="@+id/thingsTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/connectivity" />
+
+            <TextView
+                android:id="@+id/connectivityTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/public_facilities" />
+
+            <TextView
+                android:id="@+id/publicTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shuttle_service" />
+
+            <TextView
+                android:id="@+id/shuttleTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                style="@style/TextView.Detail.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/in_room_facilities" />
+
+            <TextView
+                android:id="@+id/inRoomTextView"
+                style="@style/TextView.Detail.Subtitle.Facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:maxLines="20"
+                tools:text="@tools:sample/lorem/random" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

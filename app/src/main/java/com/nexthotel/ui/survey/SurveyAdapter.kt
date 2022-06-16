@@ -22,7 +22,7 @@ class SurveyAdapter(private val itemClickListener: (String) -> Unit) :
         when (holder) {
             is ItemViewHolder -> {
                 holder.bindItem(list[position])
-                holder.binding.root.setOnClickListener {
+                holder.binding.surveyButton.setOnClickListener {
                     itemClickListener.invoke(list[position])
                 }
             }

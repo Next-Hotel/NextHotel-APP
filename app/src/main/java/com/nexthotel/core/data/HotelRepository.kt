@@ -8,35 +8,63 @@ import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.core.data.local.room.HotelDao
 import com.nexthotel.core.data.remote.network.ApiService
 import com.nexthotel.core.data.remote.response.Hotel
-import com.nexthotel.core.data.remote.response.HotelsResponse
 
 class HotelRepository private constructor(
     private val apiService: ApiService,
     private val hotelDao: HotelDao,
 ) {
 
+    fun getInterestParameter(): LiveData<Result<List<String>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getInterestParameter()
+            val interest = response.data
+            emit(Result.Success(interest))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
     fun getBestPick(): LiveData<Result<List<HotelEntity>>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getBestPicksHotels()
+            val response = apiService.getBestPick()
             val hotels = response.data
             val hotelList = hotels.map {
                 val isBookmarked = hotelDao.isHotelBookmarked(it.id)
                 HotelEntity(
-                    it.id,
-                    it.name,
-                    it.city,
-                    it.imageUrl,
-                    it.rate,
-                    it.description,
-                    it.priceRange,
-                    isBookmarked
+                    id = it.id,
+                    name = it.name,
+                    city = it.city,
+                    imageUrl = it.imageUrl,
+                    rate = it.rate.toString() + " / 10",
+                    description = it.description,
+                    priceRange = "Rp. " + it.priceRange,
+                    isBookmarked = isBookmarked,
+                    stars = it.stars.toString(),
+                    reviews = it.reviews,
+                    accessibiltyList = it.accessibiltyList,
+                    placesNearby = it.placesNearby,
+                    sportsAndRecreationsList = it.sportsAndRecreationsList,
+                    transportationList = it.transportationList,
+                    businessFacilitiesList = it.businessFacilitiesList,
+                    publicFacilitiesList = it.publicFacilitiesList,
+                    kidsAndPetsList = it.kidsAndPetsList,
+                    foodAndDrinksList = it.foodAndDrinksList,
+                    shuttleServiceList = it.shuttleServiceList,
+                    nearbyFacilitiesList = it.nearbyFacilitiesList,
+                    generalList = it.generalList,
+                    connectivityList = it.connectivityList,
+                    inRoomFacilitiesList = it.inRoomFacilitiesList,
+                    hotelServicesList = it.hotelServicesList,
+                    thingsToDoList = it.thingsToDoList,
+                    score = it.score,
                 )
             }
             hotelDao.deleteAll()
             hotelDao.insertHotel(hotelList)
         } catch (e: Exception) {
-            Log.d("HotelRepository", "getListHotel: ${e.message.toString()}")
+            Log.d("HotelRepository", "getBestPick: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))
         }
 
@@ -48,25 +76,91 @@ class HotelRepository private constructor(
     fun getHotelForYou(): LiveData<Result<List<HotelEntity>>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getRecommendationHotels()
+            val response = apiService.getHotelForYou()
             val hotels = response.data
             val hotelList = hotels.map {
                 val isBookmarked = hotelDao.isHotelBookmarked(it.id)
                 HotelEntity(
-                    it.id,
-                    it.name,
-                    it.city,
-                    it.imageUrl,
-                    it.rate,
-                    it.description,
-                    it.priceRange,
-                    isBookmarked
+                    id = it.id,
+                    name = it.name,
+                    city = it.city,
+                    imageUrl = it.imageUrl,
+                    rate = it.rate.toString() + " / 10",
+                    description = it.description,
+                    priceRange = "Rp. " + it.priceRange,
+                    isBookmarked = isBookmarked,
+                    stars = it.stars.toString(),
+                    reviews = it.reviews,
+                    accessibiltyList = it.accessibiltyList,
+                    placesNearby = it.placesNearby,
+                    sportsAndRecreationsList = it.sportsAndRecreationsList,
+                    transportationList = it.transportationList,
+                    businessFacilitiesList = it.businessFacilitiesList,
+                    publicFacilitiesList = it.publicFacilitiesList,
+                    kidsAndPetsList = it.kidsAndPetsList,
+                    foodAndDrinksList = it.foodAndDrinksList,
+                    shuttleServiceList = it.shuttleServiceList,
+                    nearbyFacilitiesList = it.nearbyFacilitiesList,
+                    generalList = it.generalList,
+                    connectivityList = it.connectivityList,
+                    inRoomFacilitiesList = it.inRoomFacilitiesList,
+                    hotelServicesList = it.hotelServicesList,
+                    thingsToDoList = it.thingsToDoList,
+                    score = it.score,
                 )
             }
             hotelDao.deleteAll()
             hotelDao.insertHotel(hotelList)
         } catch (e: Exception) {
-            Log.d("HotelRepository", "getListHotel: ${e.message.toString()}")
+            Log.d("HotelRepository", "getHotelForYou: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+
+        val localData: LiveData<Result<List<HotelEntity>>> =
+            hotelDao.getHotelForYou().map { Result.Success(it) }
+        emitSource(localData)
+    }
+
+    fun getRecommendation(interest: Set<String>): LiveData<Result<List<HotelEntity>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getHotelRecommendation(interest)
+            val hotels = response.data
+            val hotelList = hotels.map {
+                val isBookmarked = hotelDao.isHotelBookmarked(it.id)
+                HotelEntity(
+                    id = it.id,
+                    name = it.name,
+                    city = it.city,
+                    imageUrl = it.imageUrl,
+                    rate = it.rate.toString() + " / 10",
+                    description = it.description,
+                    priceRange = "Rp. " + it.priceRange,
+                    isBookmarked = isBookmarked,
+                    stars = it.stars.toString(),
+                    reviews = it.reviews,
+                    accessibiltyList = it.accessibiltyList,
+                    placesNearby = it.placesNearby,
+                    sportsAndRecreationsList = it.sportsAndRecreationsList,
+                    transportationList = it.transportationList,
+                    businessFacilitiesList = it.businessFacilitiesList,
+                    publicFacilitiesList = it.publicFacilitiesList,
+                    kidsAndPetsList = it.kidsAndPetsList,
+                    foodAndDrinksList = it.foodAndDrinksList,
+                    shuttleServiceList = it.shuttleServiceList,
+                    nearbyFacilitiesList = it.nearbyFacilitiesList,
+                    generalList = it.generalList,
+                    connectivityList = it.connectivityList,
+                    inRoomFacilitiesList = it.inRoomFacilitiesList,
+                    hotelServicesList = it.hotelServicesList,
+                    thingsToDoList = it.thingsToDoList,
+                    score = it.score,
+                )
+            }
+            hotelDao.deleteAll()
+            hotelDao.insertHotel(hotelList)
+        } catch (e: Exception) {
+            Log.d("HotelRepository", "getHotelForYou: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))
         }
 
@@ -83,20 +177,38 @@ class HotelRepository private constructor(
             val hotelList = hotels.map {
                 val isBookmarked = hotelDao.isHotelBookmarked(it.id)
                 HotelEntity(
-                    it.id,
-                    it.name,
-                    it.city,
-                    it.imageUrl,
-                    it.rate,
-                    it.description,
-                    it.priceRange,
-                    isBookmarked
+                    id = it.id,
+                    name = it.name,
+                    city = it.city,
+                    imageUrl = it.imageUrl,
+                    rate = it.rate.toString() + " / 10",
+                    description = it.description,
+                    priceRange = "Rp. " + it.priceRange,
+                    isBookmarked = isBookmarked,
+                    stars = it.stars.toString(),
+                    reviews = it.reviews,
+                    accessibiltyList = it.accessibiltyList,
+                    placesNearby = it.placesNearby,
+                    sportsAndRecreationsList = it.sportsAndRecreationsList,
+                    transportationList = it.transportationList,
+                    businessFacilitiesList = it.businessFacilitiesList,
+                    publicFacilitiesList = it.publicFacilitiesList,
+                    kidsAndPetsList = it.kidsAndPetsList,
+                    foodAndDrinksList = it.foodAndDrinksList,
+                    shuttleServiceList = it.shuttleServiceList,
+                    nearbyFacilitiesList = it.nearbyFacilitiesList,
+                    generalList = it.generalList,
+                    connectivityList = it.connectivityList,
+                    inRoomFacilitiesList = it.inRoomFacilitiesList,
+                    hotelServicesList = it.hotelServicesList,
+                    thingsToDoList = it.thingsToDoList,
+                    score = it.score,
                 )
             }
             hotelDao.deleteAll()
             hotelDao.insertHotel(hotelList)
         } catch (e: Exception) {
-            Log.d("HotelRepository", "getListHotel: ${e.message.toString()}")
+            Log.d("HotelRepository", "getExplore: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))
         }
 
@@ -111,14 +223,32 @@ class HotelRepository private constructor(
         val hotelList = hotels.map {
             val isBookmarked = hotelDao.isHotelBookmarked(it.id)
             HotelEntity(
-                it.id,
-                it.name,
-                it.city,
-                it.imageUrl,
-                it.rate,
-                it.description,
-                it.priceRange,
-                isBookmarked
+                id = it.id,
+                name = it.name,
+                city = it.city,
+                imageUrl = it.imageUrl,
+                rate = it.rate.toString() + " / 10",
+                description = it.description,
+                priceRange = "Rp. " + it.priceRange,
+                isBookmarked = isBookmarked,
+                stars = it.stars.toString(),
+                reviews = it.reviews,
+                accessibiltyList = it.accessibiltyList,
+                placesNearby = it.placesNearby,
+                sportsAndRecreationsList = it.sportsAndRecreationsList,
+                transportationList = it.transportationList,
+                businessFacilitiesList = it.businessFacilitiesList,
+                publicFacilitiesList = it.publicFacilitiesList,
+                kidsAndPetsList = it.kidsAndPetsList,
+                foodAndDrinksList = it.foodAndDrinksList,
+                shuttleServiceList = it.shuttleServiceList,
+                nearbyFacilitiesList = it.nearbyFacilitiesList,
+                generalList = it.generalList,
+                connectivityList = it.connectivityList,
+                inRoomFacilitiesList = it.inRoomFacilitiesList,
+                hotelServicesList = it.hotelServicesList,
+                thingsToDoList = it.thingsToDoList,
+                score = it.score,
             )
         }
         return hotelList

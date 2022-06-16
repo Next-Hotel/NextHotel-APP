@@ -45,40 +45,41 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="end"
-                android:background="@android:color/transparent"
+                android:background="@drawable/bg_black_rounded"
                 android:contentDescription="@string/bookmark_desc"
-                android:src="@drawable/ic_bookmark_border_blue" />
+                android:src="@drawable/ic_bookmark_border_white" />
 
         </FrameLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/nameTextView"
+            style="@style/TextView.Card.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:orientation="vertical">
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="Jogja Hotel's" />
 
-            <TextView
-                android:id="@+id/nameTextView"
-                style="@style/TextView.Card.Title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Jogja Hotel's" />
+        <TextView
+            android:id="@+id/rateTextView"
+            style="@style/TextView.Card.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:drawablePadding="5dp"
+            app:drawableEndCompat="@drawable/ic_star"
+            tools:text="5.0" />
 
-            <TextView
-                android:id="@+id/rateTextView"
-                style="@style/TextView.Card.Subtitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="4.5 ⭐" />
-
-            <TextView
-                android:id="@+id/priceTextView"
-                style="@style/TextView.Card.Price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Rp. 100.000" />
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/priceTextView"
+            style="@style/TextView.Card.Price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            tools:text="Rp. 100.000" />
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
