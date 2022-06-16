@@ -4,6 +4,43 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.12478977463841238" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/bg_white_rounded.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_arrow_back.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_bookmark.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_bookmark_border.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_bookmarks.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_error_hotel.xml" value="0.144" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_explore.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_more_vert.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_search.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_share.xml" value="0.107" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_star.xml" value="0.144" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_undraw_empty.xml" value="0.144" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/drawable/ic_undraw_not_found.xml" value="0.144" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/activity_main.xml" value="0.19827586206896552" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_bookmarks.xml" value="0.2" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_detail.xml" value="0.22321428571428573" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_explore.xml" value="0.21510416666666668" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_facility.xml" value="0.1546875" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_home.xml" value="0.21510416666666668" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_search.xml" value="0.21510416666666668" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/fragment_survey.xml" value="0.1" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/item_expandable.xml" value="0.152" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/item_horizontal.xml" value="0.536" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/item_survey.xml" value="0.4" />
+        <entry key="..\:/A_KULIAH/BANGKIT 2022/Traveloka Capstone Project/NextHotel-APP/app/src/main/res/layout/item_vertical.xml" value="0.36091954022988504" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_bookmark.xml" value="0.1" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_bookmark_border.xml" value="0.1" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_bookmarks.xml" value="0.1" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_search.xml" value="0.1" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_searching_error.xml" value="0.1" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/drawable/ic_searching_not_found.xml" value="0.1" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/activity_main.xml" value="0.1765625" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/activity_splash.xml" value="0.38697916666666665" />
+        <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_bookmarks.xml" value="0.3129528985507246" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_detail.xml" value="0.2015625" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/fragment_explore.xml" value="0.2015625" />
         <entry key="..\:/Code/Tutorial/Dicoding/NextHotelAPP/app/src/main/res/layout/item_horizontal.xml" value="0.2015625" />

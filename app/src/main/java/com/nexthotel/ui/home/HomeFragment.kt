@@ -1,24 +1,32 @@
 package com.nexthotel.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import com.nexthotel.R
 import com.nexthotel.core.data.Result
+import com.nexthotel.core.data.local.datastore.DataStoreSurvey
 import com.nexthotel.core.ui.BestPickAdapter
 import com.nexthotel.core.ui.HotelForYouAdapter
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.core.utils.Utils.toast
 import com.nexthotel.databinding.FragmentHomeBinding
 
+private val Context.dataStore by preferencesDataStore(name = "settings")
+
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var pref: DataStoreSurvey
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,9 +44,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
         val viewModel: HomeViewModel by viewModels { factory }
+        pref = DataStoreSurvey.getInstance(requireContext().dataStore)
 
         val bestPickAdapter = BestPickAdapter {
             if (it.isBookmarked) {
@@ -60,6 +68,8 @@ class HomeFragment : Fragment() {
             }
         }
 
+
+
         viewModel.getBestPick().observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it) {
@@ -77,17 +87,19 @@ class HomeFragment : Fragment() {
             }
         }
 
-        viewModel.getHotelForYou().observe(viewLifecycleOwner) {
-            if (it != null) {
-                when (it) {
-                    is Result.Loading -> showLoading(true)
-                    is Result.Success -> {
-                        showLoading(false)
-                        hotelForYouAdapter.submitList(it.data)
-                    }
-                    is Result.Error -> {
-                        showLoading(true)
-                        toast(requireActivity(), getString(R.string.check_internet))
+        pref.recommendationFlow.asLiveData().observe(viewLifecycleOwner) {
+            viewModel.getHotelForYou(it).observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it) {
+                        is Result.Loading -> showLoading(true)
+                        is Result.Success -> {
+                            showLoading(false)
+                            hotelForYouAdapter.submitList(it.data)
+                        }
+                        is Result.Error -> {
+                            showLoading(true)
+                            toast(requireActivity(), getString(R.string.check_internet))
+                        }
                     }
                 }
             }

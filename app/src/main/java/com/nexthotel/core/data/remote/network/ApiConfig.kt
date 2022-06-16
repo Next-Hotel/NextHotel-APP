@@ -6,22 +6,26 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+import javax.xml.datatype.DatatypeConstants.SECONDS
 
 class ApiConfig {
     companion object {
         fun getApiService(): ApiService {
-//            val loggingInterceptor = if (BuildConfig.DEBUG) {
-//                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-//            } else {
-//                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
-//            }
-//            val client = OkHttpClient.Builder()
-//                .addInterceptor(loggingInterceptor)
-//                .build()
+            val loggingInterceptor = if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            } else {
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+            }
+            val client = OkHttpClient.Builder()
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .addInterceptor(loggingInterceptor)
+                .build()
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://nexthotel-backend-b7iyywuv5a-as.a.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
-//                .client(client)
+                .client(client)
                 .build()
             return retrofit.create(ApiService::class.java)
         }
