@@ -50,15 +50,11 @@ class HotelForYouAdapter(private val onBookmarkClick: (HotelEntity) -> Unit) :
 
         fun bind(hotel: HotelEntity) {
             binding.apply {
-                val idrPrice = "IDR " + hotel.priceRange
-                imageView.load(hotel.imageUrl){
-                    error(R.drawable.ic_error_hotel)
-                }
+                imageView.load(hotel.imageUrl)
                 nameTextView.text = hotel.name
                 cityTextView.text = hotel.city
                 rateTextView.text = hotel.rate
-                ratingBar1.rating = hotel.stars.toFloat()
-                priceTextView.text = idrPrice
+                priceTextView.text = hotel.priceRange
 
                 itemView.setOnClickListener {
                     val destination = HomeFragmentDirections

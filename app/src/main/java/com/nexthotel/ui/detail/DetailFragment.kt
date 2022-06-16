@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.MediaStore.Images.Media.insertImage
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.core.utils.Utils.toast
 import com.nexthotel.databinding.FragmentDetailBinding
+import com.nexthotel.ui.bookmarks.BookmarksFragmentDirections
 
 class DetailFragment : Fragment() {
 
@@ -44,19 +46,17 @@ class DetailFragment : Fragment() {
         val viewModel: DetailViewModel by viewModels { factory }
 
         val hotel = DetailFragmentArgs.fromBundle(arguments as Bundle).hotel
-        val (_, name, city, imageUrl, rate, description, price, stars) = hotel
 
         binding.apply {
-            val idrPrice = "IDR $price"
-            imageView.load(imageUrl) {
-                error(R.drawable.ic_error_hotel)
-            }
-            nameTextView.text = name
-            cityTextView.text = city
-            rateTextView.text = rate
-            hotelStars.rating = stars.toFloat()
-            descTextView.text = description
-            priceTextView.text = idrPrice
+            imageView.load(hotel.imageUrl)
+            nameTextView.text = hotel.name
+            cityTextView.text = hotel.city
+            rateTextView.text = resources.getString(R.string.rateDetail, hotel.rate)
+            reviewTextView.text = resources.getString(R.string.reviewsDetail, hotel.reviews)
+            descTextView.text = hotel.description
+            priceTextView.text = hotel.priceRange
+            hotelStars.numStars = hotel.stars.toInt()
+
             facilityButton.setOnClickListener {
                 val destination = DetailFragmentDirections
                     .actionDetailFragmentToFacilityFragment(hotel)
@@ -90,9 +90,7 @@ class DetailFragment : Fragment() {
                 }
             }
         }
-
     }
-
 
     private fun share(hotel: HotelEntity) {
         val resolver = requireActivity().contentResolver

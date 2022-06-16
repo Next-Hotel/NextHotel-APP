@@ -98,8 +98,8 @@
                     android:id="@+id/hotelStars"
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
                     android:progressTint="#FFC54D"
                     android:rating="3" />
             </LinearLayout>
@@ -130,6 +130,7 @@
                 android:drawablePadding="5dp"
                 android:text="@string/reviewsDetail" />
 
+
             <TextView
                 android:id="@+id/priceTextView"
                 style="@style/TextView.Detail.Price"
@@ -155,6 +156,5 @@
                 android:text="@string/see_all_facilities"
                 android:textAllCaps="false" />
         </LinearLayout>
->>>>>>> 54ccf847ceacaae81830cfb1dce24d503880d7b9
     </LinearLayout>
 </ScrollView>
