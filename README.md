@@ -8,13 +8,6 @@ This repository is the Capstone Project in [Bangkit Academy](https://grow.google
  [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)<br>
  
 
-# Application Install
-
-***You can Install and test latest Next Hotel app from below 👇***
-
-[![NEXTHOTEL](https://img.shields.io/badge/NextHotel✅-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/Next-Hotel/NextHotel-APP/releases/download/v1.0.0/app-debug.apk)
-
-
 ## Our Team
 | Name                            | Bangkit-ID    | Path               |
 | -------------                   | ------------- | -------------      |
@@ -28,6 +21,44 @@ This repository is the Capstone Project in [Bangkit Academy](https://grow.google
 | Faiz Rofi Hencya                | A2012F1244    | Mobile Development |
 | Fikky Ardianto                  | A7355G2901    | Mobile Development |
 | Thoriq Harizul Ahsan            | A2441W3032    | Mobile Development |
+
+# Application Install
+
+***You can Install and test latest Next Hotel app from below 👇***
+
+[![NEXTHOTEL](https://img.shields.io/badge/NextHotel✅-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/Next-Hotel/NextHotel-APP/releases/download/v1.0.0/app-debug.apk)
+
+
+## Getting started
+- Prerequisites
+  - Android
+  - Internet connection
+
+- Installation
+  - Download the APK
+  - Install the APK
+
+## Usage
+- How to get hotel recommendations from user personalized
+  - Open App
+  - On survey page, choose your interest
+  - In the Home Screen, "Hotel For You" Section is the recommendations.
+
+- How to get Hotel ranking by general
+  - Open App
+  - In the Home Screen, "Best Pick" Section is the hotel ranking.
+
+- How to find hotel
+  - Open App
+  - In the Home Screen, Click "Search View" fill keyword.
+  - The result will show.
+
+- How to share hotel
+  - Open App
+  - In the Home Screen, click hotel you want to share.
+  - In the detail screen, click share button.
+  - Share to your friend.
+
 
 
 ## Setup
