@@ -1,4 +1,4 @@
-package com.nexthotel.ui.survey
+package com.nexthotel.core.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
