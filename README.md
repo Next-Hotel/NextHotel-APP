@@ -12,7 +12,22 @@ This repository is the Capstone Project in [Bangkit Academy](https://grow.google
 
 ***You can Install and test latest Next Hotel app from below 👇***
 
-[![NEXTHOTEL](https://img.shields.io/badge/NextHotel✅-APK-red.svg?style=for-the-badge&logo=android)](http://linkdonlod)
+[![NEXTHOTEL](https://img.shields.io/badge/NextHotel✅-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/Next-Hotel/NextHotel-APP/releases/download/v1.0.0/app-debug.apk)
+
+
+## Our Team
+| Name                            | Bangkit-ID    | Path               |
+| -------------                   | ------------- | -------------      |
+| Abu Davi                        | M2002G0034    | Machine Learning   |
+| Christell James Cellose         | M2003F0139    | Machine Learning   |
+| Fatiha Agyal Shahwiya           | M2002G0032    | Machine Learning   |
+| Muhammad Gusanwa Akbar          | M2441W3035    | Machine Learning   |
+| Alvi Geovanny                   | C2213F1976    | Cloud Computing    |
+| Fajar Fitrianto                 | C7194F1847    | Cloud Computing    |
+| Kelvin                          | C2213G1975    | Cloud Computing    |
+| Faiz Rofi Hencya                | A2012F1244    | Mobile Development |
+| Fikky Ardianto                  | A7355G2901    | Mobile Development |
+| Thoriq Harizul Ahsan            | A2441W3032    | Mobile Development |
 
 
 ## Setup
@@ -64,6 +79,4 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 ![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 
 ## Contact
-Visit:
-  - [gonexwind git's](https://github.com/gonexwind)
-  - [Hencya    git's](https://github.com/Hencya)
+Visit:- [gonexwind git's](https://github.com/gonexwind)
