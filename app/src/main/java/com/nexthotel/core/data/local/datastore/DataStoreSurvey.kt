@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
+enum class IsSurvey { TRUE, FALSE }
 
 class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
 
@@ -16,8 +17,8 @@ class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
     }
 
     suspend fun setIsSurvey(isSurvey: IsSurvey) {
-        dataStore.edit { preferences ->
-            preferences[Keys.survey] = when (isSurvey) {
+        dataStore.edit {
+            it[Keys.survey] = when (isSurvey) {
                 IsSurvey.TRUE -> true
                 IsSurvey.FALSE -> false
             }
@@ -25,9 +26,7 @@ class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
     }
 
     suspend fun setRecommendation(recommendation: Set<String>) {
-        dataStore.edit { preferences ->
-            preferences[Keys.recommendation] = recommendation
-        }
+        dataStore.edit { it[Keys.recommendation] = recommendation }
     }
 
     val recommendationFlow: Flow<Set<String>> = dataStore.data.catch {
@@ -37,9 +36,7 @@ class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
         } else {
             throw it
         }
-    }.map { preferences ->
-        preferences[Keys.recommendation] ?: setOf()
-    }
+    }.map { it[Keys.recommendation] ?: setOf() }
 
     val modeUIFlow: Flow<IsSurvey> = dataStore.data
         .catch {
@@ -49,9 +46,8 @@ class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
             } else {
                 throw it
             }
-        }
-        .map { preferences ->
-            when (preferences[Keys.survey] ?: false) {
+        }.map {
+            when (it[Keys.survey] ?: false) {
                 true -> IsSurvey.TRUE
                 false -> IsSurvey.FALSE
             }
@@ -69,8 +65,4 @@ class DataStoreSurvey(private val dataStore: DataStore<Preferences>) {
             }
         }
     }
-}
-
-enum class IsSurvey {
-    TRUE, FALSE
 }

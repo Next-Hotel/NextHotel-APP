@@ -1,6 +1,8 @@
 package com.nexthotel.core.data.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class HotelsResponse(
     @SerializedName("status") val status: String,
@@ -8,6 +10,7 @@ data class HotelsResponse(
     @SerializedName("data") val data: List<Hotel>,
 )
 
+@Parcelize
 data class Hotel(
     @SerializedName("id") val id: Int,
     @SerializedName("hotel") val name: String,
@@ -34,4 +37,4 @@ data class Hotel(
     @SerializedName("hotel_services_list") val hotelServicesList: String?,
     @SerializedName("things_to_do_list") val thingsToDoList: String?,
     @SerializedName("Score") val score: Double,
-)
+): Parcelable

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.nexthotel.databinding.FragmentFacilityBinding
 
+
 class FacilityFragment : Fragment() {
 
     private var _binding: FragmentFacilityBinding? = null

@@ -40,4 +40,8 @@
     <string name="shuttle_service">Layanan Antar Jemput</string>
     <string name="in_room_facilities">Fasilitas Kamar</string>
     <string name="search_hint">Cari hotel pilihanmu…</string>
+    <string name="hotels">Hotel Bintang</string>
+    <string name="submit">Lanjut</string>
+    <string name="choose_your_interest">Pilih yang kamu sukai</string>
+    <string name="start_from">Mulai dari</string>
 </resources>

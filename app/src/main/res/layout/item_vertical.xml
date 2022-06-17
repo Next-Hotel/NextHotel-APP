@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="135dp"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
@@ -19,7 +19,6 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:transitionName="image_item"
                 android:layout_width="155dp"
                 android:layout_height="135dp"
                 android:contentDescription="@string/image_desc"
@@ -35,23 +34,12 @@
 
                 <TextView
                     android:id="@+id/cityTextView"
-                    android:transitionName="city_item"
                     style="@style/TextView.Card.Top"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
                     tools:text="Jogja" />
             </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/bookmarkButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="end"
-                android:background="@drawable/bg_black_rounded"
-                android:contentDescription="@string/bookmark_desc"
-                android:src="@drawable/ic_bookmark_border_white" />
-
         </FrameLayout>
 
         <LinearLayout
@@ -62,7 +50,6 @@
 
             <TextView
                 android:id="@+id/nameTextView"
-                android:transitionName="name_item"
                 style="@style/TextView.Card.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,17 +59,15 @@
 
             <TextView
                 android:id="@+id/rateTextView"
-                android:transitionName="rate_item"
                 style="@style/TextView.Card.Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:drawableEndCompat="@drawable/ic_star"
                 android:drawablePadding="5dp"
+                app:drawableEndCompat="@drawable/ic_star"
                 tools:text="4.5" />
 
             <TextView
                 android:id="@+id/descTextView"
-                android:transitionName="desc_item"
                 style="@style/TextView.Card.Subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,15 +75,26 @@
                 android:maxLines="2"
                 tools:text="@tools:sample/lorem/random" />
 
-            <TextView
-                android:id="@+id/priceTextView"
-                android:transitionName="price_item"
-                style="@style/TextView.Card.Price"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Rp. 100.000" />
-        </LinearLayout>
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/startFromTextView"
+                    style="@style/TextView.Card.Price.Start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/start_from" />
 
+                <TextView
+                    android:id="@+id/priceTextView"
+                    style="@style/TextView.Card.Price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="100.000" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -16,11 +16,11 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField("String", "BASE_URL", '"https://nexthotel-backend-b7iyywuv5a-as.a.run.app/"')
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildFeatures {
+        viewBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -34,13 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-    // UI
+// UI
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
@@ -64,15 +61,8 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.5"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    // Material Component
-    implementation 'com.google.android.material:material:1.6.1'
-
-    // Data Store
+    // DATASTORE
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-
-    // Room
-    implementation "androidx.room:room-runtime:2.4.2"
-    kapt "androidx.room:room-compiler:2.4.2"
 
     // TESTING
     testImplementation 'junit:junit:4.13.2'

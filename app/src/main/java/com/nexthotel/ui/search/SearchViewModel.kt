@@ -4,13 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nexthotel.core.data.HotelRepository
-import com.nexthotel.core.data.local.entity.HotelEntity
+import com.nexthotel.core.data.remote.response.Hotel
 import com.nexthotel.core.data.remote.response.HotelsResponse
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel() {
-    var searchResult = MutableLiveData<List<HotelEntity>>()
+class SearchViewModel(private val repo: HotelRepository) : ViewModel() {
+    var searchResult = MutableLiveData<List<Hotel>>()
     private var searchView = MutableLiveData<String>()
     var viewState = MutableLiveData<Int>()
 
@@ -30,7 +30,7 @@ class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel(
     }
 
     private suspend fun searchCall(searchText: String) {
-        val response = hotelRepository.search(searchText)
+        val response = repo.search(searchText)
         manageViewState(response)
     }
 
@@ -44,7 +44,7 @@ class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel(
         if (response.isSuccessful) {
             val hotels = response.body()?.data
             if (hotels != null) {
-                searchResult.value = hotelRepository.searchResult(hotels)
+                searchResult.value = repo.searchResult(hotels)
             }
 
             if (searchResult.value?.isEmpty() == true) {
@@ -55,18 +55,6 @@ class SearchViewModel(private val hotelRepository: HotelRepository) : ViewModel(
         } else {
             viewState.value = State.ERROR.ordinal
         }
-
-    fun saveHotel(hotel: HotelEntity) {
-        viewModelScope.launch {
-            hotelRepository.setBookmarkedHotel(hotel, true)
-        }
-    }
-
-    fun deleteHotel(hotel: HotelEntity) {
-        viewModelScope.launch {
-            hotelRepository.setBookmarkedHotel(hotel, false)
-        }
-    }
 
     enum class State {
         INITIAL_SCREEN, LOADING, SEARCH_RESULT, ERROR, RESULT_NOT_FOUND

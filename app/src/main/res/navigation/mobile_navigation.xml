@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@+id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -12,19 +12,6 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_detailFragment"
-            app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_setting"
-            app:destination="@id/navigation_setting" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_bookmarks"
-        android:name="com.nexthotel.ui.bookmarks.BookmarksFragment"
-        android:label="@string/title_bookmarks"
-        tools:layout="@layout/fragment_bookmarks">
-        <action
-            android:id="@+id/action_navigation_bookmarks_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
 
@@ -36,9 +23,6 @@
         <action
             android:id="@+id/action_navigation_explore_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_navigation_explore_to_navigation_setting"
-            app:destination="@id/navigation_setting" />
     </fragment>
 
     <fragment
@@ -48,7 +32,7 @@
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="hotel"
-            app:argType="com.nexthotel.core.data.local.entity.HotelEntity" />
+            app:argType="com.nexthotel.core.data.remote.response.Hotel" />
         <action
             android:id="@+id/action_detailFragment_to_facilityFragment"
             app:destination="@id/facilityFragment" />
@@ -67,16 +51,7 @@
         tools:layout="@layout/fragment_facility">
         <argument
             android:name="hotel"
-            app:argType="com.nexthotel.core.data.local.entity.HotelEntity" />
-    </fragment>
-    <fragment
-        android:id="@+id/surveyFragment"
-        android:name="com.nexthotel.ui.survey.SurveyFragment"
-        android:label="fragment_survey"
-        tools:layout="@layout/fragment_survey" >
-        <action
-            android:id="@+id/action_surveyFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            app:argType="com.nexthotel.core.data.remote.response.Hotel" />
     </fragment>
 
 </navigation>

@@ -7,27 +7,23 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    @GET("hotel-bestpicks")
-    suspend fun getHotelForYou(): HotelsResponse
-
     @FormUrlEncoded
-    @POST("recommendation")
-    suspend fun getHotelRecommendation(
+    @POST("recommendation?limit=10")
+    suspend fun getHotelForYou(
         @Field("interest[]") interest: Set<String>
     ): HotelsResponse
 
-    @GET("hotel-bestpicks")
+    @GET("hotel-bestpicks?limit=10")
     suspend fun getBestPick(): HotelsResponse
 
-    @GET("hotel-bestpicks")
+    @GET("list-hotels")
     suspend fun getExploreHotel(): HotelsResponse
 
-    @GET("hotel-bestpicks")
+    @GET("list-hotels")
     suspend fun searchHotel(
         @Query("name") name: String
     ): Response<HotelsResponse>
 
     @GET("hotel-data/survey")
-    suspend fun getInterestParameter(
-    ): InterestResponse
+    suspend fun getInterestParameter(): InterestResponse
 }

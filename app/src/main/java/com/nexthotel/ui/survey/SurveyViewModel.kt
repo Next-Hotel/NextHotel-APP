@@ -10,7 +10,6 @@ class SurveyViewModel(private val hotelRepository: HotelRepository) : ViewModel(
         getListSurvey()
     }
 
-    // get list from repository
     fun getListSurvey() = hotelRepository.getInterestParameter()
 
     fun setSelectedSurvey(value: String) {
@@ -18,7 +17,6 @@ class SurveyViewModel(private val hotelRepository: HotelRepository) : ViewModel(
         if (selectedSet.isEmpty()) {
             selectedSet.add(value)
         } else {
-            /* checking if value same on the list will be removed*/
             run breaker@{
                 selectedSet.forEach { item ->
                     if (item == value) {
@@ -28,7 +26,6 @@ class SurveyViewModel(private val hotelRepository: HotelRepository) : ViewModel(
                     }
                 }
             }
-            /* checking if value is not same on the list will be removed*/
             if (!isSame) {
                 selectedSet.add(value)
             }

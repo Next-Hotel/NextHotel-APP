@@ -2,7 +2,6 @@ package com.nexthotel.ui.home
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ import com.nexthotel.core.data.local.datastore.DataStoreSurvey
 import com.nexthotel.core.ui.BestPickAdapter
 import com.nexthotel.core.ui.HotelForYouAdapter
 import com.nexthotel.core.ui.ViewModelFactory
-import com.nexthotel.core.utils.Utils.toast
+import com.nexthotel.core.utils.Utils
 import com.nexthotel.databinding.FragmentHomeBinding
 
 private val Context.dataStore by preferencesDataStore(name = "settings")
@@ -27,10 +26,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var pref: DataStoreSurvey
 
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -44,31 +41,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
-        val viewModel: HomeViewModel by viewModels { factory }
+
         pref = DataStoreSurvey.getInstance(requireContext().dataStore)
 
-        val bestPickAdapter = BestPickAdapter {
-            if (it.isBookmarked) {
-                viewModel.deleteHotel(it)
-                toast(requireActivity(), getString(R.string.unbookmarked_toast))
-            } else {
-                viewModel.saveHotel(it)
-                toast(requireActivity(), getString(R.string.bookmark_toast))
-            }
-        }
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
+        val viewModel: HomeViewModel by viewModels { factory }
 
-        val hotelForYouAdapter = HotelForYouAdapter {
-            if (it.isBookmarked) {
-                viewModel.deleteHotel(it)
-                toast(requireActivity(), getString(R.string.unbookmarked_toast))
-            } else {
-                viewModel.saveHotel(it)
-                toast(requireActivity(), getString(R.string.bookmark_toast))
-            }
-        }
-
-
+        val bestPickAdapter = BestPickAdapter { }
+        val hotelForYouAdapter = HotelForYouAdapter { }
 
         viewModel.getBestPick().observe(viewLifecycleOwner) {
             if (it != null) {
@@ -80,15 +60,14 @@ class HomeFragment : Fragment() {
                     }
                     is Result.Error -> {
                         showLoading(true)
-                        toast(requireActivity(), getString(R.string.check_internet))
-                        Log.d("ALHAMDULILLAH", it.error)
+                        Utils.toast(requireActivity(), getString(R.string.check_internet))
                     }
                 }
             }
         }
 
-        pref.recommendationFlow.asLiveData().observe(viewLifecycleOwner) {
-            viewModel.getHotelForYou(it).observe(viewLifecycleOwner) {
+        pref.recommendationFlow.asLiveData().observe(viewLifecycleOwner) { interest ->
+            viewModel.getHotelForYou(interest).observe(viewLifecycleOwner) {
                 if (it != null) {
                     when (it) {
                         is Result.Loading -> showLoading(true)
@@ -98,7 +77,7 @@ class HomeFragment : Fragment() {
                         }
                         is Result.Error -> {
                             showLoading(true)
-                            toast(requireActivity(), getString(R.string.check_internet))
+                            Utils.toast(requireActivity(), getString(R.string.check_internet))
                         }
                     }
                 }

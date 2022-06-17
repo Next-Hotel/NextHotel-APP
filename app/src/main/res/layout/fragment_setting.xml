@@ -7,18 +7,6 @@
     android:layout_margin="13dp"
     tools:context=".ui.setting.SettingFragment">
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/bg_black_rounded"
-        android:contentDescription="@string/image_desc"
-        android:src="@drawable/ic_arrow_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <TextView
         android:id="@+id/header"
         style="@style/TextView.Header"
@@ -26,8 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/settings"
-        app:layout_constraintBottom_toBottomOf="@id/backButton"
-        app:layout_constraintStart_toEndOf="@id/backButton"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -37,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/general"
-        app:layout_constraintStart_toStartOf="@id/backButton"
-        app:layout_constraintTop_toBottomOf="@id/backButton" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header" />
 
     <Button
         android:id="@+id/themeButton"
@@ -75,9 +62,10 @@
     <TextView
         android:id="@+id/version"
         style="@style/TextView.Card"
-        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:text="@string/version"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/about" />
@@ -85,12 +73,13 @@
     <TextView
         android:id="@+id/versionNumber"
         style="@style/TextView.Card"
-        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="1.0.0"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/version" />
+        app:layout_constraintTop_toBottomOf="@id/version"
+        tools:text="1.0.0" />
 
     <Button
         android:id="@+id/aboutUsButton"

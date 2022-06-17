@@ -21,15 +21,12 @@
     <string name="settings">Settings</string>
     <string name="theme">Theme</string>
     <string name="languages">Languages</string>
-    <string name="submit">Submit</string>
-    <string name="category">Nearby Facilities</string>
-    <string name="choose_your_interest">Choose your Interest</string>
     <string name="not_found_text">Oopps…!\nHotels Not Found</string>
     <string name="check_internet">Please Check Your Internet Connection</string>
     <string name="see_all_facilities">See All Facilities</string>
     <string name="rateDetail">%s rate</string>
     <string name="reviewsDetail">from %s reviews</string>
-    <string name="hotels" translatable="false">Hotels</string>
+    <string name="hotels">Hotels Star</string>
     <string name="all_facilities">All Facilities</string>
     <string name="places_nearby">Places Nearby</string>
     <string name="food_and_drinks">Food and Drinks</string>
@@ -46,4 +43,7 @@
     <string name="shuttle_service">Shuttle Service</string>
     <string name="in_room_facilities">In-room Facilities</string>
     <string name="search_hint">Find your hotels…</string>
+    <string name="submit">Submit</string>
+    <string name="choose_your_interest">Choose your interest</string>
+    <string name="start_from">Start from </string>
 </resources>

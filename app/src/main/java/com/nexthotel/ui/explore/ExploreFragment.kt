@@ -1,17 +1,16 @@
 package com.nexthotel.ui.explore
 
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.nexthotel.R
 import com.nexthotel.core.data.Result
 import com.nexthotel.core.ui.ExploreAdapter
 import com.nexthotel.core.ui.ViewModelFactory
-import com.nexthotel.core.utils.Utils.toast
+import com.nexthotel.core.utils.Utils
 import com.nexthotel.databinding.FragmentExploreBinding
 
 class ExploreFragment : Fragment() {
@@ -39,15 +38,7 @@ class ExploreFragment : Fragment() {
         val viewModel: ExploreViewModel by viewModels { factory }
 
 
-        val exploreAdapter = ExploreAdapter {
-            if (it.isBookmarked) {
-                viewModel.deleteHotel(it)
-                toast(requireActivity(), getString(R.string.unbookmarked_toast))
-            } else {
-                viewModel.saveHotel(it)
-                toast(requireActivity(), getString(R.string.bookmark_toast))
-            }
-        }
+        val exploreAdapter = ExploreAdapter {}
 
         viewModel.getExplore().observe(viewLifecycleOwner) {
             if (it != null) {
@@ -55,13 +46,11 @@ class ExploreFragment : Fragment() {
                     is Result.Loading -> showLoading(true)
                     is Result.Success -> {
                         showLoading(false)
-                        val hotelData = it.data
-                        exploreAdapter.submitList(hotelData)
+                        exploreAdapter.submitList(it.data)
                     }
                     is Result.Error -> {
                         showLoading(true)
-                        toast(requireActivity(), getString(R.string.check_internet))
-                        Log.d("ALHAMDULILLAH", it.error)
+                        Utils.toast(requireActivity(), getString(R.string.check_internet))
                     }
                 }
             }

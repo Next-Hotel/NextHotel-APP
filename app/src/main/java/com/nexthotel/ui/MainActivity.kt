@@ -2,17 +2,17 @@ package com.nexthotel.ui
 
 import android.app.SearchManager
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nexthotel.R
-import com.nexthotel.core.data.local.entity.HotelEntity
+import com.nexthotel.core.data.remote.response.Hotel
 import com.nexthotel.core.ui.SearchAdapter
 import com.nexthotel.core.ui.ViewModelFactory
 import com.nexthotel.databinding.ActivityMainBinding
@@ -21,8 +21,8 @@ import com.nexthotel.ui.home.HomeFragmentDirections
 import com.nexthotel.ui.search.SearchViewModel
 import kotlinx.coroutines.*
 
-
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: SearchViewModel
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
     private var searchJob: Job? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,16 +43,43 @@ class MainActivity : AppCompatActivity() {
 
         binding.backToHomeButton.setOnClickListener { showInitialScreen() }
 
-        setUpRecyclerView()
-        observeViewState()
         bottomNavigation()
         searchView()
+        setUpRecyclerView()
+        observeViewState()
+    }
+
+    private fun bottomNavigation() {
+        val navView: BottomNavigationView = binding.navView
+        navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        navController = navHostFragment.navController
+
+        navView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_home -> {
+                    navView.visibility = View.VISIBLE
+                    binding.topBar.visibility = View.VISIBLE
+                }
+                R.id.navigation_explore -> {
+                    navView.visibility = View.VISIBLE
+                    binding.topBar.visibility = View.VISIBLE
+                }
+                R.id.navigation_setting -> {
+                    binding.topBar.visibility = View.GONE
+                    navView.visibility = View.VISIBLE
+                }
+                else -> {
+                    navView.visibility = View.GONE
+                    binding.topBar.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun searchView() {
-        adapter = SearchAdapter {
-            if (it.isBookmarked) viewModel.deleteHotel(it) else viewModel.saveHotel(it)
-        }
+        adapter = SearchAdapter { }
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = binding.searchView
@@ -83,45 +109,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun bottomNavigation() {
-        val navView: BottomNavigationView = binding.navView
-        navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        navController = navHostFragment.navController
-
-        navView.setupWithNavController(navController)
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.navigation_home -> {
-                    binding.settingButton.setOnClickListener {
-                        val toSetting = HomeFragmentDirections
-                            .actionNavigationHomeToNavigationSetting()
-                        navController.navigate(toSetting)
-                    }
-                    navView.visibility = View.VISIBLE
-                    binding.topBar.visibility = View.VISIBLE
-                }
-                R.id.navigation_explore -> {
-                    binding.settingButton.setOnClickListener {
-                        val toSetting = ExploreFragmentDirections
-                            .actionNavigationExploreToNavigationSetting()
-                        navController.navigate(toSetting)
-                    }
-                    navView.visibility = View.VISIBLE
-                    binding.topBar.visibility = View.VISIBLE
-                }
-                R.id.navigation_bookmarks -> {
-                    binding.topBar.visibility = View.GONE
-                    navView.visibility = View.VISIBLE
-                }
-                else -> {
-                    navView.visibility = View.GONE
-                    binding.topBar.visibility = View.GONE
-                }
-            }
-        }
-    }
-
     private fun observeViewState() {
         viewModel.viewState.observe(this@MainActivity) {
             when (it) {
@@ -141,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                 adapter.submitList(hotelData)
                 binding.searchRecyclerView.adapter = adapter
                 adapter.setOnItemClickCallback(object : SearchAdapter.OnItemClickCallback {
-                    override fun onItemClicked(data: HotelEntity) {
+                    override fun onItemClicked(data: Hotel) {
                         when (navController.currentDestination?.id) {
                             R.id.navigation_explore -> {
                                 val toDetail = ExploreFragmentDirections

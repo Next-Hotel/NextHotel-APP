@@ -31,7 +31,6 @@ class SurveyAdapter(private val itemClickListener: (String) -> Unit) :
 
     override fun getItemCount() = if (list.isEmpty()) 1 else list.size
 
-
     class ItemViewHolder(val binding: ItemSurveyBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindItem(item: String) {
             binding.surveyButton.text = item
