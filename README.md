@@ -7,6 +7,8 @@
 This repository is the Capstone Project in [Bangkit Academy](https://grow.google/intl/id_id/bangkit/) 2022. This application is purpose to help user to get hotel recommendations.<br><br>
  [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)<br>
  
+## Demo Video 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/cvlKvAMvqIY/0.jpg)](https://www.youtube.com/watch?v=cvlKvAMvqIY)
 
 ## Our Team
 | Name                            | Bangkit-ID    | Path               |
@@ -59,8 +61,6 @@ This repository is the Capstone Project in [Bangkit Academy](https://grow.google
   - In the detail screen, click share button.
   - Share to your friend.
 
-
-
 ## Setup
 Clone the repository on your machine. Open the project on your IDE and run it.
 
@@ -108,9 +108,6 @@ Full details of MAD Score:
 This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
 
 ![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
-
-## Video 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/cvlKvAMvqIY/0.jpg)](https://www.youtube.com/watch?v=cvlKvAMvqIY)
 
 ## Contact
 Visit:
