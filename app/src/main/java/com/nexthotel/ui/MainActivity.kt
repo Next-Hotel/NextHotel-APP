@@ -21,6 +21,7 @@ import com.nexthotel.ui.home.HomeFragmentDirections
 import com.nexthotel.ui.search.SearchViewModel
 import kotlinx.coroutines.*
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavHostFragment
@@ -48,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation()
         searchView()
     }
-
 
     private fun searchView() {
         adapter = SearchAdapter {
