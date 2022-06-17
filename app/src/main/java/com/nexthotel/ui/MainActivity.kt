@@ -7,18 +7,11 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nexthotel.R
-import com.nexthotel.core.data.local.datastore.DataStoreSurvey
-import com.nexthotel.core.data.local.datastore.IsSurvey
 import com.nexthotel.core.data.local.entity.HotelEntity
 import com.nexthotel.core.ui.SearchAdapter
 import com.nexthotel.core.ui.ViewModelFactory
@@ -26,11 +19,8 @@ import com.nexthotel.databinding.ActivityMainBinding
 import com.nexthotel.ui.explore.ExploreFragmentDirections
 import com.nexthotel.ui.home.HomeFragmentDirections
 import com.nexthotel.ui.search.SearchViewModel
-import com.nexthotel.ui.survey.SurveyFragmentDirections
 import kotlinx.coroutines.*
 
-
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -40,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: SearchViewModel
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
     private var searchJob: Job? = null
-    private lateinit var pref: DataStoreSurvey
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,36 +42,12 @@ class MainActivity : AppCompatActivity() {
         val viewModel: SearchViewModel by viewModels { factory }
         this.viewModel = viewModel
 
-        pref = DataStoreSurvey.getInstance(dataStore)
-
         binding.backToHomeButton.setOnClickListener { showInitialScreen() }
 
-        setSurveyView()
         setUpRecyclerView()
         observeViewState()
         bottomNavigation()
         searchView()
-    }
-
-    private fun setSurveyView() {
-        pref.modeUIFlow.asLiveData().observe(this) {
-            if (it == IsSurvey.TRUE) {
-                // show survey view
-                // remove survey view
-                val toHome = SurveyFragmentDirections
-                    .actionSurveyFragmentToNavigationHome()
-                navController.navigate(toHome)
-                clearFragment()
-            }
-        }
-    }
-
-    private fun clearFragment(){
-        val fragment = supportFragmentManager.fragments
-        for (frag in fragment){
-            supportFragmentManager.beginTransaction().remove(frag).commit()
-        }
-        supportFragmentManager.popBackStack(null , FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
     private fun searchView() {
