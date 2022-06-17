@@ -81,4 +81,5 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 ## Contact
 Visit:
 - [gonexwind git's](https://github.com/gonexwind)
-- [Hencya git's]((https://github.com/Hencya))
+- [Hencya git's](https://github.com/Hencya)
+- [Thoriq-ha git's](https://github.com/Thoriq-ha)
