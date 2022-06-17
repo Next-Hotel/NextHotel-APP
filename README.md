@@ -110,8 +110,7 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 ![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 
 ## Video 
-https://www.youtube.com/watch?v=cvlKvAMvqIY&ab_channel=ThoriqHarizul.mp4
-
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/cvlKvAMvqIY/0.jpg)](https://www.youtube.com/watch?v=cvlKvAMvqIY)
 
 ## Contact
 Visit:
